@@ -1,0 +1,13 @@
+#inverted {
+    background-color: black;
+    color: white;
+}
+
+#colourful {
+    background-color: yellow;
+}
+
+#inverted, #colourful {
+    font-size: 28px;
+    font-family: Helvetica, 'Time New Roman', sans-serif;
+}
