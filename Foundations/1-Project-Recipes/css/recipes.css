@@ -1,0 +1,40 @@
+body {
+    height: auto;
+}
+p {
+    text-align: center;
+}
+
+main {
+    margin-bottom: 50px;
+}
+
+img {
+    margin-bottom: 20px;
+    border-radius: 20px;
+}
+
+ul, ol {
+    display: flex;
+    flex: 1;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: start;
+}
+li {
+    background-color: rgba(255, 255, 255, 0.4);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+section {
+    width: 80%;
+    background-color: rgba(255, 255, 255, 0.4);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+li:hover {
+    transform: scale(1.1);
+}

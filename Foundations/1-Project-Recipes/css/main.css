@@ -28,7 +28,7 @@ h1 {
     margin-bottom: 30px;
 }
 
-ul {
+ul, ol {
     list-style: none;
     display: flex;
     flex-wrap: wrap;
