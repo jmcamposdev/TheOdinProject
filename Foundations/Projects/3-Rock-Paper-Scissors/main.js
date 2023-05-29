@@ -1,13 +1,17 @@
+// Objective: Create a rock, paper, scissors game
 const TYPES = {
     0: "Rock",
     1: "Paper",
     2: "Scissors",
 };
 
-game()
+game() // Start the game
 
 
-
+/**
+ * Plays a game of rock, paper, scissors
+ * Starts by asking the user for their choice and then plays 5 rounds
+ */
 function game() {
     let playerScore = 0;
     let computerScore = 0;
@@ -46,13 +50,7 @@ function playRound(playerSelection, computerSelection) {
     } else { // Scissors
         hasUserWin = computerSelection === 1; // If computer chose paper, user wins
     }
-
     return hasUserWin;
-    // if (hasUserWin) {
-    //     return `You win! ${TYPES[playerSelection]} beats ${TYPES[computerSelection]}`;
-    // } else {
-    //     return `You lose! ${TYPES[computerSelection]} beats ${TYPES[playerSelection]}`;
-    // }
 }
 
 /**
@@ -63,6 +61,14 @@ function getComputerChoice() {
     return Math.floor(Math.random() * 3);
 }
 
+/**
+ * Asks the user for their choice and returns a number based on their choice
+ * 0 = Rock
+ * 1 = Paper
+ * 2 = Scissors
+ * If the user enters an invalid choice, it will ask them again
+ * @returns {number|number|*} - A number between 0 and 2
+ */
 function getPlayerChoice() {
     let playerChoice = prompt("Rock, paper or scissors?").toLowerCase();
     if (playerChoice === "rock") {
