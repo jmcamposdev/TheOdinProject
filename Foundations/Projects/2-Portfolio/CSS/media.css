@@ -34,13 +34,122 @@
     .presentation{
         flex-direction: column;
     }
+.portfolio_card{
+    display: none;
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+}
 
-    .card_container{
-        grid-template-columns: repeat(2, 1fr);
-    }
+
+.card_container_phone{
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+background-color: transparent;
+max-width: none;
+gap: 15px;
+justify-content: center;
+grid-template-columns: repeat(2, 1fr);
+position: initial;
+visibility: visible;
+opacity: 1;
+
+}
+    
+.card_phone{
+position: relative;
+object-fit: cover;
+overflow: hidden;
+font-size: 14px;
+border-radius: 10px;
+height: 200px;
+}
+    
+.card_img{
+width: 100%;
+height: 100%;
+object-fit: cover;
+transition: all 1s;
+border-radius: 10px;
+}
+    
+.card_description-izquierda{
+position: absolute;
+background-color: rgba(0, 0, 0, 0.7);
+bottom: 0px;
+right: 500px;
+height: 100%;
+width: 100%;
+opacity: 0;
+transition: all 0.5s;
+border-radius: 10px;
+z-index: 1;
+display: flex;
+justify-content: center;
+flex-direction: column;
+text-align: center;
+gap: 30px;
+}
+    
+.card_description-derecha{
+position: absolute;
+background-color: rgba(0, 0, 0, 0.7);
+bottom: 0px;
+left: 500px;
+height: 100%;
+width: 100%;
+opacity: 0;
+transition: all 0.5s;
+border-radius: 10px;
+z-index: 1;
+display: flex;
+justify-content: center;
+flex-direction: column;
+text-align: center;
+gap: 30px;
+}
+    
+.card_description-a{
+background: #353535;
+color: #f5f5f5;
+padding: 5px 10px;
+display: inline-block;
+margin: 0 auto;
+text-decoration: none; 
+transition: 0.35s;
+}
+    
+.card_description-a:hover{
+color: #2a9bec;
+}
+    
+.card_phone:hover .card_img {
+transition: all 1s;
+border-radius: 10px;
+transform: scale(1.2);
+}
+    
+.card_phone:hover .card_description-izquierda {
+visibility: visible;
+opacity: 1;
+transition: all .5s;
+border-radius: 10px;
+right: 0px;
+}
+    
+.card_phone:hover .card_description-derecha {
+visibility: visible;
+opacity: 1;
+transition: all .5s;
+border-radius: 10px;
+left: 0px;
+}
+
+
 }
 
 @media (max-width: 767px) {
+
     .presentation_container-img{
         width: 250px;
     }
@@ -59,16 +168,18 @@
     }
     .pi{
         font-size: 1.2em;
-        line-height: 40px;
         text-align: left;
-        margin: 15px 0;
+    }
+
+    .presentation_container{
+        width: 90%;
     }
 
     .presentation_container h2{
         font-size: 1.5em;
     }
     
-    .card_container{
+    .card_container_phone{
         grid-template-columns: repeat(1, 1fr);
     }
 
@@ -80,7 +191,50 @@
     .contactos{
         padding: 30px;
     }
-    .presentation_container{
-        width: 90%;
+
+    .about_container{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .sobremi_container{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .portfolio_container{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
+
+
+@media (max-width: 460px) {
+    .main{
+        font-size: .8em;
+    }
+
+    .skills{
+        width: 50px;
+    }
+
+    .skills :nth-child(1){
+        width: 45px;
+    }
+
+    .sobremi_slider :nth-child(1) {
+        margin-top: 1.3em;
+    }
+
+    .aboutprimero{
+        margin-top: 1.3em;
+    }
+}
+
+@media (max-height:500px){
+    .presentation{
+        height: auto;
+        margin-bottom: 50px;
     }
 }

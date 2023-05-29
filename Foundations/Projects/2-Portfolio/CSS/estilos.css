@@ -25,7 +25,6 @@ section{
     flex-wrap: nowrap;
     align-items: center;
     justify-content: center;
-    margin:90px 0;
 
 }
 .blanco{
@@ -36,6 +35,7 @@ section{
     color: #242424;
 }
 .h1{
+    text-align: center;
     margin: 0 0 0.67em 0;
     font-size: 45px;
 }
@@ -71,7 +71,7 @@ section{
     position: fixed;
     width: 100%;
     height: 60px;
-    z-index: 5;
+    z-index: 100;
 
     }
 
@@ -183,9 +183,51 @@ section{
     font-size: 35px;
 }
 
-.about{
+.presentacion_container-p {
+    margin-top: 10px;
+}
+
+        /** \Finalizacion de Presentacion  */
+
+                /* Inicio de ABOUT */
+.input_about{
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #00CF58;
+    border: none;
+    box-shadow: none;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.about_container{
+    display: flex;
     flex-direction: column;
-    gap: 30px;
+    margin-bottom: 50px;
+    position: relative;
+    overflow: hidden;
+    width: 650px;
+    transition: all .5s;
+}
+
+.about_container h2{
+    margin: 0;
+}
+
+.about_slider{
+    height: 360px;
+    transition: all .5s;
+
+}
+.aboutprimero{
+    margin-top: 1.2em;
+}
+.about_slider :nth-child(5){
+    margin-bottom: 1.2em;
 }
 
 
@@ -196,10 +238,11 @@ section{
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
-    margin-bottom: 50px;
+    margin-top: 50px;
 }
 
 .skills{
+    margin-top: 0px;
     width: 100%;
     width: 90px;
     height: 90px;
@@ -210,10 +253,81 @@ section{
     height: 75px;
 }
 
+        /* Final de ABOUT */
+
+        /* Inicio de SOBRE MI */
+
 .sobremi_container{
     display: flex;
     flex-direction: column;
     margin-bottom: 50px;
+    position: relative;
+    overflow: hidden;
+    width: 650px;
+    transition: all .5s;
+}
+
+.sobremi_container h2{
+    margin: 0;
+}
+
+.sobremi_slider{
+    display: flex;
+    flex-direction: column;
+    transition: all .5s;
+    height: 420px;
+}
+.sobremi_slider :nth-child(1){
+    margin-top: 1.2em;
+}
+.sobremi_slider :nth-child(5){
+    margin-bottom: 1.2em;
+}
+
+.hidden{
+    animation-duration: .8s;
+    animation-name: reducir;
+}
+
+.ampliar{
+    animation-duration: .8s;
+    animation-name: ampliar;
+}
+
+.ceropx{
+    height: 0px;
+}
+
+.input_sobremi{
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #00CF58;
+    border: none;
+    box-shadow: none;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+@keyframes reducir {
+    0%{
+    }
+
+    100%{
+        height: 0px;
+    }
+}
+
+@keyframes ampliar {
+    0%{
+    }
+
+    100%{
+        transition: scaleY(1);
+    }
 }
 
 .sobremi_container a{
@@ -232,75 +346,78 @@ section{
     color: rgb(235, 235, 235);
 }
 
+        /* Final de SOBRE MI */
+
+        /* Inicio de PORTFOLIO */
+
 .portfolio{
-    margin-bottom: 100px;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.portfolio_card{
+    margin-top: 50px;
+    position: relative;
+    height: 300px;
+    width: 600px;
+}
+        /* GLOBALES*/
+.card{
+    border-radius: 20px;
+    position: absolute;
+    height: 100%;
+    width: 300px;
+    transition-property: transform;
+    transition-duration: .5s;
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+
+}
+.card:hover{
+    transform: translateX(-200px);
+}
+.card_titulo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #29323F;
+    height: 100%;
+    width: 50px;
+    z-index: inherit;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    cursor: default;
+}
+.card_titulo h2{
+    color: whitesmoke;
+    display: block;
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    text-align: center;
+    font-size: 40px;
 }
 
 .card_container{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    background-color: transparent;
-    max-width: none;
-    gap: 15px;
-    justify-content: center;
-    
-}
-
-.card{
-    position: relative;
-    object-fit: cover;
-    overflow: hidden;
-    font-size: 14px;
-    border-radius: 10px;
-    height: 200px;
-}
-
-.card_img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: all 1s;
-    border-radius: 10px;
-}
-
-.card_description-izquierda{
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.7);
-    bottom: 0px;
-    right: 500px;
-    height: 100%;
-    width: 100%;
-    opacity: 0;
-    transition: all 0.5s;
-    border-radius: 10px;
-    z-index: 1;
     display: flex;
-    justify-content: center;
     flex-direction: column;
-    text-align: center;
-    gap: 30px;
-}
-
-.card_description-derecha{
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.7);
-    bottom: 0px;
-    left: 500px;
-    height: 100%;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    opacity: 0;
-    transition: all 0.5s;
-    border-radius: 10px;
-    z-index: 1;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    gap: 30px;
+    height: 100%;
 }
 
-.card_description-a{
+.card_container h2{
+    margin-bottom: 50px;
+}
+
+.card_container p{
+    font-size: 1.3em;
+    margin-bottom: 50px;
+}
+
+.card_a{
     background: #353535;
     color: #f5f5f5;
     padding: 5px 10px;
@@ -308,33 +425,75 @@ section{
     margin: 0 auto;
     text-decoration: none;
     transition: 0.35s;
+    border-radius: 20px;
 }
-
-.card_description-a:hover{
+    
+.card_a:hover{
     color: #2a9bec;
 }
 
-.card:hover .card_img {
-    transition: all 1s;
-    border-radius: 10px;
-    transform: scale(1.2);
+     /** Inicio de Carta1 **/
+
+.card_1{
+    position: absolute;
+    height: 100%;
+    width: 300px;
+    z-index: 10;
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.4);
+
 }
 
-.card:hover .card_description-izquierda {
-    visibility: visible;
-    opacity: 1;
-    transition: all .5s;
-    border-radius: 10px;
-    right: 0px;
+
+    /** Final de Carta 1 */
+
+    /** Inicio de Carta2 **/
+.card_2{
+    position: absolute;
+    height: 100%;
+    width: 300px;
+    z-index: 20;
+    left: 100px;
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.4);
 }
 
-.card:hover .card_description-derecha {
-    visibility: visible;
-    opacity: 1;
-    transition: all .5s;
-    border-radius: 10px;
-    left: 0px;
+    /** Final de Carta 2 */
+
+    /** Inicio de Carta 3 **/
+.card_3{
+    position: absolute;
+    height: 100%;
+    width: 300px;
+    z-index: 30;
+    left: 200px;
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.4);
+
 }
+    /** Final de Carta 3 */
+
+    /** Inicio de Carta 4 **/
+    .card_4{
+        border-radius: 20px;
+        position: absolute;
+        height: 100%;
+        width: 300px;
+        z-index: 40;
+        left: 300px;
+        display: flex;
+        background-color: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+    /** Final de Carta 4 */
+
+
+        /* Final de Portfolio */
+
+        /* Inicio de FOOTER */
+
+
 
 .footer{
     display: block;
@@ -361,12 +520,27 @@ section{
     transition:0.3s;
 }
 
+.gmail-p{
+    text-decoration: none;
+    display: block;
+}
+
 .gmail:hover .gmail-p{
     color: #F44336;
 }
 
+.telefono-p{
+    text-decoration: none;
+    display: block;
+}
+
 .telefono:hover .telefono-p{
     color: #60BE92;
+}
+
+.linkedin-p{
+    display: block;
+    text-decoration: none;
 }
 
 .linkedin:hover .linkedin-p{
@@ -377,3 +551,13 @@ section{
     font-size: 13px;
     color: whitesmoke;
 }
+
+.card_container_phone{
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+}
+
+        /* Final de FOOTER */
+
+        /* Inicio de PORTFOLIO */
