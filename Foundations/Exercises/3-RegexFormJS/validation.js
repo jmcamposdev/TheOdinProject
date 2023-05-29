@@ -1,6 +1,8 @@
 const inputs = document.querySelectorAll('input'); // Select all inputs 
 const pattern = {
-    username: /^[a-z\d]{5-12}$/
+    username: /^[a-z\d]{5-12}$/,
+    email: /^([a-z\d\.-]+)@([a-z\d\.-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/,
+    
 }
 
 inputs.forEach((input) => {
