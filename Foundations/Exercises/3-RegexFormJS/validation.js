@@ -7,8 +7,17 @@ const pattern = {
     slug: /^[a-z\d-]{8-20}$/,
 }
 
+function validation (field, pattern) {
+    if (pattern.test(field.value)) { 
+        field.className = "valid";
+
+    } else {
+        field.className = "invalid";
+    }
+}
+
 inputs.forEach((input) => {
     input.addEventListener('keyup', (e) => {
-        console.log("key pressed");
+        validation(input, pattern[input.attributes.name.value]);
     })
 })
