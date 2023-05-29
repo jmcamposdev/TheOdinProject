@@ -22,3 +22,24 @@ input{
     border: 3px solid #ccc;
     outline: none !important;
 }
+
+input.valid {
+    border-color: #36cc36;
+}
+
+input.invalid {
+    border-color: orange;
+}
+
+input + p {
+    font-family: arial, serif;
+    font-size: 0.9em; font-weight: bold;
+    text-align: center;
+    margin: 0 10px;
+    display: none;
+}
+
+input.invalid + p {
+    display: block;
+    margin-bottom: 20px;
+}
