@@ -1,84 +1,107 @@
 // Objective: Create a rock, paper, scissors game
 const TYPES = {
-    0: "Rock",
-    1: "Paper",
-    2: "Scissors",
+    0: "rock",
+    1: "paper",
+    2: "scissors",
 };
+const buttons = document.querySelectorAll('button');
+const divResult = document.querySelector('#result');
+const divUserScore = document.querySelector("#userScore");
+const divComputerScore = document.querySelector("#computerScore");
+const divRound = document.querySelector("#round");
+const divWinner = document.querySelector("#winner");
 
-game() // Start the game
+let userScore = 0;
+let computerScore = 0;
+let round = 0;
+let winner;
+
+buttons.forEach(button => {
+    button.addEventListener('click', (e) => {
+        playRound(getUserChoiceId(e), getComputerChoiceId());
+    })
+})
 
 
-/**
- * Plays a game of rock, paper, scissors
- * Starts by asking the user for their choice and then plays 5 rounds
- */
-function game() {
-    let playerScore = 0;
-    let computerScore = 0;
-    let round = 1;
-    while (round <= 5) {
-        const playerSelection = getPlayerChoice();
-        const computerSelection = getComputerChoice();
-        const result = playRound(playerSelection, computerSelection);
-        if (result) {
-            playerScore++;
-            console.log(`You win! ${TYPES[playerSelection]} beats ${TYPES[computerSelection]}`);
-        } else {
-            computerScore++;
-            console.log(`You lose! ${TYPES[computerSelection]} beats ${TYPES[playerSelection]}`);
-        }
-        round++;
-    }
 
-    if (playerScore > computerScore) {
-        console.log("You win!");
-    } else if (playerScore < computerScore) {
-        console.log("You lose!");
-    } else {
-        console.log("It's a tie!");
-    }
-}
 
 function playRound(playerSelection, computerSelection) {
     let hasUserWin;
+    let resultMessage;
+    let isTie = false;
     if (playerSelection === computerSelection) { // Tie
-        return "It's a tie!";
-    } else if (playerSelection === 0) { // Rock
-        hasUserWin = computerSelection === 2; // If computer chose scissors, user wins
-    } else if (playerSelection === 1) { // Paper
-        hasUserWin = computerSelection === 0; // If computer chose rock, user wins
+        isTie = true;
+        resultMessage = "Is a Tie";
+    } else if (playerSelection === getIdFromType("rock")) { // Rock
+        hasUserWin = computerSelection === getIdFromType("scissors"); // If computer chose scissors, user wins
+    } else if (playerSelection === getIdFromType("paper")) { // Paper
+        hasUserWin = computerSelection === getIdFromType("rock"); // If computer chose rock, user wins
     } else { // Scissors
-        hasUserWin = computerSelection === 1; // If computer chose paper, user wins
+        hasUserWin = computerSelection === getIdFromType("paper"); // If computer chose paper, user wins
     }
-    return hasUserWin;
+    if (hasUserWin && !isTie) {
+        userScore++;
+        resultMessage = `The user win with ${TYPES[playerSelection]} vs ${TYPES[computerSelection]}`;
+    } else if (!isTie){
+        computerScore++;
+        resultMessage = `The computer win with ${TYPES[computerSelection]} vs ${TYPES[playerSelection]}`;
+    }
+    round++;
+    if (isWinner()) {
+        let winnerName = userScore === 5 ? "User" : "Computer";
+        updateWinnerContent(winnerName);
+
+        round = 0;
+        userScore = 0;
+        computerScore = 0
+        updateRoundContent();
+        updateUserScoreContent()
+        updateComputerScoreContent()
+    }
+
+    updateResultContent(resultMessage)
+    updateUserScoreContent()
+    updateComputerScoreContent()
+    updateRoundContent()
+
+}
+
+function isWinner() {
+    return userScore === 5 || computerScore === 5;
 }
 
 /**
  * Generates a random number between 0 and 2
  * @returns {number} - A random number between 0 and 2
  */
-function getComputerChoice() {
-    return Math.floor(Math.random() * 3);
+function getComputerChoiceId() {
+    return Math.floor(Math.random() * Object.keys(TYPES).length);
 }
 
-/**
- * Asks the user for their choice and returns a number based on their choice
- * 0 = Rock
- * 1 = Paper
- * 2 = Scissors
- * If the user enters an invalid choice, it will ask them again
- * @returns {number|number|*} - A number between 0 and 2
- */
-function getPlayerChoice() {
-    let playerChoice = prompt("Rock, paper or scissors?").toLowerCase();
-    if (playerChoice === "rock") {
-        return 0;
-    } else if (playerChoice === "paper") {
-        return 1;
-    } else if (playerChoice === "scissors") {
-        return 2;
-    } else {
-        alert("Invalid choice!");
-        return getPlayerChoice();
-    }
+function getUserChoiceId(event) {
+    return getIdFromType(event.target.id);
 }
+
+function getIdFromType(type) {
+    return +Object.keys(TYPES).find(key => TYPES[key] === type);
+}
+
+// ----------------------------
+//      Setter of Content to HTML
+// ----------------------------
+function updateResultContent(string) {
+    divResult.textContent = string;
+}
+function updateRoundContent() {
+    divRound.textContent = `The Round ${round}`;
+}
+function updateUserScoreContent() {
+    divUserScore.textContent = `The user has ${userScore} score.`;
+}
+function updateComputerScoreContent() {
+    divComputerScore.textContent = `The computer has ${computerScore} score.`;
+}
+function updateWinnerContent(winnerName) {
+    divWinner.textContent = `The winner is ${winnerName}`;
+}
+
