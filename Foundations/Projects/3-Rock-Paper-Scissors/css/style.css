@@ -89,10 +89,6 @@ h2 {
     font-size: 3rem;
 }
 
-.container-result {
-    text-align: center;
-    font-size: 2rem;
-}
 
 .button {
     transition: all 0.2s ease;
@@ -102,9 +98,31 @@ h2 {
     transform: scale(1.1);
 }
 
-
 hr {
     display: none;
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    text-align: center;
+    font-size: 2rem;
+    letter-spacing: 0.1rem;
+}
+.author a{
+    margin-top: 1rem;
+    color: white;
+    text-decoration: none;
+    text-shadow:
+            -0.2rem -0.2rem 1rem #fff,
+            0.2rem 0.2rem 1rem #fff,
+            0 0 2rem var(--neon-text-color),
+            0 0 4rem var(--neon-text-color),
+            0 0 6rem var(--neon-text-color),
+            0 0 8rem var(--neon-text-color),
+            0 0 10rem var(--neon-text-color);
+
 }
 
 
