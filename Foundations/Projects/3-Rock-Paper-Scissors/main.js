@@ -4,12 +4,18 @@ const TYPES = {
     1: "paper",
     2: "scissors",
 };
-const buttons = document.querySelectorAll('button');
-const divResult = document.querySelector('#result');
-const divUserScore = document.querySelector("#userScore");
-const divComputerScore = document.querySelector("#computerScore");
-const divRound = document.querySelector("#round");
+const IMG_PATHS = {
+    0: "img/Rock.png",
+    1: "img/Paper.png",
+    2: "img/Scissors.png",
+};
+const buttons = document.querySelectorAll('.button');
+const divResult = document.querySelector('.container-result');
+const divUserScore = document.querySelector("#userScoreNumber");
+const divComputerScore = document.querySelector("#computerScoreNumber");
+const divRound = document.querySelector("#roundNumber");
 const divWinner = document.querySelector("#winner");
+const imgComputer = document.querySelector("#computerImg");
 
 let userScore = 0;
 let computerScore = 0;
@@ -18,7 +24,10 @@ let winner;
 
 buttons.forEach(button => {
     button.addEventListener('click', (e) => {
-        playRound(getUserChoiceId(e), getComputerChoiceId());
+        let computerChoice = getComputerChoiceId();
+        updateComputerImgContent(IMG_PATHS[computerChoice])
+        playRound(getUserChoiceId(e), computerChoice);
+
     })
 })
 
@@ -49,17 +58,15 @@ function playRound(playerSelection, computerSelection) {
     round++;
     if (isWinner()) {
         let winnerName = userScore === 5 ? "User" : "Computer";
-        updateWinnerContent(winnerName);
+        updateResultContent(`${winnerName} is the winner!`);
 
         round = 0;
         userScore = 0;
         computerScore = 0
-        updateRoundContent();
-        updateUserScoreContent()
-        updateComputerScoreContent()
+    } else {
+        updateResultContent(resultMessage)
     }
 
-    updateResultContent(resultMessage)
     updateUserScoreContent()
     updateComputerScoreContent()
     updateRoundContent()
@@ -79,7 +86,7 @@ function getComputerChoiceId() {
 }
 
 function getUserChoiceId(event) {
-    return getIdFromType(event.target.id);
+    return getIdFromType(event.target.alt);
 }
 
 function getIdFromType(type) {
@@ -93,15 +100,16 @@ function updateResultContent(string) {
     divResult.textContent = string;
 }
 function updateRoundContent() {
-    divRound.textContent = `The Round ${round}`;
+    divRound.textContent = round;
 }
 function updateUserScoreContent() {
-    divUserScore.textContent = `The user has ${userScore} score.`;
+    divUserScore.textContent = userScore;
 }
 function updateComputerScoreContent() {
-    divComputerScore.textContent = `The computer has ${computerScore} score.`;
+    divComputerScore.textContent = computerScore;
 }
-function updateWinnerContent(winnerName) {
-    divWinner.textContent = `The winner is ${winnerName}`;
+function updateComputerImgContent(imgPath) {
+    console.log(imgPath);
+    imgComputer.src = imgPath;
 }
 

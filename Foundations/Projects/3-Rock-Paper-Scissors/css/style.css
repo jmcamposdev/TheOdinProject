@@ -1,0 +1,185 @@
+@import url(https://fonts.googleapis.com/css?family=Exo+2:200i);
+
+:root {
+    /* Base font size */
+    font-size: 10px;
+    color: white;
+    /* Set neon color */
+    --neon-text-color: #f40;
+    --neon-border-color: #08f;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+}
+
+body {
+    font-family: 'Exo 2', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background: #000;
+    min-height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    width: 80%;
+}
+
+.container-game {
+    display: flex;
+    flex: 1;
+    width: 100%;
+}
+
+.userPanel {
+    display: flex;
+    gap: 4rem;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    border-right: 4px solid #fff;
+    border-left: 4px solid #fff;
+}
+h2 {
+    font-size: 6rem;
+    font-weight: 200;
+    font-style: italic;
+    color: #fff;
+    text-transform: uppercase;
+}
+.userPanelButtons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.computerPanel {
+    display: flex;
+    gap: 4rem;
+    flex-direction: column;
+    /*justify-content: space-evenly;*/
+    font-size: 2rem;
+    align-items: center;
+    width: 100%;
+    border-right: 4px solid #fff;
+}
+.container-score {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.userScore, .computerScore, .container-round {
+    font-size: 6rem;
+    text-align: center;
+    font-weight: 200;
+    font-style: italic;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 0 2rem;
+}
+.container-score h3 {
+    font-size: 3rem;
+}
+
+.container-result {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.button {
+    transition: all 0.2s ease;
+}
+.button:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+
+hr {
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+h1 {
+    font-size: 7rem;
+    font-weight: 200;
+    font-style: italic;
+    color: #fff;
+    padding: 4rem 6rem 5.5rem;
+    border: 0.4rem solid #fff;
+    border-radius: 2rem;
+    text-transform: uppercase;
+    animation: flicker 1.5s infinite alternate;
+}
+
+h1::-moz-selection {
+    background-color: var(--neon-border-color);
+    color: var(--neon-text-color);
+}
+
+h1::selection {
+    background-color: var(--neon-border-color);
+    color: var(--neon-text-color);
+}
+
+h1:focus {
+    outline: none;
+}
+
+
+
+
+
+
+/* Animate neon flicker */
+@keyframes flicker {
+
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+
+        text-shadow:
+                -0.2rem -0.2rem 1rem #fff,
+                0.2rem 0.2rem 1rem #fff,
+                0 0 2rem var(--neon-text-color),
+                0 0 4rem var(--neon-text-color),
+                0 0 6rem var(--neon-text-color),
+                0 0 8rem var(--neon-text-color),
+                0 0 10rem var(--neon-text-color);
+
+        box-shadow:
+                0 0 .5rem #fff,
+                inset 0 0 .5rem #fff,
+                0 0 2rem var(--neon-border-color),
+                inset 0 0 2rem var(--neon-border-color),
+                0 0 4rem var(--neon-border-color),
+                inset 0 0 4rem var(--neon-border-color);
+    }
+
+    20%, 24%, 55% {
+        text-shadow: none;
+        box-shadow: none;
+    }
+}

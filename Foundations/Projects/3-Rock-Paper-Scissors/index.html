@@ -6,16 +6,63 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Rock Paper and Scissors</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/media.css">
 </head>
 <body>
-    <button id="rock">Rock</button>
-    <button id="paper">Paper</button>
-    <button id="scissors">Scissors</button>
-    <div id="result"></div>
-    <div id="userScore"></div>
-    <div id="computerScore"></div>
-    <div id="round"></div>
-    <div id="winner"></div>
+    <h1 class="neonTitle">Rock Paper Scissors</h1>
+    <div class="container">
+        <div class="container-game">
+            <div class="userPanel">
+                <hr>
+                <h2>User</h2>
+                <div class="userPanelButtons">
+                    <img class="button" src="img/Rock.png" alt="rock">
+                    <img class="button" src="img/Paper.png" alt="paper">
+                    <img class="button" src="img/Scissors.png" alt="scissors">
+                </div>
+
+            </div>
+            <div class="computerPanel">
+                <h2>Computer</h2>
+                <div class="computerPanelChoices">
+                    <img id="computerImg" src="img/Interrogation.png" alt="Interrogation">
+                </div>
+            </div>
+        </div>
+        <div class="container-score">
+            <div class="userScore">
+                <h3>You</h3>
+                <div id="userScoreNumber">0</div>
+            </div>
+            <div class="container-round">
+                <h3>Round</h3>
+                <div id="roundNumber">0</div>
+            </div>
+            <div class="computerScore">
+                <h3>AI</h3>
+                <div id="computerScoreNumber">0</div>
+            </div>
+
+        </div>
+        <div class="container-result">Let's Start the Game</div>
+    </div>
+
+
+
+
+
+<!--    <button id="rock">Rock</button>-->
+<!--    <button id="paper">Paper</button>-->
+<!--    <button id="scissors">Scissors</button>-->
+<!--    <div id="result"></div>-->
+<!--    <div id="userScore"></div>-->
+<!--    <div id="computerScore"></div>-->
+<!--    <div id="round"></div>-->
+<!--    <div id="winner"></div>-->
+<!--    <img src="img/Rock.png" alt="">-->
+<!--    <img src="img/Paper.png" alt="">-->
+<!--    <img src="img/Scissors.png" alt="">-->
 
 </body>
 <script src="main.js"></script>

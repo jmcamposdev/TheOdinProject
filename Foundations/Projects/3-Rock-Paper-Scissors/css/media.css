@@ -1,0 +1,52 @@
+@media only screen and (max-width: 992px) {
+    body {
+        justify-content: space-evenly;
+    }
+
+    .neonTitle {
+       font-size: 3rem;
+        padding: 2rem 2rem 2rem;
+    }
+
+    .container {
+        width: 100%;
+        gap: 2.5rem;
+    }
+
+    .container-game {
+        flex-direction: column-reverse;
+        gap: 1rem;
+    }
+    .userPanel, .computerPanel {
+        border: none;
+        gap: 2rem;
+    }
+
+    .userPanel h2, .computerPanel h2 {
+        font-size: 2.5rem;
+    }
+
+    .userScore, .computerScore, .container-round{
+        font-size: 3rem;
+    }
+
+    .container-score {
+        justify-content: space-evenly;
+    }
+    .container-score h3 {
+        font-size: 2rem;
+    }
+
+    img {
+        width: 100px;
+    }
+
+    hr {
+        display: block;
+        width: 80%;
+        height: 6px;
+        background-color: #fff;
+        border-radius: 15px;
+    }
+
+}
