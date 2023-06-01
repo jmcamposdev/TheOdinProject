@@ -26,6 +26,7 @@ const pickColor = document.querySelector('#pick-color');
 const btnClear = document.querySelector('#clear');
 const btnRainbow = document.querySelector('#rainbow');
 const btnColorMode = document.querySelector('#color-mode');
+const btnEraser = document.querySelector('#eraser');
 
 sliderGrid.onchange = () => changeGridSize(sliderGrid.value);
 sliderGrid.oninput = () => sliderValue.textContent = sliderGrid.value;
@@ -33,6 +34,7 @@ btnClear.onclick = () => reloadGrid();
 btnRainbow.onclick = () => changeMode('rainbow');
 pickColor.onchange = () => setCurrentColor(pickColor.value);
 btnColorMode.onclick = () => changeMode('color');
+btnEraser.onclick = () => changeMode('eraser');
 
 
 
@@ -68,6 +70,8 @@ function changeColor(e) {
             e.target.style.backgroundColor = currentColor;
         } else if (currentMode === 'rainbow'){
             e.target.style.backgroundColor = getRandomColor();
+        } else if (currentMode === 'eraser') {
+            e.target.style.backgroundColor = DEFAULT_ERASER;
         }
     }
 }
