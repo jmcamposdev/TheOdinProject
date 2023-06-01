@@ -166,10 +166,7 @@ input[type="color"] {
     width: 100%;
 }
 
-*:focus{
-    border-radius: 0;
-    outline: none;
-}
+
 
 ::-webkit-color-swatch-wrapper {
     padding: 0;
