@@ -18,6 +18,13 @@ function setCurrentColor(newColor) {
 }
 
 function changeMode(newMode) {
+    if (newMode === 'color') {
+        activeButton(btnColorMode);
+    } else if (newMode === 'rainbow') {
+        activeButton(btnRainbow);
+    } else if (newMode === 'eraser') {
+        activeButton(btnEraser);
+    }
     currentMode = newMode;
 }
 
@@ -30,6 +37,8 @@ const btnClear = document.querySelector('#clear');
 const btnRainbow = document.querySelector('#rainbow');
 const btnColorMode = document.querySelector('#color-mode');
 const btnEraser = document.querySelector('#eraser');
+let currentActiveButton = btnColorMode;
+
 
 // Event Listeners
 sliderGrid.onchange = () => changeGridSize(sliderGrid.value);
@@ -44,7 +53,10 @@ divGrid.addEventListener("touchmove", paint);
 divGrid.addEventListener("touchstart", startPainting);
 divGrid.addEventListener("touchend", stopPainting);
 // On page load create the grid
-window.onload = () => reloadGrid();
+window.onload = () => {
+    reloadGrid();
+    activeButton(btnColorMode);
+}
 
 /**
  * Function to change the grid size
@@ -115,6 +127,12 @@ function getRandomColor() {
    let g = Math.floor(Math.random() * 256);
    let b = Math.floor(Math.random() * 256);
    return `rgb(${r}, ${g}, ${b})`;
+}
+
+function activeButton(button) {
+    currentActiveButton.classList.remove('active-button');
+    button.classList.add('active-button');
+    currentActiveButton = button;
 }
 
 /* ------------------ Mobile Touch Functions ------------------ */
