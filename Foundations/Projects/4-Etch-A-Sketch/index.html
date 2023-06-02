@@ -7,8 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Etch-A-Sketch</title>
     <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/media.css"/>
 </head>
 <body>
+    <h1>Etch-A-Sketch</h1>
     <main class="main">
       <div class="settings">
           <div id="swatch">
@@ -24,11 +26,14 @@
           <button id="clear" class="button">Clear</button>
           <div class="slider-container">
             <span id="grid-size">16 x 16</span>
-            <input class="slider" type="range" min="16" max="100" value="16" class="slider" id="myRange">
+            <input class="slider" type="range" min="16" max="100" value="16" id="myRange">
           </div>
       </div>
       <div id="grid" class="grid"></div>
     </main>
+    <footer>
+        <p>Created by <a href="https://jmcampos.tk" target="_blank">jmcamposdev 🖌️</a></p>
+    </footer>
 </body>
 <script src="main.js"></script>
 </html>
