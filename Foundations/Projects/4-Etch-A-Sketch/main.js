@@ -95,7 +95,7 @@ function clearGrid() {
  * @param e MouseOver event
  */
 function changeColor(e) {
-    console.log(e);
+    if (e.buttons !== 1) return;
     if (currentMode === 'color') {
         e.target.style.backgroundColor = currentColor;
     } else if (currentMode === 'rainbow'){
@@ -142,7 +142,7 @@ function paint(event) {
     // Paint if the element is a grid item
     if (target !== divGrid && target.classList.contains("grid-item")) {
         // Call the changeColor function with the target element
-        changeColor({target: target});
+        changeColor({target: target, buttons: 1});
     }
 }
 
