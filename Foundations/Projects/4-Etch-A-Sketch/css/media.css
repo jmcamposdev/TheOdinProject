@@ -3,7 +3,6 @@
         gap: 1rem;
         height: auto;
     }
-
     h1 {
         font-size: 2rem;
     }
@@ -19,7 +18,6 @@
         flex-direction: row;
         flex-wrap: wrap;
     }
-
     .grid {
         height: 300px;
         width: 300px;
