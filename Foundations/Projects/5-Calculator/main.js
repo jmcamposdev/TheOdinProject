@@ -15,7 +15,11 @@ numbers.forEach(number => {
     });
 });
 clear.addEventListener("click", clearDisplay);
-
+decimal.addEventListener("click", () => {
+    if (!display.textContent.includes(".")) {
+        displayNumber(decimal.textContent);
+    }
+});
 
 // Display Functions
 function displayNumber (number) {
