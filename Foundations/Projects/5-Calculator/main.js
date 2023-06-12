@@ -26,8 +26,8 @@ numbers.forEach(number => {  // Add event listeners to all the number buttons
 // Operator Functions
 operators.forEach(operator => { // Add event listeners to all the operator buttons
     operator.addEventListener("click", () => {
-        selectedOperator = operator.textContent;
         if (!isOperatorClicked) {
+            selectedOperator = operator.textContent;
             firstNumber = +display.textContent;
             setHistoryDisplay(firstNumber, selectedOperator);
             clearDisplay();
@@ -43,7 +43,7 @@ operators.forEach(operator => { // Add event listeners to all the operator butto
 
 decimal.addEventListener("click", () => { // Add event listener to the decimal button
     if (!display.textContent.includes(".")) {
-        setDisplayNumber(decimal.textContent);
+        setDisplay(decimal.textContent);
     }
 });
 clear.addEventListener("click", clearAll);
@@ -70,6 +70,9 @@ function changeNumberSimbol () {
 // MAIN Display Functions
 function getDisplayNumber () {
     return +display.textContent;
+}
+function setDisplay (number) {
+    display.textContent += number;
 }
 function setDisplayNumber (number) {
     if (display.textContent.length < 15) {
@@ -130,7 +133,10 @@ function operate (num1, num2, operator) {
             break;
         case "/":
             result = divide(num1, num2);
-            break
+            break;
+        case "%":
+            result = num1 % num2;
+            break;
         default:
             break;
     }
