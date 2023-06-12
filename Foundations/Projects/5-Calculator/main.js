@@ -6,29 +6,99 @@ const equals = document.querySelector("#equals");
 const decimal = document.querySelector("#decimal");
 const display = document.querySelector("#display");
 const displayHistory = document.querySelector("#display-history");
-clearDisplay();
+const plusMinus = document.querySelector("#plus-minus");
+
+let firstNumber = 0;
+let secondNumber = 0;
+let selectedOperator = "";
+let isOperatorClicked = false;
+
+clearAll();
+
+
 
 /* Add event listeners to all the buttons */
-numbers.forEach(number => {
+numbers.forEach(number => {  // Add event listeners to all the number buttons
     number.addEventListener("click", () => {
-        displayNumber(number.textContent);
+        setDisplayNumber(number.textContent);
     });
 });
-clear.addEventListener("click", clearDisplay);
-decimal.addEventListener("click", () => {
+// Operator Functions
+operators.forEach(operator => { // Add event listeners to all the operator buttons
+    operator.addEventListener("click", () => {
+        selectedOperator = operator.textContent;
+        if (!isOperatorClicked) {
+            firstNumber = +display.textContent;
+            setHistoryDisplay(firstNumber, selectedOperator);
+            clearDisplay();
+            isOperatorClicked = true;
+        } else if (getDisplayNumber()) {
+            secondNumber = +display.textContent;
+            firstNumber = operate(firstNumber, secondNumber, operator.textContent);
+            clearBothDisplay();
+            setHistoryDisplay(firstNumber, selectedOperator);
+        }
+    })});
+
+
+decimal.addEventListener("click", () => { // Add event listener to the decimal button
     if (!display.textContent.includes(".")) {
-        displayNumber(decimal.textContent);
+        setDisplayNumber(decimal.textContent);
     }
 });
-
-// Display Functions
-function displayNumber (number) {
-    if (display.textContent.length < 15) {
-        display.textContent += number;
+clear.addEventListener("click", clearAll);
+equals.addEventListener("click", () => {
+    if (getDisplayNumber() && isOperatorClicked) {
+        secondNumber = +display.textContent;
+        firstNumber = operate(firstNumber, secondNumber, selectedOperator);
+        clearBothDisplay();
+        setDisplayNumber(firstNumber);
+        clearHistory();
+        isOperatorClicked = false;
     }
+});
+plusMinus.addEventListener("click", changeNumberSimbol);
+
+// Plus/Minus Functions
+function changeNumberSimbol () {
+    if (display.textContent) {
+        display.textContent = (+display.textContent) * -1;
+    }
+}
+
+
+// MAIN Display Functions
+function getDisplayNumber () {
+    return +display.textContent;
+}
+function setDisplayNumber (number) {
+    if (display.textContent.length < 15) {
+        display.textContent += Math.round(number * 100) / 100;
+    }
+}
+
+// History Display Functions
+function setHistoryDisplay (number, operator) {
+    displayHistory.textContent = `${number} ${operator}`;
+}
+
+// Clear Functions
+function clearBothDisplay () {
+    clearDisplay();
+    clearHistory();
 }
 function clearDisplay () {
     display.textContent = "";
+}
+function clearHistory () {
+    displayHistory.textContent = "";
+}
+function clearAll () {
+    clearBothDisplay();
+    firstNumber = 0;
+    secondNumber = 0;
+    selectedOperator = "";
+    isOperatorClicked = false;
 }
 
 // Operation Functions
@@ -46,15 +116,16 @@ function divide (num1, num2) {
 }
 
 function operate (num1, num2, operator) {
+    operator = operator.trim().toLowerCase();
     let result;
     switch (operator) {
         case "+":
             result = add(num1, num2);
-             break;
+            break;
         case "-":
             result = subtract(num1, num2);
             break;
-        case "*":
+        case "x":
             result = multiply(num1, num2);
             break;
         case "/":
