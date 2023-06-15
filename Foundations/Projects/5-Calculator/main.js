@@ -8,11 +8,13 @@ const display = document.querySelector("#display");
 const displayHistory = document.querySelector("#display-history");
 const plusMinus = document.querySelector("#plus-minus");
 
+// Variables
 let firstNumber = 0;
 let secondNumber = 0;
 let selectedOperator = "";
 let isOperatorClicked = false;
 
+// Clear the display and history
 clearAll();
 
 
