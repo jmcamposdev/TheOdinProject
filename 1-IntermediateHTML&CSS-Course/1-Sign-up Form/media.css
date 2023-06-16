@@ -1,0 +1,36 @@
+@media (max-width: 976px) {
+
+    .container {
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .left-banner, .main-container {
+        width: 100%;
+    }
+
+    .left-banner {
+        padding: 0;
+        background-image: none;
+        height: min-content;
+        margin-bottom: 2rem;
+    }
+
+    .main-container {
+        gap: 2rem;
+    }
+
+    .logo {
+        width: 50%;
+    }
+
+    .form-row {
+        flex-direction: column;
+    }
+
+    .login-container p {
+        font-size: 1rem;
+    }
+
+}
