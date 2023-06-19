@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 /* RESTORE ALL STYLE */
 :root {
     --text: #030203;
@@ -9,7 +10,13 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: 
+    -box;
+    font-family: 'Roboto', sans-serif;
+}
+
+ul {
+    list-style: none;
 }
 
 body {
@@ -17,12 +24,58 @@ body {
     grid-template-columns: 1fr 4fr;
     min-height: 100vh;
     background: #ece4e8;
+    color: var(--text);
 }
 
 /* SIDEBAR */
 .sidebar {
-    background: red;
+    display: grid;
+    grid-template-rows: 1fr 6fr;
+    gap: 20px;
 }
+
+/* SIDEBAR > LOGO*/
+.logo {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+.logo img {
+    width: 150px;
+}
+
+/* SIDEBAR > NAV CONTAINER*/
+.main-nav-sidebar {
+    display: grid;
+    grid-template-rows: min-content;
+    gap: 5%;
+    padding-left: 10px;
+}
+/*LINKS ICON*/
+.icon {
+    width: 25px;
+    height: min-content;
+    transition: color 0.3s ease;
+
+}
+.nav-link:hover .icon {
+    fill: var(--primary-button);
+}
+/*LINKS TEXT*/
+.nav-link {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    width: min-content;
+    padding: 5px 10px;
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.nav-link:hover {
+    color: var(--primary-button);
+}
+
 
 /* MAIN */
 .main {
@@ -40,7 +93,7 @@ body {
 .content-section {
     background: yellow;
     display: grid;
-    grid-template-columns: 4fr 1fr;
+    grid-template-columns: 6fr 2fr;
 }
 
 /* CONTENT SECTION > PROJECTS CONTAINER */
