@@ -1,6 +1,54 @@
 /* RESTORE ALL STYLE */
+:root {
+    --text: #030203;
+    --background: #ece4e8;
+    --primary-button: #73875e;
+    --secondary-button: #e4d8de;
+    --accent: #34404b;
+}
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    min-height: 100vh;
+    background: #ece4e8;
+}
+
+/* SIDEBAR */
+.sidebar {
+    background: red;
+}
+
+/* MAIN */
+.main {
+    background-color: #73875e;
+    display: grid;
+    grid-template-rows: 1fr 4fr;
+}
+
+/* MAIN > HEADER */
+.header {
+    background: gray;
+}
+
+/* MAIN > CONTENT SECTION */
+.content-section {
+    background: yellow;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+}
+
+/* CONTENT SECTION > PROJECTS CONTAINER */
+.projects-container {
+    background: orange;
+}
+
+/* CONTENT SECTION > CONTENT SIDEBAR */
+.content-sidebar {
+    background: blue;
 }
