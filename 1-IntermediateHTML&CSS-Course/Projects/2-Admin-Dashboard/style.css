@@ -10,8 +10,7 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: 
-    -box;
+    box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -79,15 +78,71 @@ body {
 
 /* MAIN */
 .main {
-    background-color: #73875e;
     display: grid;
-    grid-template-rows: 1fr 4fr;
+    grid-template-rows: 1fr 6fr;
 }
 
 /* MAIN > HEADER */
 .header {
-    background: gray;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
 }
+/* MAIN > HEADER > SEARCH BOX */
+.search-box {
+   display: grid;
+   grid-template-columns: auto 1fr;
+   justify-content: center;
+   align-items: center;
+   padding: 25px;
+   gap: 10px;
+}
+.search-icon {
+    cursor: pointer;
+    transition: fill 0.3s ease;
+}
+.search-icon:hover {
+    fill: var(--primary-button);
+}
+#search-input {
+    background-color: var(--secondary-button);
+    border: none;
+    padding: 12px;
+    border-radius: 100px;
+}
+#search-input:focus {
+    outline: 2px solid var(--primary-button);
+}
+/* MAIN > HEADER > ACCOUNT INFO */
+.account-info {
+    display: grid;
+    grid-template-columns: repeat(3, min-content);
+    gap: 25px;
+    justify-content: end;
+    margin-right: 50px;
+    align-items: center;
+}
+.notification-icon, .account-img-small, .account-name {
+    margin: 0 auto;
+}
+.account-img-small {
+    width: 40px;
+}
+.account-img {
+    border-radius: 100px;
+}
+
+
+
+.account-presentation {
+    height: 100px;
+    background-color: aqua;
+}
+.actions-buttons {
+    height: 100px;
+    background-color: aquamarine;
+}
+
 
 /* MAIN > CONTENT SECTION */
 .content-section {
