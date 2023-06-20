@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-/* RESTORE ALL STYLE */
-:root {
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');:root {
     --text: #030203;
     --background: #ece4e8;
     --primary-button: #73875e;
@@ -116,7 +114,7 @@ body {
 /* MAIN > HEADER > ACCOUNT INFO */
 .account-info {
     display: grid;
-    grid-template-columns: repeat(3, min-content);
+    grid-template-columns: repeat(3, auto);
     gap: 25px;
     justify-content: end;
     margin-right: 50px;
@@ -132,15 +130,25 @@ body {
     border-radius: 100px;
 }
 
-
-
+/* MAIN > HEADER > ACCOUNT PRESENTATION */
 .account-presentation {
-    height: 100px;
-    background-color: aqua;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    padding: 25px;
 }
 .actions-buttons {
     height: 100px;
     background-color: aquamarine;
+}
+.account-img-medium {
+    width: 70px;
+}
+.account-presentation h3 {
+    margin-top: 5px;
+    font-weight: bold;
 }
 
 
