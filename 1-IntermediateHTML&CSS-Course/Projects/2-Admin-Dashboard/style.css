@@ -139,16 +139,36 @@ body {
     gap: 25px;
     padding: 25px;
 }
-.actions-buttons {
-    height: 100px;
-    background-color: aquamarine;
-}
 .account-img-medium {
     width: 70px;
 }
 .account-presentation h3 {
     margin-top: 5px;
     font-weight: bold;
+}
+
+/* MAIN > HEADER > ACTIONS BUTTONS */
+.actions-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    justify-content: end;
+    align-items: center;
+    gap: 25px;
+    margin-right: 50px;
+}
+.action-button {
+    padding: 10px 25px;
+    border-radius: 100px;
+    border: none;
+    background-color: var(--secondary-button);
+    transition: all 0.3s ease;
+}
+.action-button:hover {
+    background-color: var(--primary-button);
+    color: white;
+}
+.action-button:active {
+    transform: scale(1.05);
 }
 
 
