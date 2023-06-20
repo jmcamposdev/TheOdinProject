@@ -221,8 +221,34 @@ body {
     fill: var(--primary-button);
 }
 
-
 /* CONTENT SECTION > CONTENT SIDEBAR */
 .content-sidebar {
-    background: blue;
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    padding: 25px;
+    gap: 50px;
+
+}
+/* CONTENT SECTION > CONTENT SIDEBAR > Announcements */
+.announcements-separator {
+    height: 2px;
+    width: 100%;
+    border: none;
+    background-color: #c9d0c0;
+}
+/* CONTENT SECTION > CONTENT SIDEBAR > TRENDING */
+.secundary-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 25px;
+    background-color: var(--secondary-button);
+    border-radius: 10px;
+}
+
+.trending-item {
+    display: grid;
+    grid-template-columns: min-content auto;
+    align-items: center;
+    gap: 10px;
 }
