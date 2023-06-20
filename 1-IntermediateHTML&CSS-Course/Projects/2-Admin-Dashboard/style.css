@@ -123,6 +123,13 @@ body {
 .notification-icon, .account-img-small, .account-name {
     margin: 0 auto;
 }
+.notification-icon {
+    cursor: pointer;
+    transition: fill 0.3s ease;
+}
+.notification-icon:hover {
+    fill: var(--primary-button)
+}
 .account-img-small {
     width: 40px;
 }
