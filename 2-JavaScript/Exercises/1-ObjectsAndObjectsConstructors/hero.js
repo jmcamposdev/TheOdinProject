@@ -5,3 +5,10 @@ function Hero (name, level) {
     this.name = name;
     this.level = level;
 }
+
+Hero.prototype.greet = () => {
+    return `${this.name} says hello.`;
+}
+
+const hero1 = new Hero("Jose", 1);
+console.log(hero1.greet());
