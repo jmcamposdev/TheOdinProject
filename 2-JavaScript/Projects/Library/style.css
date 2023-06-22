@@ -1,5 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Grandiflora+One&family=Moirai+One&display=swap');
+:root {
+    --text: #040901;
+    --background: #fcfffa;
+    --primary-button: #54ce12;
+    --secondary-button: #f2fdec;
+    --accent: #5de614;
+}
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Grandiflora One', serif;
+    color: var(--text);
+}
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    background-color: var(--background);
+}
+
+/* HEADER */
+.header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    background-color: var(--secondary-button);
+}
+h1 {
+    font-family: 'Moirai One', cursive;
+    font-size: 50px;
+}
+
+
+/* FOOTER */
+.footer {
+    padding: 25px
+}
+.footer-text {
+    text-align: center;
+    font-size: 19px;
 }
