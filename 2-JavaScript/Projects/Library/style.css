@@ -1,10 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Grandiflora+One&family=Moirai+One&display=swap');
 :root {
     --text: #040901;
-    --background: #fcfffa;
+    --background: #F5F6FB;
+    --background-box: #FFFFFF;
     --primary-button: #54ce12;
     --secondary-button: #f2fdec;
     --accent: #5de614;
+    --not-read: #FF6D60;
+    --read: #98D8AA;
+    --border-radius: 15px;
+    --box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 * {
     margin: 0;
@@ -19,6 +24,7 @@ body {
     justify-content: space-between;
     min-height: 100vh;
     background-color: var(--background);
+    padding: 25px;
 }
 
 /* HEADER */
@@ -29,19 +35,67 @@ body {
     align-items: center;
     justify-content: center;
     padding: 15px;
-    background-color: var(--secondary-button);
+    background-color: var(--background-box);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
 }
 h1 {
     font-family: 'Moirai One', cursive;
     font-size: 50px;
 }
 
+/* MAIN */
+.books-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 300px);
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    padding: 25px;
+}
+
+.book {
+    background-color: var(--background-box);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: var(--box-shadow);
+}
+.read {
+    border-left: 8px solid var(--read);
+}
+.read button {
+    background-color: var(--read);
+}
+.not-read {
+    border-left: 8px solid var(--not-read);
+}
+.not-read button {
+    background-color: var(--not-read);
+}
+.read-button {
+    width: 100%;
+    border: none;
+    padding: 10px 0;
+    border-radius: var(--border-radius);
+    margin-top: 20px;
+    font-size: 17px;
+}
+
+
 
 /* FOOTER */
 .footer {
-    padding: 25px
+    padding: 25px;
+    background-color: var(--background-box);
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
 }
 .footer-text {
     text-align: center;
+    font-size: 19px;
+}
+
+.bold {
+    font-weight: bold;
     font-size: 19px;
 }
