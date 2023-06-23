@@ -24,20 +24,42 @@ function displayBooks() {
     const bookContainer = document.querySelector('.books-container');
     bookContainer.innerHTML = '';
     myLibrary.forEach((book, index) => {
-        const bookDiv = document.createElement('div');
-        bookDiv.classList.add('book');
-        book.isRead ? bookDiv.classList.add('read') : bookDiv.classList.add('not-read');
-        bookDiv.setAttribute('data-index', index);
-        bookDiv.innerHTML = `
-        <div class="content">
-            <div class="book-title">${book.title}</div>
-            <div class="book-author">${book.author}</div>
-            <div class="book-pages">${book.pageNumber} pages</div>
-            <button class="read-button">Not Read</button>
-        </div>
-        `;
-        bookContainer.appendChild(bookDiv);
+        bookContainer.appendChild(createBookItem(book, index))
     });
+}
+
+function createBookItem(book, index) {
+    const bookDiv = document.createElement('div');
+    bookDiv.classList.add("book");
+    bookDiv.setAttribute("data-index", index);
+    book.isRead ? bookDiv.classList.add('read') : bookDiv.classList.add('not-read');
+
+    const contentDiv = document.createElement("div");
+    contentDiv.classList.add("content");
+
+    const bookTitle = document.createElement("h2");
+    bookTitle.classList.add("book-title");
+    bookTitle.textContent = book.title;
+    const bookAuthor = document.createElement("p");
+    bookAuthor.classList.add("book-author");
+    bookAuthor.textContent = book.author
+    const bookPages = document.createElement("p");
+    bookPages.classList.add("book-pages");
+    bookPages.textContent = book.pageNumber;
+    const readBtn = document.createElement("button");
+    readBtn.classList.add("read-button");
+    readBtn.textContent = book.isRead ? "Read" : "Not Read";
+
+    contentDiv.appendChild(bookTitle);
+    contentDiv.appendChild(bookAuthor);
+    contentDiv.appendChild(bookPages);
+    contentDiv.appendChild(readBtn);
+
+    bookDiv.appendChild(contentDiv);
+
+    return bookDiv;
+
+
 }
 
 displayBooks();
@@ -46,7 +68,7 @@ displayBooks();
 
 // Popup Script
 const popup = document.querySelector('.popup');
-const createBookBtn = document.querySelector('.create-book-btn');
+const createBookBtn = document.querySelector('.create-btn');
 const closeBtn = document.querySelector('.close-btn');
 
 // Button Script
