@@ -27,6 +27,7 @@ function addBookToLibrary(book) {
 // Popup Script
 const popup = document.querySelector('.popup');
 const createBookBtn = document.querySelector('.create-book-btn');
+const closeBtn = document.querySelector('.close-btn');
 
 // Button Script
 createBookBtn.addEventListener('click', () => {
@@ -38,5 +39,9 @@ popup.addEventListener('click', (e) => {
     if (e.target.classList.contains('popup')) {
         popup.classList.toggle('active');
     }
+}
+);
+closeBtn.addEventListener('click', () => {
+    popup.classList.toggle('active');
 }
 );
