@@ -19,11 +19,54 @@ class Book {
 }
 
 let myLibrary = []; // Create an empty array to store the books
+const popup = document.querySelector('.popup');
+const createBookForm = document.getElementById("createBookForm");
+const closeBtn = document.querySelector('.close-btn');
+
+/* ------------------------- */
+/* Add Events Listeners */
+/* ------------------------- */
+popup.addEventListener('click', (e) => {
+    if (e.target.classList.contains('popup')) {
+        togglePopup();
+    }
+}
+);
+closeBtn.addEventListener('click', togglePopup);
+/**
+ * Add Event Listener to the form
+ * When the form is submitted, create a new book
+ * and add it to the library
+ */
+createBookForm.addEventListener("submit", (e) => {
+    e.preventDefault(); // Prevents the page from reloading
+    // Get the values from the form
+    let title = document.getElementById("title").value;
+    let author = document.getElementById("author").value;
+    let pagesNumber = document.getElementById("pages").value;
+    let isRead = document.getElementById("is-read").checked;
+    // Create a new book object
+    const newBook = new Book(title, author, pagesNumber, isRead);
+    addBookToLibrary(newBook); // Add the book to the library
+    togglePopup(); // Close the popup
+    cleanForm(); // Clean the form
+});
+
+// Add some books to the library
 myLibrary.push(new Book('The Hobbit', 'J.R.R. Tolkien', 295, false));
 myLibrary.push(new Book('The Fellowship of the Ring', 'J.R.R. Tolkien', 423, true));
 myLibrary.push(new Book('The Two Towers', 'J.R.R. Tolkien', 352, false));
 myLibrary.push(new Book('The Return of the King', 'J.R.R. Tolkien', 416, true));
 
+
+/* ------------------------- */
+/* Functions */
+/* ------------------------- */
+
+/**
+ * Add a book to the library and display it to the DOM
+ * @param {Book} book 
+ */
 function addBookToLibrary(book) {
     myLibrary.push(book); // Add the book to the library
     displayBooks(); // Display the books
@@ -51,55 +94,82 @@ function displayBooks() {
  * @returns Returns a book item
  */
 function createBookItem(book, index) {
-    const bookDiv = document.createElement('div');
-    bookDiv.classList.add("book");
-    bookDiv.setAttribute("data-index", index);
-    book.isRead ? bookDiv.classList.add('read') : bookDiv.classList.add('not-read');
+    const bookContainerDiv = createBookContainerDiv(index, book.isRead);
+    const contentDiv = createContentDiv(book.title, book.author, book.pageNumber);
+    const deleteBtnContainer = createDeleteBtnContainer(index);
+    const readBtn = createReadButton(book.isRead, index);
+  
+    contentDiv.appendChild(readBtn);
+    bookContainerDiv.appendChild(deleteBtnContainer);
+    bookContainerDiv.appendChild(contentDiv);
+  
+    return bookContainerDiv;
+  }
 
-    const contentDiv = document.createElement("div");
-    contentDiv.classList.add("content");
+  function createBookContainerDiv(index, isRead) {
+    const bookContainerDiv = document.createElement('div');
+    bookContainerDiv.classList.add('book');
+    bookContainerDiv.setAttribute('data-index', index);
+    bookContainerDiv.classList.add(isRead ? 'read' : 'not-read');
+    return bookContainerDiv;
+}
 
-    const deleteBtnContainer = document.createElement("div");
-    deleteBtnContainer.classList.add("delete-btn-container");
-    const deleteBtn = document.createElement("button");
-    deleteBtn.classList.add("delete-btn");
-    deleteBtnContainer.appendChild(deleteBtn);
-    deleteBtn.addEventListener('click', (e) => {
-        const book = e.target.parentElement.parentElement;
-        const index = book.getAttribute('data-index');
-        removeBook(index);
-    });
-
-    const bookTitle = document.createElement("h2");
-    bookTitle.classList.add("book-title");
-    bookTitle.textContent = book.title;
-    const bookAuthor = document.createElement("p");
-    bookAuthor.classList.add("book-author");
-    bookAuthor.textContent = book.author
-    const bookPages = document.createElement("p");
-    bookPages.classList.add("book-pages");
-    bookPages.textContent = `${book.pageNumber} pages`;
-    const readBtn = document.createElement("button");
-    readBtn.classList.add("read-button");
-    readBtn.textContent = book.isRead ? "Read" : "Not Read";
-    readBtn.addEventListener('click', (e) => {
-        const book = e.target.parentElement.parentElement;
-        const index = book.getAttribute('data-index');
-        toggleReadBook(index);
-    });
-
+function createContentDiv(title, author, pageNumber) {
+    const contentDiv = document.createElement('div');
+    contentDiv.classList.add('content');
+  
+    const bookTitle = document.createElement('h2');
+    bookTitle.classList.add('book-title');
+    bookTitle.textContent = title;
+  
+    const bookAuthor = document.createElement('p');
+    bookAuthor.classList.add('book-author');
+    bookAuthor.textContent = author;
+  
+    const bookPages = document.createElement('p');
+    bookPages.classList.add('book-pages');
+    bookPages.textContent = `${pageNumber} pages`;
+  
     contentDiv.appendChild(bookTitle);
     contentDiv.appendChild(bookAuthor);
     contentDiv.appendChild(bookPages);
-    contentDiv.appendChild(readBtn);
-
-    bookDiv.appendChild(deleteBtnContainer);
-    bookDiv.appendChild(contentDiv);
-
-    return bookDiv;
+  
+    return contentDiv;
 }
-const popup = document.querySelector('.popup');
 
+function createDeleteBtnContainer(index) {
+    const deleteBtnContainer = document.createElement('div');
+    deleteBtnContainer.classList.add('delete-btn-container');
+  
+    const deleteBtn = document.createElement('button');
+    deleteBtn.classList.add('delete-btn');
+    deleteBtnContainer.appendChild(deleteBtn);
+  
+    deleteBtn.addEventListener('click', () => {
+      removeBook(index);
+    });
+  
+    return deleteBtnContainer;
+}
+
+function createReadButton(isRead, index) {
+    const readBtn = document.createElement('button');
+    readBtn.classList.add('read-button');
+    readBtn.textContent = isRead ? 'Read' : 'Not Read';
+  
+    readBtn.addEventListener('click', () => {
+      toggleReadBook(index);
+    });
+  
+    return readBtn;
+}
+
+displayBooks(); // Display the books and add the add book button
+
+/**
+ * Create the add book button and return it
+ * @returns Returns the add book button
+ */
 function createAddBookBtn() {
     const addBookBtn = document.createElement("div");
     addBookBtn.classList.add("create-book-container");
@@ -114,64 +184,41 @@ function createAddBookBtn() {
 }
 
 /**
- * Delete a book from the library
+ * Remove a book from the library using its index
+ * and redisplay the books
+ * @param {number} index 
  */
-
-displayBooks();
-
-/** ------------------ */
-/** Remove Book Script */
-/** ------------------ */
 function removeBook(index) {
     myLibrary.splice(index, 1); // Remove the book from the library
     displayBooks(); // Display the books
 };
 
-/** ------------------ */
-/** Toggle Read Book Script */
-/** ------------------ */
+/**
+ * Toggle the isRead property of a book using its index
+ * and redisplay the books
+ * @param {number} index
+*/
 function toggleReadBook(index) {
     myLibrary[index].isRead = !myLibrary[index].isRead; // Toggle the isRead property
     displayBooks(); // Display the books
 }
 
-/** ------------------ */
-/** Form Script */
-/** ------------------ */
-const createBookForm = document.getElementById("createBookForm");
-createBookForm.addEventListener("submit", (e) => {
-    e.preventDefault(); // Prevents the page from reloading
-    // Get the values from the form
-    let title = document.getElementById("title").value;
-    let author = document.getElementById("author").value;
-    let pagesNumber = document.getElementById("pages").value;
-    let isRead = document.getElementById("is-read").checked;
-    // Create a new book object
-    const newBook = new Book(title, author, pagesNumber, isRead);
-    addBookToLibrary(newBook); // Add the book to the library
-    popup.classList.toggle('active'); // Close the popup
-    cleanForm(); // Clean the form
-});
-
-/** ------------------ */
-/** Popup Script */
-/** ------------------ */
-const createBookBtn = document.querySelector('.create-book-btn');
-const closeBtn = document.querySelector('.close-btn');
+/**
+ * Clean the form
+ * Set the values of the form to empty
+ */
 function cleanForm() {
     document.getElementById("title").value = '';
     document.getElementById("author").value = '';
     document.getElementById("pages").value = '';
     document.getElementById("is-read").checked = false;
 }
-// Popup Script
-popup.addEventListener('click', (e) => {
-    if (e.target.classList.contains('popup')) {
-        popup.classList.toggle('active');
-    }
-}
-);
-closeBtn.addEventListener('click', () => {
+
+/**
+ * Toggle the popup
+ * Open or close the popup
+ */
+function togglePopup() {
     popup.classList.toggle('active');
 }
-);
+
