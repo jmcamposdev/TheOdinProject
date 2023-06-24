@@ -150,6 +150,7 @@ createBookForm.addEventListener("submit", (e) => {
     const newBook = new Book(title, author, pagesNumber, isRead);
     addBookToLibrary(newBook); // Add the book to the library
     popup.classList.toggle('active'); // Close the popup
+    cleanForm(); // Clean the form
 });
 
 /** ------------------ */
@@ -157,12 +158,12 @@ createBookForm.addEventListener("submit", (e) => {
 /** ------------------ */
 const createBookBtn = document.querySelector('.create-book-btn');
 const closeBtn = document.querySelector('.close-btn');
-
-// Button Script
-createBookBtn.addEventListener('click', () => {
-    popup.classList.toggle('active');
+function cleanForm() {
+    document.getElementById("title").value = '';
+    document.getElementById("author").value = '';
+    document.getElementById("pages").value = '';
+    document.getElementById("is-read").checked = false;
 }
-);
 // Popup Script
 popup.addEventListener('click', (e) => {
     if (e.target.classList.contains('popup')) {
