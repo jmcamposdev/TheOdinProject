@@ -56,14 +56,18 @@ h1 {
 
 .book {
     background-color: var(--background-box);
-    padding: 25px;
     border-radius: 15px;
     box-shadow: var(--box-shadow);
 }
+
+.content {
+    padding: 0 25px 25px 25px;
+}
+
 .read {
     border-left: 8px solid var(--read);
 }
-.read button {
+.read .content button {
     background-color: var(--read);
 }
 .not-read {
@@ -150,12 +154,12 @@ h1 {
     text-align: center;
     margin-bottom: 10px;
 }
-.close-container {
+.close-container, .delete-btn-container {
     display: flex;
     justify-content: flex-start;
     padding: 10px;
 }
-.close-btn {
+.close-btn, .delete-btn {
     cursor: pointer;
     border: none;
     border-radius: 100%;

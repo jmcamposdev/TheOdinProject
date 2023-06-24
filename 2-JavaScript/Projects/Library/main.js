@@ -59,6 +59,17 @@ function createBookItem(book, index) {
     const contentDiv = document.createElement("div");
     contentDiv.classList.add("content");
 
+    const deleteBtnContainer = document.createElement("div");
+    deleteBtnContainer.classList.add("delete-btn-container");
+    const deleteBtn = document.createElement("button");
+    deleteBtn.classList.add("delete-btn");
+    deleteBtnContainer.appendChild(deleteBtn);
+    deleteBtn.addEventListener('click', (e) => {
+        const book = e.target.parentElement.parentElement;
+        const index = book.getAttribute('data-index');
+        removeBook(index);
+    });
+
     const bookTitle = document.createElement("h2");
     bookTitle.classList.add("book-title");
     bookTitle.textContent = book.title;
@@ -77,6 +88,7 @@ function createBookItem(book, index) {
     contentDiv.appendChild(bookPages);
     contentDiv.appendChild(readBtn);
 
+    bookDiv.appendChild(deleteBtnContainer);
     bookDiv.appendChild(contentDiv);
 
     return bookDiv;
@@ -94,15 +106,27 @@ function createAddBookBtn() {
     return addBookBtn;
 }
 
+/**
+ * Delete a book from the library
+ */
+
 displayBooks();
 
+/** ------------------ */
+/** Remove Book Script */
+/** ------------------ */
+function removeBook(index) {
+    myLibrary.splice(index, 1); // Remove the book from the library
+    displayBooks(); // Display the books
+};
 
 
-// Form Script
+/** ------------------ */
+/** Form Script */
+/** ------------------ */
 const createBookForm = document.getElementById("createBookForm");
 createBookForm.addEventListener("submit", (e) => {
     e.preventDefault(); // Prevents the page from reloading
-
     // Get the values from the form
     let title = document.getElementById("title").value;
     let author = document.getElementById("author").value;
@@ -111,11 +135,11 @@ createBookForm.addEventListener("submit", (e) => {
     // Create a new book object
     const newBook = new Book(title, author, pagesNumber, isRead);
     addBookToLibrary(newBook); // Add the book to the library
+});
 
-})
-
-
-// Popup Script
+/** ------------------ */
+/** Popup Script */
+/** ------------------ */
 const popup = document.querySelector('.popup');
 const createBookBtn = document.querySelector('.create-book-btn');
 const closeBtn = document.querySelector('.close-btn');
