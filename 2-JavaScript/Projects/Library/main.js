@@ -82,6 +82,11 @@ function createBookItem(book, index) {
     const readBtn = document.createElement("button");
     readBtn.classList.add("read-button");
     readBtn.textContent = book.isRead ? "Read" : "Not Read";
+    readBtn.addEventListener('click', (e) => {
+        const book = e.target.parentElement.parentElement;
+        const index = book.getAttribute('data-index');
+        toggleReadBook(index);
+    });
 
     contentDiv.appendChild(bookTitle);
     contentDiv.appendChild(bookAuthor);
@@ -93,16 +98,18 @@ function createBookItem(book, index) {
 
     return bookDiv;
 }
+const popup = document.querySelector('.popup');
 
 function createAddBookBtn() {
     const addBookBtn = document.createElement("div");
-    addBookBtn.innerHTML = 
-    `<div class="create-book-container">
-        <button class="create-book-btn">
-            <svg width="48px" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 112v288M400 256H112"/></svg>
-        </button>
-    </div>`
-
+    addBookBtn.classList.add("create-book-container");
+    const createBookBtn = document.createElement("button");
+    createBookBtn.classList.add("create-book-btn");
+    createBookBtn.innerHTML = `<svg width="48px" xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 112v288M400 256H112"/></svg>`;
+    createBookBtn.addEventListener('click', () => {
+        popup.classList.toggle('active');
+    });
+    addBookBtn.appendChild(createBookBtn);
     return addBookBtn;
 }
 
@@ -120,6 +127,13 @@ function removeBook(index) {
     displayBooks(); // Display the books
 };
 
+/** ------------------ */
+/** Toggle Read Book Script */
+/** ------------------ */
+function toggleReadBook(index) {
+    myLibrary[index].isRead = !myLibrary[index].isRead; // Toggle the isRead property
+    displayBooks(); // Display the books
+}
 
 /** ------------------ */
 /** Form Script */
@@ -135,12 +149,12 @@ createBookForm.addEventListener("submit", (e) => {
     // Create a new book object
     const newBook = new Book(title, author, pagesNumber, isRead);
     addBookToLibrary(newBook); // Add the book to the library
+    popup.classList.toggle('active'); // Close the popup
 });
 
 /** ------------------ */
 /** Popup Script */
 /** ------------------ */
-const popup = document.querySelector('.popup');
 const createBookBtn = document.querySelector('.create-book-btn');
 const closeBtn = document.querySelector('.close-btn');
 
