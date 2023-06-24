@@ -13,19 +13,19 @@
                 <button class="close-btn"> </button>
             </div>
             <h2>New Book</h2>
-            <form action="GET">
+            <form id="createBookForm">
                 <div class="input-container">
-                    <input type="text" name="title" id="title" placeholder="Title">
+                    <input required type="text" name="title" id="title" placeholder="Title">
                 </div>
                 <div class="input-container">
-                    <input type="text" name="author" id="author" placeholder="Author">
+                    <input required type="text" name="author" id="author" placeholder="Author">
                 </div>
                 <div class="input-container">
-                    <input type="number" name="pages" id="pages" placeholder="Pages">
+                    <input required type="number" name="pages" id="pages" placeholder="Pages">
                 </div>
                 <div class="input-container">
                     <label for="read">Read</label>
-                    <input type="checkbox" name="read" id="read">
+                    <input type="checkbox" name="read" id="is-read">
                 </div>
                 <div class="input-container">
                     <button type="submit" class="create-btn">Create</button>
