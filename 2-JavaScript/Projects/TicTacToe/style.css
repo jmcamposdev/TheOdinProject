@@ -39,20 +39,25 @@ body {
 
 
 /* DASHBOARD */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
 .dashboard {
     display: grid;
     grid-template-rows: repeat(3, 1fr);
     grid-template-columns: repeat(3, 1fr);
     width: 600px;
     height: 600px;
-    margin: 0 auto;
 }
 .item {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.material-symbols-outlined {
+.dashboard .material-symbols-outlined {
     font-size: 110px;
     background:  linear-gradient(120deg, rgb(89, 0, 255), rgb(197, 63, 164));
     background-clip: text;
@@ -73,6 +78,60 @@ body {
     border-left: var(--border-dashboard);
 }
 
+/* GAME CONTROLS */
+.game-controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    background-color: rgba(255, 255, 255, 0.13);
+    border-radius: 10px;
+    padding: 25px;
+}
+.game-controls > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.game-controls h3 {
+    font-size: 24px;
+    margin-bottom: 10px;;
+}
+.game-controls p {
+    font-size: 19px;
+    text-align: center;
+}
+
+.restart-container hr {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid;
+    margin: 10px 0;
+    border-radius: 10px;
+}
+#restart {
+    border: none;
+    border-radius: 100%;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    height: min-content;
+    background-color: transparent;
+}
+#restart:hover {
+    transform: scale(1.1);
+}
+#restart:active {
+    transform: scale(0.9);
+}
+#restart span {
+    font-size: 48px;
+    background:  linear-gradient(120deg, rgb(89, 0, 255), rgb(197, 63, 164));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 /* FOOTER */
 .footer {
     text-align: center;
