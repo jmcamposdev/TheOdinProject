@@ -55,7 +55,30 @@ const ticTacToe = (() => {
     const isDraw = () => { 
         return gameBoard.every((card) => card !== undefined);
     }
-    return { placeCard, buildBoard, isDraw, cleanBoard}
+
+    const isWinner = (symbol) => {
+        let winner = false;
+        const winningCombinations = [
+            [0, 1, 2], // Horizontal
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6], // Vertical
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8], // Diagonal
+            [2, 4, 6]
+        ];
+
+        for (let i = 0; i < winningCombinations.length && !winner; i++) {
+            const [a, b, c] = winningCombinations[i];
+            if (gameBoard[a] === symbol && gameBoard[b] === symbol && gameBoard[c] === symbol) {
+                winner = true;
+            }
+        }
+        return winner;
+    }
+
+    return { placeCard, buildBoard, isDraw, isWinner, cleanBoard}
 })();
 
 export default ticTacToe;
