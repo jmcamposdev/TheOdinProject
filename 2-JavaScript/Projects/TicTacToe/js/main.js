@@ -17,6 +17,9 @@ restartBtn.addEventListener("click", restartGame);
 const tabs = document.querySelectorAll(".tab");
 tabs.forEach(tab => {
     tab.addEventListener("click", (e) => {
+        let isWinner = false;
+        let isDraw = false;
+        let modalText = "";
         const index = e.target.dataset.index;
         const card = e.target.children[0];
         if (card.classList.length > 0) { // If the card already has a symbol, return
@@ -26,21 +29,23 @@ tabs.forEach(tab => {
         ticTacToe.placeCard(card, currentPlayer.symbol, index);
         
         if (ticTacToe.isWinner(currentPlayer.symbol)) {
-            setModalText(`${currentPlayer.name} wins!`);
-            ticTacToe.cleanBoard();
-            addRound();
+            isWinner = true;
+            modalText = `${currentPlayer.name} wins!`;
             addPlayerPoints(currentPlayer);
-            return;
         }
 
         if (ticTacToe.isDraw()) {
-            setModalText("Draw!");
+            isDraw = true;
+            modalText = "It's a draw!";
+        }
+
+       if (isWinner || isDraw) {
+            setModalText(modalText);
+            setRound(getRound() + 1);
             ticTacToe.cleanBoard();
-            addRound();
             return;
         }
         currentPlayer = currentPlayer === player1 ? player2 : player1;
-
     });
 });
 
@@ -57,9 +62,9 @@ function restartGame() {
 
 function setRound(round) {
     roundCounter.textContent = round;
-}
-function addRound() {
-    roundCounter.textContent = Number(roundCounter.textContent) + 1;
+};
+function getRound() {
+    return parseInt(roundCounter.textContent);
 };
 
 function addPlayerPoints(player) {
