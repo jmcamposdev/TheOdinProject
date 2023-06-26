@@ -6,10 +6,11 @@ const ticTacToe = (() => {
         crossTextContent: "close",
     }
 
-    const placeCard = (card, symbol) => {
+    const placeCard = (card, symbol, index) => {
         if (card.classList.length > 0) {
             return;
         }
+        gameBoard[index] = symbol;
         card.classList.add(symbols.symbolClass);
         if (symbol === "X") {
             card.textContent = symbols.crossTextContent;
@@ -19,9 +20,11 @@ const ticTacToe = (() => {
         }
     }
 
+    /*
+    * Build the board with the current gameBoard array
+    */
     const buildBoard = () => {
-        const boardCards = document.querySelector(".tab");
-        console.log(boardCards);
+        const boardCards = document.querySelectorAll(".tab");
         for (let i = 0; i < 9; i++) {
             const card = document.createElement("span");
             switch (gameBoard[i]) {

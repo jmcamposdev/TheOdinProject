@@ -8,8 +8,9 @@ let currentPlayer = player1;
 const tabs = document.querySelectorAll(".tab");
 tabs.forEach(tab => {
     tab.addEventListener("click", (e) => {
+        const index = e.target.dataset.index;
         const card = e.target.children[0];
-        ticTacToe.placeCard(card, currentPlayer.symbol);
+        ticTacToe.placeCard(card, currentPlayer.symbol, index);
         currentPlayer = currentPlayer === player1 ? player2 : player1;
     });
 });
