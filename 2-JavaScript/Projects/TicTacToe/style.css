@@ -150,3 +150,56 @@ main {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+/* MODAL */
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    visibility: hidden;
+    opacity: 0;
+}
+
+.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+#form-new-players {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 19px;
+    padding: 50px;
+    gap: 25px;
+    background-color: rgba(255, 255, 255, 0.13);
+    border-radius: 10px;
+    margin-top: 25px;
+}
+input[type="text"], input[type="number"] {
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid white;
+    margin-bottom: 10px;
+    background-color: transparent;
+}
+
+#submit {
+    color: black;
+    width: 100%;
+    border: none;
+    background-color: white;
+    margin-top: 25px;
+    padding: 10px 0;
+    border-radius: var(15px);
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}

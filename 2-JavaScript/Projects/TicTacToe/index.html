@@ -13,6 +13,19 @@
         <h1 class="title">Tic Tac Toe <span class="title-x">✘ </span></h1>
     </header>
     <main>
+        <div class="modal active">
+            <div class="modal-content">
+                    <!-- Ask for the Two User Name-->
+                    <h3>First of all what are your names</h3>
+                    <form action="" id="form-new-players">
+                        <label for="player1">Player 1 Name:</label>
+                        <input required type="text" id="player1-name-input" name="player1" placeholder="Ej: Paco">
+                        <label for="player2">Player 2 Name:</label>
+                        <input required type="text" id="player2-name-input" name="player2" placeholder="Ej: Alex">
+                        <button type="submit" id="submit">START</button>
+                    </form>
+            </div>
+        </div>
         <div class="board">
             <div class="tab top" data-index="0"></div>
             <div class="tab top right" data-index="1"></div>
@@ -32,7 +45,7 @@
                 <hr>               
             </div>
             <div class="j1-container">
-                <h3>J1</h3>
+                <h3 id="player1-name">J1</h3>
                 <p id="player1-points">0</p>
             </div>
             <div class="round-container">
@@ -40,7 +53,7 @@
                 <p id="round-counter">0</p>
             </div>
             <div class="j2-container">
-                <h3>J2</h3>
+                <h3 id="player2-name">J2</h3>
                 <p id="player2-points">0</p>
             </div>
         </div>

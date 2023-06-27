@@ -5,6 +5,9 @@ import ticTacToe from "./tictactoe.js";
 const restartBtn = document.querySelector("#restart");
 const roundCounter = document.querySelector("#round-counter");
 const resultText = document.querySelector(".result-text");
+const formNewPlayers = document.querySelector("#form-new-players");
+const player1NameElement = document.querySelector("#player1-name");
+const player2NameElement = document.querySelector("#player2-name");
 const player1Points = document.querySelector("#player1-points");
 const player2Points = document.querySelector("#player2-points");
 
@@ -14,6 +17,15 @@ let currentPlayer = player1;
 
 // Event listeners
 restartBtn.addEventListener("click", restartGame);
+formNewPlayers.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const player1Name = document.querySelector("#player1-name-input").value;
+    const player2Name = document.querySelector("#player2-name-input").value;
+    player1.name = player1Name;
+    player2.name = player2Name;
+    setPlayerNames(player1Name, player2Name);
+    toggleModal();
+});
 const tabs = document.querySelectorAll(".tab");
 tabs.forEach(tab => {
     tab.addEventListener("click", (e) => {
@@ -79,4 +91,14 @@ function updatePlayerPoints() {
 
 function setResultText(text) {
     resultText.textContent = text;
+}
+
+function toggleModal() {
+    const modal = document.querySelector(".modal");
+    modal.classList.toggle("active");
+}
+
+function setPlayerNames(player1Name, player2Name) {
+    player1NameElement.textContent = player1Name;
+    player2NameElement.textContent = player2Name;
 }
