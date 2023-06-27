@@ -203,3 +203,33 @@ input[type="text"], input[type="number"] {
     cursor: pointer;
     transition: background-color 0.3s ease-in-out;
 }
+
+@media (max-width: 860px) {
+    body {
+        padding: 25px 10px;
+    }
+    .header {
+        font-size: 25px;
+    }
+    main {
+        flex-direction: column;
+    }
+
+    .board {
+        width: 300px;
+        height: 300px;
+    }
+
+    .game-controls {
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+
+    #restart-container {
+        border-right: 2px solid white;
+        padding-right: 15px;
+    }
+    .restart-container hr {
+        display: none;
+    }
+}
