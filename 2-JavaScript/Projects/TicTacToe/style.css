@@ -232,4 +232,8 @@ input[type="text"], input[type="number"] {
     .restart-container hr {
         display: none;
     }
+
+    .board .material-symbols-outlined {
+        font-size: 90px;
+    }
 }
