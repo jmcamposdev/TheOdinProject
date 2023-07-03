@@ -1,0 +1,94 @@
+.aroma {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 120px;
+    background: #FAF3E1;
+}
+
+.aroma .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 90%;
+    max-width: 1290px;
+}
+.aroma__title {
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    color: #86996C;
+    margin-bottom: 1.4em;
+    font-size: 14px;
+}
+
+.aroma__subtitle {
+    color: #D75732;
+    font-size: 3.5em;
+    font-weight: 100;
+    margin-bottom: 0.5em;
+}
+
+.aroma__coffeeContainer {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    width: 100%;
+    height: 646px;
+}
+
+.aroma__coffeeName {
+    color: #D75732;
+    text-decoration: none;
+    font-size: 22px;
+    overflow: hidden;
+}
+
+.aroma__coffeeItem {
+    display: flex;
+    justify-content: flex-start;
+    align-items: end;
+    padding: 20px;
+    transition: all 0.5s ease-in-out;
+    background-size: cover;
+    background-position: center;
+}
+
+.aroma__coffeeItem:first-child {
+    background-image: url("../img/girl-drinking.jpg");
+    grid-row: 1 / 3;
+}
+
+.aroma__coffeeItem:nth-child(2) {
+    background-image: url("../img/two-hands.jpg");
+    grid-column: 2 / 4;
+}
+
+.aroma__coffeeItem:nth-child(3) {
+    background-image: url("../img/late.jpg");
+}
+
+.aroma__coffeeItem:nth-child(4) {
+    background-image: url("../img/black-coffee.jpg");
+}
+
+
+.aroma__coffeeItem:hover {
+    cursor: pointer;
+}
+
+.aroma__coffeeModal {
+    background-color: white;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.8);
+    transition: all 0.3s ease-in-out;
+}
+
+.aroma__coffeeItem:hover .aroma__coffeeModal {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
