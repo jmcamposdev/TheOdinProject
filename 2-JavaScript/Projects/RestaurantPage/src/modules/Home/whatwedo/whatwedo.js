@@ -1,4 +1,4 @@
-import '../../../css/whatwedo.css';
+import '../../../css/whatWeDo.css';
 import leftImgUrl from '../../../img/left-person.jpg';
 import rightImgUrl from '../../../img/right-person.jpg';
 import rotatingImgUrl from '../../../img/rotated-img.png';
@@ -9,59 +9,59 @@ const textParagraph = "Discover the essence of our coffee shop in California, wh
 const linkText = "About us";
 const linkUrl = "#";
 
-export default function createWhatWeDo() {
+export default function createwhatWeDo() {
     const whatWeDo = document.createElement('section');
-    whatWeDo.classList.add('whatwedo');
+    whatWeDo.classList.add('whatWeDo');
 
     const container = document.createElement('div');
     container.classList.add('container');
 
     // Left container
     const leftContainer = document.createElement('div');
-    leftContainer.classList.add('whatwedo__left');
+    leftContainer.classList.add('whatWeDo__left');
 
     // Left container Subtitle
     const whatWeDoSubtitle = document.createElement('h3');
-    whatWeDoSubtitle.classList.add('whatwedo__subtitle');
+    whatWeDoSubtitle.classList.add('whatWeDo__subtitle');
     whatWeDoSubtitle.textContent = whatWeDoSubtitleText;
 
     // Left container Title
     const whatWeDoTitle = document.createElement('h2');
-    whatWeDoTitle.classList.add('whatwedo__title');
+    whatWeDoTitle.classList.add('whatWeDo__title');
     whatWeDoTitle.textContent = whatWeDoTitleText;
 
     // Left container Image
     const leftImg = document.createElement('img');
-    leftImg.classList.add('whatwedo__left__img');
+    leftImg.classList.add('whatWeDo__left__img');
     leftImg.setAttribute('src', leftImgUrl);
 
     const rotatingImg = document.createElement('img');
-    rotatingImg.classList.add('whatwedo__left__img--rotating');
+    rotatingImg.classList.add('whatWeDo__left__img--rotating');
     rotatingImg.setAttribute('src', rotatingImgUrl);
 
     // Right container
     const rightContainer = document.createElement('div');
-    rightContainer.classList.add('whatwedo__right');
+    rightContainer.classList.add('whatWeDo__right');
 
     // Right container Image
     const rightImg = document.createElement('img');
-    rightImg.classList.add('whatwedo__right__img');
+    rightImg.classList.add('whatWeDo__right__img');
     rightImg.setAttribute('src', rightImgUrl);
 
     // Right container Content
     const contentContainer = document.createElement('div');
-    contentContainer.classList.add('whatwedo__content');
+    contentContainer.classList.add('whatWeDo__content');
 
     // Right container Content Text
     const whatWeDoText = document.createElement('p');
-    whatWeDoText.classList.add('whatwedo__text');
+    whatWeDoText.classList.add('whatWeDo__text');
     whatWeDoText.textContent = textParagraph;
 
     // Right container Content Link
-    const whatwedoLink = document.createElement('a');
-    whatwedoLink.classList.add('whatwedo__btn');
-    whatwedoLink.textContent = "About us";
-    whatwedoLink.setAttribute('href', linkUrl);
+    const whatWeDoLink = document.createElement('a');
+    whatWeDoLink.classList.add('whatWeDo__btn');
+    whatWeDoLink.textContent = "About us";
+    whatWeDoLink.setAttribute('href', linkUrl);
 
     // Append
     whatWeDo.appendChild(container);
@@ -75,7 +75,7 @@ export default function createWhatWeDo() {
     leftContainer.appendChild(rotatingImg);
 
     contentContainer.appendChild(whatWeDoText);
-    contentContainer.appendChild(whatwedoLink);
+    contentContainer.appendChild(whatWeDoLink);
 
     rightContainer.appendChild(rightImg);
     rightContainer.appendChild(contentContainer);
