@@ -1,32 +1,10 @@
-import _ from 'lodash';
-import printMe from './print.js';
-import './style.css';
-import Icon from './icon.svg';
+import './css/global.css';
+import createHome from "./pages/home";
 
 const root = document.querySelector('#root');
 
+init();
 
-function component() {
-    const element = document.createElement('div');
-    const btn = document.createElement('button');
-  
-    // Lodash, now imported by this script
-    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-    element.classList.add('test');
-
-    btn.innerHTML = 'Click me and check the console!';
-    btn.onclick = printMe;
-
-  element.appendChild(btn);
-  root.appendChild(element);
-
-    // Add the image to our existing div.
-    const myIcon = new Image();
-    myIcon.src = Icon;
-
-    element.appendChild(myIcon);
-
-    return element;
-  }
-  
-  root.appendChild(component());
+function init() {
+    createHome();
+}
