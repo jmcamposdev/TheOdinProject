@@ -1,0 +1,96 @@
+.whatwedo {
+    display: flex;
+    justify-content: center;
+    background-image: url("../img/whatwedo-background.png");
+    padding-top: 120px;
+}
+
+.whatwedo__left__img, .whatwedo__right__img {
+    width: 75%;
+}
+
+.whatwedo .container {
+    display: flex;
+}
+
+.whatwedo div {
+    flex: 1;
+}
+
+.whatwedo__subtitle {
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    color: #86996C;
+    margin-bottom: 1.4em;
+    font-size: 14px;
+}
+
+.whatwedo__title {
+    color: #D75732;
+    font-size: 3.5em;
+    font-weight: 100;
+    margin-bottom: 0.5em;
+}
+
+.whatwedo__right {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 70px;
+}
+
+.whatwedo__content {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 25px;
+}
+
+.whatwedo__btn {
+    color: #D75732;
+    font-size: 1.2em;
+    font-weight: 100;
+    text-decoration: none;
+    border: 1px solid #D75732;
+    padding: 10px 25px;
+    border-radius: 23px;
+    transition: all 0.3s ease-in-out;
+}
+
+.whatwedo__btn:hover {
+    background-color: #D75732;
+    color: #fff;
+}
+
+.whatwedo__right__img {
+    align-self: flex-end;
+}
+
+.whatwedo__text {
+    font-size: 1.2em;
+    font-weight: 100;
+    line-height: 1.8em;
+    text-align: justify;
+}
+
+.whatwedo__left__img--rotating {
+    width: 120px;
+    position: relative;
+    bottom: 10%;
+    right: 10%;
+
+    transform-origin: center center;
+    animation: rotating 10s linear infinite;
+}
+
+.whatwedo__left__img--rotating:hover {
+   animation-play-state: paused;
+}
+
+@keyframes rotating {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
