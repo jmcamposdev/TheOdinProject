@@ -1,0 +1,47 @@
+.coffeeCulture {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5),
+                       rgba(0, 0, 0, 0.5)),url("../img/coffeeCulture-background.jpg");
+    padding: 180px 0;
+
+}
+
+.coffeeCulture__title {
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    color: white;
+    margin-bottom: 1.4em;
+    font-size: 14px;
+}
+
+.coffeeCulture__subtitle {
+    color: white;
+    font-size: 3.5em;
+    font-weight: 100;
+    margin-bottom: 0.5em;
+    text-align: center;
+}
+
+.coffeeCulture__text {
+    font-family: 'Montserrat', sans-serif;
+    color: #CFC8B8;
+}
+
+.coffeeCulture__blinkingCursor {
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
