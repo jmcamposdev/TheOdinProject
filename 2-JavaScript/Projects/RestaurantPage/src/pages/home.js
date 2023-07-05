@@ -7,15 +7,12 @@ import scrollToTop from '../assets/scrollToTop.js';
 import createFooter from '../modules/Global/footer/footer.js';
 
 function createHome() {
-    const root = document.querySelector('#root');
-    root.appendChild(scrollToTop())  
-    root.appendChild(createHeader()); 
-    root.appendChild(createBanner());
-    root.appendChild(createWhatWeDo());
-    root.appendChild(createCoffeeCulture());
+    const main = document.querySelector('#main');
+    main.appendChild(createBanner());
+    main.appendChild(createWhatWeDo());
+    main.appendChild(createCoffeeCulture());
     animateLetters();
-    root.appendChild(createAroma());
-    root.appendChild(createFooter());
+    main.appendChild(createAroma());
 }
 
 export default createHome;

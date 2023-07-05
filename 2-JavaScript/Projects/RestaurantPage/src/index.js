@@ -1,10 +1,11 @@
 import './css/global.css';
 import createHome from "./pages/home";
+import loadPage from './pages/loadPage';
 
-const root = document.querySelector('#root');
 
 init();
 
 function init() {
+    loadPage();
     createHome();
 }
