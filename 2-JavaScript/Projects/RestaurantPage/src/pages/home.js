@@ -1,10 +1,10 @@
 import createBanner from '../modules/Home/banner/banner.js';
-import createHeader from '../modules/Home/header/header.js';
+import createHeader from '../modules/Global/header/header.js';
 import createWhatWeDo from '../modules/Home/whatWeDo/whatWeDo.js';
 import {createCoffeeCulture, animateLetters} from '../modules/Home/coffeeCulture/coffeeCulture.js';
 import createAroma from '../modules/Home/aroma/aroma.js';
 import scrollToTop from '../assets/scrollToTop.js';
-import createFooter from '../modules/Home/footer/footer.js';
+import createFooter from '../modules/Global/footer/footer.js';
 
 function createHome() {
     const root = document.querySelector('#root');
