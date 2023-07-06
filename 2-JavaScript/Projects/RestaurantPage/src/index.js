@@ -1,7 +1,7 @@
 import './css/global.css';
 import createHome from "./pages/home";
 import loadPage from './pages/loadPage';
-import createProducts from './pages/products';
+import createProductsPage from './pages/products';
 
 function addNavEvents ()  {
     const homeBtn = document.querySelector('#home');
@@ -9,7 +9,7 @@ function addNavEvents ()  {
     const contactBtn = document.querySelector('#contact');
 
     homeBtn.addEventListener('click', createHome);
-    menuBtn.addEventListener('click', createProducts);
+    menuBtn.addEventListener('click', createProductsPage);
 }
 
 init();
