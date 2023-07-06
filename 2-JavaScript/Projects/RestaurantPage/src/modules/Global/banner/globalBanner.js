@@ -1,4 +1,4 @@
-import '../../../css/global-banner.css';
+import '../../../css/home-banner.css';
 
 export default function createBanner(title, subTitle, bgImage) {
     const banner = document.createElement('section');

@@ -1,0 +1,27 @@
+.products-container {
+    max-width: 1144px;
+    margin: 100px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
+    grid-gap: 2rem;
+}
+
+.product-item {
+    padding: 25px;
+}
+.product-item img {
+    border-radius: 15px;
+    width: 100%;
+}
+
+.product-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0.5rem 0;
+}
+
+.product-price {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0.5rem 0;
+}
