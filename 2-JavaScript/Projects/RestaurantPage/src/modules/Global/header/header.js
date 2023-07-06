@@ -37,6 +37,7 @@ export default function createHeader() {
     const navLink = document.createElement('a')
     navLink.classList.add('nav__link')
     navLink.setAttribute('href', item.link)
+    navLink.setAttribute('id', item.name.toLowerCase())
     navLink.textContent = item.name
 
     navItem.appendChild(navLink)
