@@ -1,4 +1,4 @@
-import '../../../css/banner.css';
+import '../../../css/home-banner.css';
 
 
 const subTitle = "Welcome to our Coffeeshop"
