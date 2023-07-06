@@ -1,13 +1,10 @@
 import '../../../css/global-banner.css';
 
-
-const subTitle = "Welcome to our Coffeeshop"
-const title = "Where Coffee Meets Hospitality"
-export default function createBanner() {
+export default function createBanner(title, subTitle, bgImage) {
     const banner = document.createElement('section');
     banner.classList.add('banner');
-    banner.style.backgroundImage = "url('https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y29mZmVlJTIwc2hvcHBpbmd8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80')";
-
+    banner.style.backgroundImage = `url(${bgImage})`;
+    banner.style.height = '60vh';
 
     const bannerText = document.createElement('div');
     bannerText.classList.add('banner__text');
