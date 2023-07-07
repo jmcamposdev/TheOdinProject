@@ -2,6 +2,9 @@ export default function createProductItem(name, price, image) {
     const productItem = document.createElement("div");
     productItem.classList.add("product-item");
 
+    const productImageContainer = document.createElement("div");
+    productImageContainer.classList.add("product-image-container");
+
     const productImage = document.createElement("img");
     productImage.classList.add("product-image");
     productImage.src = image;
@@ -15,7 +18,9 @@ export default function createProductItem(name, price, image) {
     productPrice.classList.add("product-price");
     productPrice.textContent = price;
 
-    productItem.appendChild(productImage);
+    productImageContainer.appendChild(productImage);
+
+    productItem.appendChild(productImageContainer);
     productItem.appendChild(productName);
     productItem.appendChild(productPrice);
 

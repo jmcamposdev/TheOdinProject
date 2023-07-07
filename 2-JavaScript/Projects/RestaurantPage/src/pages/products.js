@@ -7,17 +7,54 @@ import createProductItem from "../modules/Products/Product/productItem";
 // Products images
 import espresso from "../img/products/espresso.jpg";
 import latte from "../img/products/latte.jpg";
+import cappuccino from "../img/products/cappuccino.jpg";
+import mocha from "../img/products/mocha.jpg";
+import americano from "../img/products/americano.jpg";
+import macchiato from "../img/products/macchiato.webp";
+import cortado from "../img/products/cortado.webp";
+import frappe from "../img/products/frappe.jpg";
 
 const products = [
     {
         name: "Espresso",
-        price: "$15.00",
+        price: "$2.50",
         image: espresso
     },
     {
         name: "Latte",
-        price: "$15.00",
+        price: "$3.50",
         image: latte,
+    },
+    {
+        name: "Cappuccino",
+        price: "$3.00",
+        image: cappuccino,
+    },
+    {
+        name: "Mocha",
+        price: "$4.00",
+        image: mocha,
+    },
+    {
+        name: "Americano",
+        price: "$2.75",
+        image: americano,
+    },
+    {
+        name: "Macchiato",
+        price: "$3.25",
+        image: macchiato
+        ,
+    },
+    {
+        name: "Cortado",
+        price: "$3.25",
+        image: cortado,
+    },
+    {
+        name: "Frappé",
+        price: "$4.50",
+        image: frappe,
     },
 ]
 
