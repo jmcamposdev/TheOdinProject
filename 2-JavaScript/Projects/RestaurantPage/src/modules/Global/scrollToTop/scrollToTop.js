@@ -1,5 +1,5 @@
-import '../css/scrollToTop.css';
-import topRowSvg from '../img/topRow.svg';
+import '../../../css/scrollToTop.css';
+import topRowSvg from '../../../img/icons/topRow.svg';
 
 export default function scrollToTop() {
     const scrollBtn = document.createElement('button');

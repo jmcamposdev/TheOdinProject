@@ -1,4 +1,4 @@
-import scrollToTop from "../assets/scrollToTop";
+import scrollToTop from "../modules/Global/scrollToTop/scrollToTop";
 import createFooter from "../modules/Global/footer/footer";
 import createHeader from "../modules/Global/header/header";
 
