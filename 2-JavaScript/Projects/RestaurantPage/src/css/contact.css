@@ -1,0 +1,113 @@
+.contact {
+    background-color: #FAF3E1;
+}
+
+.contact .container {
+    display: flex;
+    margin: 0 auto;
+    padding: 100px 25px;
+}
+
+.contact .container > div {
+    flex: 1;
+}
+
+.info-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.title {
+    font-weight: 100;
+    font-size: 27px;
+    color: #D75732;
+}
+
+.address, .email {
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    color: #442916;
+}
+
+.phone {
+    color: #D75732;
+    font-size: 22px;
+    text-decoration: none;
+
+}
+
+/* FORM STYLE*/
+.form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.input-wrapper {
+    width: 48%;
+}
+
+.input-wrapper-textArea {
+    width: 100%;
+}
+
+.input-wrapper > input, .input-wrapper-textArea > textarea {
+    width: 100%;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #F4D4BF;
+    padding: 12px;
+    font-family: 'Montserrat';
+    font-size: 16px;
+    background: transparent;
+    transition: all 0.3s ease-in-out;
+    color: #D75732;
+
+}
+
+
+.input-wrapper > input:hover, .input-wrapper-textArea > textarea:hover {
+    border-bottom: 1px solid #D75732;
+}
+
+.input-wrapper > input::placeholder, .input-wrapper-textArea > textarea::placeholder {
+    transition: all 0.3s ease-in-out;
+}
+
+.input-wrapper > input:focus, .input-wrapper-textArea > textarea:focus {
+    border-bottom: 1px solid #D75732;
+    color: #D75732;
+}
+
+.input-wrapper > input:focus::placeholder, .input-wrapper-textArea > textarea:focus::placeholder {
+    color: #D75732;
+}
+
+.input-wrapper > input::placeholder, .input-wrapper-textArea > textarea::placeholder {
+    color: #444340;
+}
+
+.input-wrapper > input:hover::placeholder, .input-wrapper-textArea > textarea:hover::placeholder {
+    color: #D75732;
+}
+
+/*When the field has content */
+.input-wrapper > input:valid{
+    border-bottom: 1px solid #D75732;
+}
+
+button.submit {
+    background-color: #E6A347;
+    color: white;
+    font-family: 'Montserrat';
+    padding: 18px;
+    border-radius: 40px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+button.submit:hover {
+    background-color: #D75732;
+}

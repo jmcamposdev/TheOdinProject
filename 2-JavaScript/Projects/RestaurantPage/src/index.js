@@ -1,4 +1,5 @@
 import './css/global.css';
+import createContactPage from './pages/contact';
 import createHome from "./pages/home";
 import loadPage from './pages/loadPage';
 import createProductsPage from './pages/products';
@@ -10,6 +11,7 @@ function addNavEvents ()  {
 
     homeBtn.addEventListener('click', createHome);
     menuBtn.addEventListener('click', createProductsPage);
+    contactBtn.addEventListener('click', createContactPage);
 }
 
 init();
