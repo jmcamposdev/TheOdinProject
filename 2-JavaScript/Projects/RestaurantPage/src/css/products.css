@@ -53,6 +53,7 @@
     display: flex;
     justify-content: space-between;
     align-self: center;
+    color: #D75732;
     background-color: white;
     padding: 1rem;
     border-radius: 15px;
