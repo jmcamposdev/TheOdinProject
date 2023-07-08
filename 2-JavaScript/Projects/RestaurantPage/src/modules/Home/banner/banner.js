@@ -3,7 +3,7 @@ import '../../../css/home-banner.css';
 
 const subTitle = "Welcome to our Coffeeshop"
 const title = "Where Coffee Meets Hospitality"
-export default function createBanner() {
+export default function createHomeBanner() {
     const banner = document.createElement('section');
     banner.classList.add('banner');
 
