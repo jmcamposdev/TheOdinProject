@@ -61,8 +61,13 @@ const products = [
 export default function createProductsPage() {
     clearMain();
     addMain(createBanner("Products", "The best quality for you", bgImage));
-    const productsContainer = document.createElement("div");
-    productsContainer.classList.add("products-container");
+    const productsContainer = document.createElement("section");
+    productsContainer.classList.add("products");
+
+    const productsContent = document.createElement("div");
+    productsContent.classList.add("container");
+
+    productsContainer.appendChild(productsContent);
     addMain(productsContainer);
 
     products.forEach(product => {
@@ -71,6 +76,6 @@ export default function createProductsPage() {
 }
 
 function addProduct(product) {
-    const productsContainer = document.querySelector(".products-container");
+    const productsContainer = document.querySelector(".products .container");
     productsContainer.appendChild(product);
 }

@@ -10,6 +10,9 @@ export default function createProductItem(name, price, image) {
     productImage.src = image;
     productImage.alt = name;
 
+    const productInfoContainer = document.createElement("div");
+    productInfoContainer.classList.add("product-info-container");
+
     const productName = document.createElement("h3");
     productName.classList.add("product-name");
     productName.textContent = name;
@@ -18,11 +21,14 @@ export default function createProductItem(name, price, image) {
     productPrice.classList.add("product-price");
     productPrice.textContent = price;
 
+
     productImageContainer.appendChild(productImage);
 
+    productInfoContainer.appendChild(productName);
+    productInfoContainer.appendChild(productPrice);
+
     productItem.appendChild(productImageContainer);
-    productItem.appendChild(productName);
-    productItem.appendChild(productPrice);
+    productItem.appendChild(productInfoContainer);
 
     return productItem;
 }

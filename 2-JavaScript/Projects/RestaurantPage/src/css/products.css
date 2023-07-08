@@ -1,12 +1,19 @@
-.products-container {
+.products {
+    background-color: #FAF3E1;
+}
+.products .container {
     max-width: 1144px;
-    margin: 100px auto;
+    margin: 0 auto;
+    padding: 100px 0;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
     grid-gap: 2rem;
 }
 
 .product-item {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     position: relative;
     padding: 25px;
 }
@@ -40,6 +47,16 @@
 .product-image-container:hover::before {
     opacity: 1;
     transform: scale(1);
+}
+
+.product-info-container {
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 15px;
+    width: 100%;
 }
 
 .product-name {
