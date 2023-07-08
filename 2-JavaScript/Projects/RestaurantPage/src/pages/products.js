@@ -61,15 +61,7 @@ const products = [
 export default function createProductsPage() {
     clearMain();
     addMain(createBanner("Products", "The best quality for you", bgImage));
-    const productsContainer = document.createElement("section");
-    productsContainer.classList.add("products");
-
-    const productsContent = document.createElement("div");
-    productsContent.classList.add("container");
-
-    productsContainer.appendChild(productsContent);
-    addMain(productsContainer);
-
+    addMain(createProductContainer());
     products.forEach(product => {
         addProduct(createProductItem(product.name, product.price, product.image));
     });
@@ -78,4 +70,16 @@ export default function createProductsPage() {
 function addProduct(product) {
     const productsContainer = document.querySelector(".products .container");
     productsContainer.appendChild(product);
+}
+
+function createProductContainer() {
+    const productContainer = document.createElement("div");
+    productContainer.classList.add("products");
+
+    const productsContent = document.createElement("div");
+    productsContent.classList.add("container");
+
+    productContainer.appendChild(productsContent);
+
+    return productContainer;
 }
