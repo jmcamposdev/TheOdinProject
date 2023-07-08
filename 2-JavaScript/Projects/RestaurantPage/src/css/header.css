@@ -1,5 +1,6 @@
 .header {
     display: flex;
+    flex-wrap: wrap;
     position: fixed;
     width: 100%;
     align-items: center;
