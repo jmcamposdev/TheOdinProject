@@ -45,3 +45,9 @@
         opacity: 0;
     }
 }
+
+@media screen and (max-width: 768px) {
+    .coffeeCulture__subtitle {
+        font-size: 10vw;
+    }
+}

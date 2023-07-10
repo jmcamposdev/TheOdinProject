@@ -92,3 +92,26 @@
     visibility: visible;
     transform: scale(1);
 }
+
+@media screen and (max-width: 768px) {
+    .aroma__coffeeContainer {
+        height: auto;
+    }
+
+    .aroma__coffeeItem:first-child, .aroma__coffeeItem:nth-child(2){
+        grid-row: auto;    
+        grid-column: auto;
+    }
+
+    .aroma__coffeeContainer {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 300px);
+    }
+    
+    .aroma__coffeeModal {
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1);
+    }
+
+}

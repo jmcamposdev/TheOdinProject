@@ -94,3 +94,25 @@
     }
 }
 
+@media screen and (max-width: 768px) {
+    .whatWeDo .container {
+        flex-direction: column;
+    }
+   .whatWeDo__title {
+    font-size: 10vw;
+   }
+
+   .whatWeDo__left, .whatWeDo__right {
+        display: flex;
+        flex-direction: column;
+   }
+
+   .whatWeDo__left__img, .whatWeDo__right__img {
+        align-self: center;
+   }
+
+   .whatWeDo__left__img--rotating {
+    right: 0;
+   }
+}
+
