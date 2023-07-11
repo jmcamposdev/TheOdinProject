@@ -111,3 +111,19 @@ button.submit {
 button.submit:hover {
     background-color: #D75732;
 }
+
+@media screen and (max-width: 768px) {
+    .contact .container {
+        flex-direction: column;
+        gap: 50px;
+    }
+
+    .input-wrapper {
+        width: 100%;
+    }
+
+    .form {
+
+        justify-content: center;
+    }
+}
