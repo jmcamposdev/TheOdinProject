@@ -1,10 +1,11 @@
 import '../../../css/home-banner.css';
+import '../../../css/global-banner.css';
+
 
 export default function createBanner(title, subTitle, bgImage) {
     const banner = document.createElement('section');
     banner.classList.add('banner');
     banner.style.backgroundImage = `url(${bgImage})`;
-    banner.style.height = '60vh';
 
     const bannerText = document.createElement('div');
     bannerText.classList.add('banner__text');
