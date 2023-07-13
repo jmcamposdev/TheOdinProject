@@ -1,7 +1,6 @@
 import '../../../css/home-banner.css';
 import '../../../css/global-banner.css';
 
-
 export default function createBanner(title, subTitle, bgImage) {
     const banner = document.createElement('section');
     banner.classList.add('banner');
