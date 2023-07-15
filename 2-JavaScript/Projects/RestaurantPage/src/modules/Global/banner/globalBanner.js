@@ -7,7 +7,7 @@ export default function createBanner(title, subTitle, bgImage) {
     banner.style.backgroundImage = `url(${bgImage})`;
 
     const bannerText = document.createElement('div');
-    bannerText.classList.add('banner__text');
+    bannerText.classList.add('banner__text'); 
 
     const bannerSubtitle = document.createElement('h2');
     bannerSubtitle.classList.add('banner__subtitle');
