@@ -13,7 +13,6 @@ function addNavEvents ()  {
     menuBtn.addEventListener('click', createProductsPage);
     contactBtn.addEventListener('click', createContactPage);
 }
-
 init();
 
 function init() {
