@@ -1,0 +1,20 @@
+:root {
+    --text: #030401;
+    --background: #f6f9f0;
+    --primary: #abca72;
+    --secondary: #e0ebcb;
+    --accent: #85aa41;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.125rem;
+    color: var(--text);
+    background-color: var(--background);
+}

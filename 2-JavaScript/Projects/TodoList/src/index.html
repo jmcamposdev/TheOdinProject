@@ -6,6 +6,20 @@
     <title>Don't Remember</title>
 </head>
 <body>
-    <div id="root"></div>
+    <header class="header">
+        <img class="logo" src=<%=require("./img/logo.png")%>>
+        <h1 class="title">Don't Remember</h1>
+    </header>
+    <main id="main">
+        <nav id="nav">
+            <div class="actions-list">
+                <button id="inbox-button">Inbox</button>
+                <button id="today-button">Today</button>
+                <button id="week-button">Week</button>
+            </div>
+        </nav>
+        <!-- Tasks -->
+        <div class="project-preview" id="project-preview"></div>
+    </main>
 </body>
 </html>
