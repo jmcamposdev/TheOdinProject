@@ -1,0 +1,144 @@
+#main {
+    display: flex;
+}
+
+#nav {
+    min-width: 300px;
+    padding-top: 25px;
+}
+
+#nav .actions-list {
+    display: flex;
+    flex-direction: column;
+}
+
+#nav .actions-list button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background-color: transparent;
+    border: none;
+    padding: 15px 0;
+    font-size: 20px;
+    font-weight: 600;
+    transition: background-color 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+#nav .actions-list button:hover {
+    background-color: var(--secondary);
+}
+
+#nav .actions-list button:active,  #nav .actions-list button:focus {
+    color: var(--accent);
+}
+
+#nav .actions-list button span {
+    color: var(--accent);
+}
+
+.project-preview {
+    width: 100%;
+    height: calc(100vh - 72px);
+    padding: 40px 70px;
+}
+
+.project-preview .project-title {
+    font-size: 40px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.task {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    transition: background-color 0.2s ease-in-out;
+    cursor: pointer;
+    user-select: none;
+}
+
+.task:hover {
+    background-color: var(--secondary);
+}
+
+.task-list {
+    overflow-y: scroll;
+    height: calc(100vh - 72px - 80px - 46px);
+}
+
+
+.new-task {
+    margin-top: 20px;
+    background-color: var(--secondary);
+}
+
+/**
+ *  ------------------------
+ *  Task Form
+ *  ------------------------
+ */
+.new-task-form {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+}
+
+.form-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: inherit;
+}
+
+.form-inputs input {
+    font-size: 16px;
+}
+
+.new-task-notes {
+    height: -webkit-fill-available;
+}
+
+.new-task-title, .new-task-notes {
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+
+.form-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.new-task-submit, .close-new-task-form {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.new-task-submit > span {
+    background-color: var(--primary);
+    border-radius: 15px;
+}
+
+.new-task-submit:hover > .material-symbols-outlined,
+.close-new-task-form:hover  {
+    animation: rotate .3s linear;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(190deg);
+    }
+}
