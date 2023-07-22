@@ -109,6 +109,16 @@ export default class DOMTodoList {
                     <div class="form-inputs">
                         <input type="text" class="new-task-title" placeholder="New Task" required>
                         <input type="text" class="new-task-notes" placeholder="Notes">
+                        <div class="optional-data">
+                            <div class="due-date-container">
+                                <span class="due-date-icon material-symbols-outlined">flag</span>
+                                <input type="date" class="new-task-due-date">
+                            </div>
+                            <div class="tags-container">
+                            <span class="tag-icon material-symbols-outlined">sell</span>
+                                <input type="text" class="new-task-tags" placeholder="New Tag">
+                            </div>
+                        </div>
                     </div>
                     <div class="form-actions">
                         <span class="close-new-task-form material-symbols-outlined">close</span>
@@ -125,11 +135,12 @@ export default class DOMTodoList {
      */
     createAddTaskEvents () { 
         // Add the event listener to the new task element
-        const newTask = document.querySelector('.new-task');
-        newTask.addEventListener('click', () => {
+        const addTaskElement = document.querySelector('.new-task');
+        addTaskElement.addEventListener('click', () => {
             this.showAddTaskForm(); // Show the add task form
-            this.createAddTaskFormCloseEvent();
-            this.createAddTaskSubmitEvent();
+            this.createAddTaskFormCloseEvent(); // Add the event listener to the close button
+            this.createAddTaskSubmitEvent(); // Add the event listener to the submit button
+            this.createAddTaskOptionalDataEvent(); // Add the event listener to the optional data icons
         });
     }
 
@@ -157,6 +168,31 @@ export default class DOMTodoList {
             this.closeAddTaskForm();
         });
     }
+
+    /**
+     *  Add the event listener to the optional data icons
+     *  When the icon is clicked, show the optional data form
+     *  When the icon is clicked again, hide the optional data form
+     *  Only one optional data form can be shown at a time
+     *  If the user clicks on another optional data icon, hide the current optional data form and show the new optional data form
+     */
+    createAddTaskOptionalDataEvent () {
+        const optionalData = document.querySelector('.optional-data');
+        const optionalDataChildren = Array.from(optionalData.children);
+        optionalDataChildren.forEach(currentChild => {
+            const icon = currentChild.querySelector('span');
+            icon.addEventListener('click', () => {
+                currentChild.classList.toggle('active-form');
+                optionalDataChildren.forEach(child => {
+                    if (child !== currentChild) {
+                        child.classList.remove('active-form');
+                    }
+                });
+                
+            });
+        });
+    }
+
 
     /**
      * Close the add task form

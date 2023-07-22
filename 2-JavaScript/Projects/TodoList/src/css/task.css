@@ -87,6 +87,7 @@
 .form-actions {
     display: flex;
     flex-direction: column;
+    justify-content: inherit;
     gap: 20px;
 }
 
@@ -115,4 +116,69 @@
     100% {
         transform: rotate(190deg);
     }
+}
+
+
+/**
+ *  ------------------------
+ *  Task Details
+ *  ------------------------
+*/
+
+.optional-data {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.optional-data input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+.due-date-container, .tags-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 25px;
+    padding: 5px 10px;
+}
+
+.due-date-container:hover, .tags-container:hover {
+    background-color: #0000001f;
+}
+
+.optional-data span {
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+
+/* Date Input Style */
+.new-task-due-date, .new-task-tags {
+    visibility: hidden;
+    display: none;
+    position: relative;
+}
+
+.new-task-due-date::-webkit-calendar-picker-indicator{
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+}
+
+.active-form {
+    background-color: #0000001f;
+}
+.active-form input {
+    visibility: visible;
+    display: flex;
 }
