@@ -1,0 +1,117 @@
+.task-list {
+    overflow-y: scroll;
+    height: calc(100vh - 72px - 80px - 46px);
+}
+
+.task {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    transition: background-color 0.2s ease-in-out;
+    cursor: pointer;
+    user-select: none;
+}
+.task:hover {
+    background-color: var(--secondary);
+}
+
+.task-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.task-delete-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.delete-icon {
+    visibility: hidden;
+    opacity: 0;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+.delete-icon:hover {
+    transform: scale(1.2);
+}
+.task:hover .delete-icon {
+    visibility: visible;
+    opacity: 1;
+}
+
+.new-task {
+    margin-top: 20px;
+    background-color: var(--secondary);
+}
+
+/**
+ *  ------------------------
+ *  Task Form
+ *  ------------------------
+ */
+.new-task-form {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+}
+
+.form-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: inherit;
+}
+
+.form-inputs input {
+    font-size: 16px;
+}
+
+.new-task-notes {
+    height: -webkit-fill-available;
+}
+
+.new-task-title, .new-task-notes {
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+
+.form-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.new-task-submit, .close-new-task-form {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.new-task-submit > span {
+    background-color: var(--primary);
+    border-radius: 15px;
+}
+
+.new-task-submit:hover > .material-symbols-outlined,
+.close-new-task-form:hover  {
+    animation: rotate .3s linear;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(190deg);
+    }
+}
