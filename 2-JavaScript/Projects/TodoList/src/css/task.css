@@ -25,6 +25,14 @@
     gap: 10px;
 }
 
+.extra-data > p {
+    font-weight: bold;
+    font-size: 12px;
+    background-color: #0000001f;
+    padding: 5px 10px;
+    border-radius: 25px;
+}
+
 .task-delete-container {
     display: flex;
     justify-content: center;

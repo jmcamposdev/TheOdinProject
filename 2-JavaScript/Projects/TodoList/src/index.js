@@ -7,8 +7,8 @@ import DOMTodoListClass from "./modules/TodoList/DOMTodoList"
 
 const DOMTodoList = new DOMTodoListClass();
 function init()  {
-    DOMTodoList.addTask(new Task('Task 3', 'This is the third task', '2021-01-03', true, 'inbox'));
-    DOMTodoList.addTask(new Task('Task 4', 'This is the fourth task', '2021-01-04', false, 'inbox'));
+    DOMTodoList.addTask(new Task('Task 3', 'This is the third task', new Date(2021, 0, 3, 0, 0, 0, 0), true, 'inbox'));
+    DOMTodoList.addTask(new Task('Task 4', 'This is the fourth task', new Date(2021, 0, 3, 0, 0, 0, 0), false, 'inbox'));
 
     DOMTodoList.createAddTaskElement();
 }

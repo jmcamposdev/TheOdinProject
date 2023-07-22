@@ -1,3 +1,4 @@
+import { format } from 'date-fns';
 import DOMTodoList from '../../index.js';
 import Task from './Task.js';
 export default class DOMTask {
@@ -27,15 +28,27 @@ export default class DOMTask {
         taskElement.innerHTML = `
             <div class="task-info">
                 <span class="check-box material-symbols-outlined">${checkIcon}</span>
+                <div class="extra-data"></div> 
                 <p class="task-title">${task.getTitle()}</p>
             </div>
             <div class="task-delete-container">
                 <span class="delete-icon material-symbols-outlined">delete</span>
             </div>`;
 
+        // Add the due date to the task element if the task has a due date
+        if (task.getDueDate()) DOMTask.addDueDate(taskElement, task.getDueDate());
+
         DOMTask.addCheckBoxEventListener(task.getId(), taskElement); // Add the event listener to the checkbox to toggle the completed state of the task
         DOMTask.addRemoveTaskEventListener(taskElement); // Add the event listener to the delete icon to remove the task from the task list
         return taskElement;
+    }
+
+    static addDueDate (taskElement, dueDate) {
+        const taskInfo = taskElement.querySelector(".task-info .extra-data");
+        const dueDateElement = document.createElement("p");
+        dueDateElement.classList.add("task-due-date");
+        dueDateElement.textContent = format(dueDate, "dd E");
+        taskInfo.appendChild(dueDateElement);
     }
 
     /**
