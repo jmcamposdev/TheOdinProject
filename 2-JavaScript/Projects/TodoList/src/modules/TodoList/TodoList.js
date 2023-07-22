@@ -25,6 +25,18 @@ export default class TodoList {
         }
     }
 
+    updateTask (task) {
+        const index = this.taskList.findIndex(task => task.id == task.id);
+        if (index > -1) {
+            this.taskList[index] = task;
+        }
+    }
+
+    toggleCompleted (id) {
+        const task = this.getTask(id);
+        task.toggleCompleted();
+    }
+
 
     static fromJSON (json) {
         let todoList = new TodoList();

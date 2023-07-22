@@ -33,7 +33,7 @@ export default class DOMTask {
                 <span class="delete-icon material-symbols-outlined">delete</span>
             </div>`;
 
-        DOMTask.addCheckBoxEventListener(task, taskElement); // Add the event listener to the checkbox to toggle the completed state of the task
+        DOMTask.addCheckBoxEventListener(task.getId(), taskElement); // Add the event listener to the checkbox to toggle the completed state of the task
         DOMTask.addRemoveTaskEventListener(taskElement); // Add the event listener to the delete icon to remove the task from the task list
         return taskElement;
     }
@@ -43,15 +43,15 @@ export default class DOMTask {
      * @param {Task} task 
      * @param {HTMLElement} taskElement 
      */
-    static addCheckBoxEventListener (task, taskElement) {
+    static addCheckBoxEventListener (id, taskElement) {
         // Get .task-info and .task-delete-container elements
         // Then get the first child of .task-info element and get all the children of the first child
         // Then find the child with the class .check-box
+        console.log();
         const children = Array.from(taskElement.children[0].children);
         const checkBox = children.find(child => child.classList.contains("check-box"));
         checkBox.addEventListener(("click"), () => {
-            task.toggleCompleted();
-            this.updateTaskElement(task)
+            DOMTodoList.toggleCompleted(id);
         })
     }
 
@@ -66,14 +66,5 @@ export default class DOMTask {
         })
     }
 
-    /**
-     *  Update the task element in the task list
-     *  Create the updated task element and replace the old task element with the updated task element
-     * @param {Task} task 
-     */
-    static updateTaskElement (task) {
-        const taskOldElement = document.querySelector(`.task[data-id="${task.getId()}"]`);
-        const taskUpdatedElement = DOMTask.createTaskElement(task);
-        taskOldElement.replaceWith(taskUpdatedElement);
-    }
+    
 }

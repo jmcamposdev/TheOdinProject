@@ -40,6 +40,25 @@ export default class DOMTodoList {
         taskElement.remove();
     }
 
+
+    /**
+     *  Update the task element in the task list
+     *  Create the updated task element and replace the old task element with the updated task element
+     * @param {Task} task 
+     */
+    updateTaskElement (task) {
+        const taskOldElement = document.querySelector(`.task[data-id="${task.getId()}"]`);
+        const taskUpdatedElement = DOMTask.createTaskElement(task);
+        taskOldElement.replaceWith(taskUpdatedElement);
+    }
+
+    toggleCompleted (id) {
+        this.todolist.toggleCompleted(id);
+        console.log(this.todolist.getTask(id));
+        const task = this.todolist.getTask(id);
+        this.updateTaskElement(task);
+    }
+
     /**
      *  Return the task with the given id
      *  If the task is not found, return null
