@@ -47,7 +47,6 @@ export default class DOMTask {
         // Get .task-info and .task-delete-container elements
         // Then get the first child of .task-info element and get all the children of the first child
         // Then find the child with the class .check-box
-        console.log();
         const children = Array.from(taskElement.children[0].children);
         const checkBox = children.find(child => child.classList.contains("check-box"));
         checkBox.addEventListener(("click"), () => {
