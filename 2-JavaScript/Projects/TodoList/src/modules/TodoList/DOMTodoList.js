@@ -1,3 +1,4 @@
+import { parseISO } from 'date-fns'
 import Task from '../Task/Task.js';
 import DOMTask from '../Task/DOMTask';
 import TodoList from './TodoList.js';
@@ -54,7 +55,6 @@ export default class DOMTodoList {
 
     toggleCompleted (id) {
         this.todolist.toggleCompleted(id);
-        console.log(this.todolist.getTask(id));
         const task = this.todolist.getTask(id);
         this.updateTaskElement(task);
     }
@@ -151,9 +151,14 @@ export default class DOMTodoList {
         const newTaskForm = document.querySelector('.new-task-form');
         newTaskForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const newTaskTitle = document.querySelector('.new-task-title');
-            const newTaskDescription = document.querySelector('.new-task-notes');
-            const newTask = new Task(newTaskTitle.value, newTaskDescription.value, null, false, null);
+            const title = document.querySelector('.new-task-title').value;
+            const description = document.querySelector('.new-task-notes').value;
+            let dueDate = parseISO(document.querySelector('.new-task-due-date').value);
+            if (dueDate == 'Invalid Date') {
+                dueDate = null;
+            }
+            const tags = document.querySelector('.new-task-tags');
+            const newTask = new Task(title, description, dueDate, false, null, tags);
             this.addTask(newTask);
             this.closeAddTaskForm();
         });
