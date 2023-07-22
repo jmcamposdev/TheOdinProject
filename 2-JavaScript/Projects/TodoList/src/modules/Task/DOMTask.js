@@ -25,10 +25,16 @@ export default class DOMTask {
         taskElement.classList.add("task");
         taskElement.dataset.id = task.getId();
         taskElement.innerHTML = `
-            <span class="check-box material-symbols-outlined">${checkIcon}</span>
-            <p class="task-title">${task.getTitle()}</p>`;
+            <div class="task-info">
+                <span class="check-box material-symbols-outlined">${checkIcon}</span>
+                <p class="task-title">${task.getTitle()}</p>
+            </div>
+            <div class="task-delete-container">
+                <span class="delete-icon material-symbols-outlined">delete</span>
+            </div>`;
 
         DOMTask.addCheckBoxEventListener(task, taskElement); // Add the event listener to the checkbox to toggle the completed state of the task
+        DOMTask.addRemoveTaskEventListener(taskElement); // Add the event listener to the delete icon to remove the task from the task list
         return taskElement;
     }
 
@@ -38,11 +44,25 @@ export default class DOMTask {
      * @param {HTMLElement} taskElement 
      */
     static addCheckBoxEventListener (task, taskElement) {
-        const children = Array.from(taskElement.children);
+        // Get .task-info and .task-delete-container elements
+        // Then get the first child of .task-info element and get all the children of the first child
+        // Then find the child with the class .check-box
+        const children = Array.from(taskElement.children[0].children);
         const checkBox = children.find(child => child.classList.contains("check-box"));
         checkBox.addEventListener(("click"), () => {
             task.toggleCompleted();
             this.updateTaskElement(task)
+        })
+    }
+
+    static addRemoveTaskEventListener (taskElement) {
+        // Get .task-info and .task-delete-container elements
+        // Then get the first child of .task-info element and get all the children of the first child
+        // Then find the child with the class .check-box
+        const children = Array.from(taskElement.children[1].children);
+        const checkBox = children.find(child => child.classList.contains("delete-icon"));
+        checkBox.addEventListener(("click"), () => {
+            DOMTodoList.removeTask(taskElement.dataset.id);
         })
     }
 

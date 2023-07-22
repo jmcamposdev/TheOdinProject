@@ -1,6 +1,7 @@
 import "./css/global.css"
 import "./css/header.css"
 import "./css/main.css"
+import "./css/task.css"
 import Task from "./modules/Task/Task";
 import DOMTodoListClass from "./modules/TodoList/DOMTodoList"
 

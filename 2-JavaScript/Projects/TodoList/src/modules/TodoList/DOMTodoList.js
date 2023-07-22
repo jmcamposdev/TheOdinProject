@@ -34,6 +34,12 @@ export default class DOMTodoList {
         DOMTask.printTaskElement(task);
     }
 
+    removeTask (id) {
+        this.todolist.removeTask(id);
+        const taskElement = document.querySelector(`[data-id="${id}"]`);
+        taskElement.remove();
+    }
+
     /**
      *  Return the task with the given id
      *  If the task is not found, return null
