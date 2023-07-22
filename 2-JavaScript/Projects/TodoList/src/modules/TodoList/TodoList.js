@@ -14,6 +14,9 @@ export default class TodoList {
     insertTask (task) {
         this.taskList.push(task);
     }
+    getTask (id) {
+        return this.taskList.find(task => task.id == id);
+    }
 
     removeTask (task) {
         const index = this.taskList.indexOf(task);

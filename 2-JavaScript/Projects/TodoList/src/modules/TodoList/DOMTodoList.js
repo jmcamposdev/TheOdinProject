@@ -34,6 +34,16 @@ export default class DOMTodoList {
         DOMTask.printTaskElement(task);
     }
 
+    /**
+     *  Return the task with the given id
+     *  If the task is not found, return null
+     * @param {} id 
+     * @returns 
+     */
+    getTask (id) {
+        return this.todolist.getTask(id);
+    }
+
 
 
 
