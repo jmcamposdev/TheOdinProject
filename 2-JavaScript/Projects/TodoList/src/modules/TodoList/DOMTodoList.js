@@ -116,7 +116,7 @@ export default class DOMTodoList {
                             </div>
                             <div class="tags-container">
                             <span class="tag-icon material-symbols-outlined">sell</span>
-                                <input type="text" class="new-task-tags" placeholder="New Tag">
+                                <input type="text" class="new-task-tags" placeholder="Ex: Github,RP...">
                             </div>
                         </div>
                     </div>
@@ -157,7 +157,8 @@ export default class DOMTodoList {
             if (dueDate == 'Invalid Date') {
                 dueDate = null;
             }
-            const tags = document.querySelector('.new-task-tags');
+            const tags = document.querySelector('.new-task-tags').value.split(',');
+            console.log(tags);
             const newTask = new Task(title, description, dueDate, false, null, tags);
             this.addTask(newTask);
             this.closeAddTaskForm();
