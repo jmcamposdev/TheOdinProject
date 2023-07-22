@@ -45,6 +45,7 @@
 }
 
 .new-task {
+    justify-content: flex-start;
     margin-top: 20px;
     background-color: var(--secondary);
 }
@@ -53,7 +54,7 @@
  *  ------------------------
  *  Task Form
  *  ------------------------
- */
+*/
 .new-task-form {
     display: flex;
     justify-content: space-between;
