@@ -41,6 +41,12 @@ export default class DOMTodoList {
         taskElement.remove();
     }
 
+    editTask (id) {
+        const task = this.todolist.getTask(id);
+        const taskElement = document.querySelector(`[data-id="${id}"]`);
+        console.log(this.showAddTaskForm());;
+    }
+
 
     /**
      *  Update the task element in the task list

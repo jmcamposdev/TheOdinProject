@@ -1,6 +1,7 @@
 import { format } from 'date-fns';
 import DOMTodoList from '../../index.js';
 import Task from './Task.js';
+import { ta } from 'date-fns/locale';
 export default class DOMTask {
 
     /**
@@ -40,6 +41,7 @@ export default class DOMTask {
 
         DOMTask.addCheckBoxEventListener(task.getId(), taskElement); // Add the event listener to the checkbox to toggle the completed state of the task
         DOMTask.addRemoveTaskEventListener(taskElement); // Add the event listener to the delete icon to remove the task from the task list
+        DOMTask.addEditTaskEventListener(taskElement); // Add the event listener to the task element to edit the task
         return taskElement;
     }
 
@@ -76,6 +78,12 @@ export default class DOMTask {
         checkBox.addEventListener(("click"), () => {
             DOMTodoList.removeTask(taskElement.dataset.id);
         })
+    }
+
+    static addEditTaskEventListener (taskElement) {
+        taskElement.addEventListener("dblclick", () => {
+            DOMTodoList.editTask(taskElement.dataset.id);
+        });
     }
 
     
