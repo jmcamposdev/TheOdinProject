@@ -22,8 +22,7 @@ export default class DOMTodoList {
                 DOMTask.printTaskElement(task);
             });
         }
-
-        this.createAddTaskElement(); // Create the add task element
+        this.printAddTaskElement(); // Create the add task element
     }
 
     /**
@@ -35,6 +34,10 @@ export default class DOMTodoList {
         DOMTask.printTaskElement(task);
     }
 
+    /**
+     *  Remove the task with the given id from the task list and the DOM
+     * @param {*} id 
+     */
     removeTask (id) {
         this.todolist.removeTask(id);
         const taskElement = document.querySelector(`[data-id="${id}"]`);
@@ -44,7 +47,7 @@ export default class DOMTodoList {
     editTask (id) {
         const task = this.todolist.getTask(id);
         const taskElement = document.querySelector(`[data-id="${id}"]`);
-        console.log(this.showAddTaskForm());;
+        taskElement.innerHTML = this.createTaskForm(task);
     }
 
 
@@ -75,6 +78,15 @@ export default class DOMTodoList {
         return this.todolist.getTask(id);
     }
 
+    /**
+     *  ----------------------
+     *  Edit Task
+     *  ----------------------
+     */
+
+    createEditTaskEvents (taskID) {
+    }
+
 
 
 
@@ -85,10 +97,59 @@ export default class DOMTodoList {
      */
 
     /**
+     *  Create a task form used to:
+     *  - Create a new task
+     *  - Edit an existing task
+     *  If the taskID is not provided, the form is used to create a new task
+     *  If the taskID is provided, the form is used to edit an existing task
+     * @param {Task} taskID 
+     * @returns 
+     */
+    createTaskForm(task)  {
+        let taskTitle = "";
+        let taskNotes = "";
+        let taskDueDate = "";
+        let taskTags = "";
+
+        if (task) {
+            taskTitle = task.getTitle();
+            taskNotes = task.getDescription();
+            taskDueDate = task.getDueDate();
+            taskTags = task.getTags();
+        }
+
+        const newTaskForm = `
+            <div class="task ${task ? "edit-task" : "new-task"}">
+                <form class="new-task-form">
+                    <div class="form-inputs">
+                        <input type="text" class="new-task-title" placeholder="${task ? "Title" : "New Task"}" value="${taskTitle}"  required>
+                        <input type="text" class="new-task-notes" placeholder="Notes" value="${taskNotes}">
+                        <div class="optional-data">
+                            <div class="due-date-container">
+                                <span class="due-date-icon material-symbols-outlined">flag</span>
+                                <input type="date" class="new-task-due-date" value="${taskDueDate}">
+                            </div>
+                            <div class="tags-container">
+                            <span class="tag-icon material-symbols-outlined">sell</span>
+                                <input type="text" class="new-task-tags" placeholder="Ex: Github,RP..." value="${taskTags[0]}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <span class="close-new-task-form material-symbols-outlined">close</span>
+                        <button type="submit" class="new-task-submit"><span class="material-symbols-outlined">add</span></button>
+                    </div>
+                </form>
+            </div>`;
+
+        return newTaskForm;
+    }
+
+    /**
      * Create the task creator element and add it to the task list
      * This element is used to create new tasks
      */
-    createAddTaskElement () {
+    printAddTaskElement () {
         const taskList = document.querySelector('.task-list');
         // Create the new task element
         const newTaskElement = `
@@ -103,52 +164,46 @@ export default class DOMTodoList {
     }
 
     /**
-     * Show the add task form
-     * This form is used to create new tasks
-     */
-    showAddTaskForm () {
-        const newTask = document.querySelector('.new-task');
-        newTask.classList.add('new-task-form');
-        const newTaskForm = `
-            <div class="task new-task">
-                <form class="new-task-form">
-                    <div class="form-inputs">
-                        <input type="text" class="new-task-title" placeholder="New Task" required>
-                        <input type="text" class="new-task-notes" placeholder="Notes">
-                        <div class="optional-data">
-                            <div class="due-date-container">
-                                <span class="due-date-icon material-symbols-outlined">flag</span>
-                                <input type="date" class="new-task-due-date">
-                            </div>
-                            <div class="tags-container">
-                            <span class="tag-icon material-symbols-outlined">sell</span>
-                                <input type="text" class="new-task-tags" placeholder="Ex: Github,RP...">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-actions">
-                        <span class="close-new-task-form material-symbols-outlined">close</span>
-                        <button type="submit" class="new-task-submit"><span class="material-symbols-outlined">add</span></button>
-                    </div>
-                </form>
-            </div>`;
-
-        newTask.outerHTML = newTaskForm; // Replace the new task element with the new task form
-    }
-
-    /**
+     *  Show the create new task form when the add task element is clicked
      * Add the event listeners to the new task element
      */
     createAddTaskEvents () { 
         // Add the event listener to the new task element
         const addTaskElement = document.querySelector('.new-task');
         addTaskElement.addEventListener('click', () => {
-            this.showAddTaskForm(); // Show the add task form
+            this.printAddTaskForm(); // Show the add task form
             this.createAddTaskFormCloseEvent(); // Add the event listener to the close button
             this.createAddTaskSubmitEvent(); // Add the event listener to the submit button
             this.createAddTaskOptionalDataEvent(); // Add the event listener to the optional data icons
         });
     }
+
+    /**
+     * Show the add task form
+     * This form is used to create new tasks
+     */
+    printAddTaskForm () {
+        const newTask = document.querySelector('.new-task');
+        newTask.classList.add('new-task-form');
+        const newTaskForm = this.createTaskForm(); // Create the new task form
+        newTask.outerHTML = newTaskForm; // Replace the new task element with the new task form
+    }
+
+    /**
+     * Close the add task form
+     * Remove the add task form and replace it with the add task element
+     */
+    closeAddTaskForm () {
+        const newTaskForm = document.querySelector('.new-task');
+        newTaskForm.remove();
+        this.printAddTaskElement();
+    }
+
+    /**
+     * ----------------------
+     *  Add Task Form Events
+     * ----------------------
+     */
 
     /**
      * Add the event listener to the Add task form submit button
@@ -200,19 +255,7 @@ export default class DOMTodoList {
                         child.classList.remove('active-form');
                     }
                 });
-                
             });
         });
-    }
-
-
-    /**
-     * Close the add task form
-     * Remove the add task form and replace it with the add task element
-     */
-    closeAddTaskForm () {
-        const newTaskForm = document.querySelector('.new-task');
-        newTaskForm.remove();
-        this.createAddTaskElement();
     }
 }

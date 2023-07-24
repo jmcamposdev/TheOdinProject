@@ -54,6 +54,10 @@ export default class Task {
         this.project = project;
     }
 
+    getTags () {
+        return this.tags;
+    }
+
     toString () {
         return `Title: ${this.title}\nDescription: ${this.description}\nDue Date: ${this.dueDate}\nCompleted: ${this.completed}`;
     }
