@@ -141,7 +141,6 @@ export default class DOMTodoList {
                     </div>
                 </form>
             </div>`;
-
         return newTaskForm;
     }
 
