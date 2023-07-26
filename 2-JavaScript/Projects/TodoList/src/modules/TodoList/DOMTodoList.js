@@ -7,6 +7,7 @@ export default class DOMTodoList {
 
     constructor () {
     this.todolist = new TodoList();
+    this.activeProject = "inbox"
     }
 
     /**
@@ -14,14 +15,15 @@ export default class DOMTodoList {
      *  depending on the project type
      * @param {String} projectType 
      */
-    printAllTasks (projectType) {
+    printAllTasks () {
         const taskList = document.querySelector('.task-list');
         taskList.innerHTML = ''; // Clear the task list
-        if (projectType === 'inbox') {
-            this.todolist.getTaskList().forEach(task => {
+        this.todolist.getTaskList().forEach(task => {
+            if (task.getProject() == this.activeProject) {
                 DOMTask.printTaskElement(task);
-            });
-        }
+            }
+            
+        });
         this.printAddTaskElement(); // Create the add task element
     }
 
@@ -121,6 +123,24 @@ export default class DOMTodoList {
 
             // Update the task element in the task list
             this.updateTaskElement(task);
+        });
+    }
+
+    /**
+     *  ----------------------
+     *  Projects
+     *  ----------------------
+     */
+
+    createProjectsEvents () {
+        const projectsButtonsElements = document.querySelectorAll(".actions-list button");
+        const projectsButtonsArray = Array.from(projectsButtonsElements)
+        projectsButtonsArray.forEach(button => {
+            button.addEventListener("click", () => {
+                const projectType = button.dataset.projectType;
+                this.activeProject = projectType;
+                this.printAllTasks();
+            })
         });
     }
 
@@ -257,7 +277,7 @@ export default class DOMTodoList {
                 dueDate = null;
             }
             const tags = document.querySelector('.new-task-tags').value.split(',');
-            const newTask = new Task(title, description, dueDate, false, null, tags);
+            const newTask = new Task(title, description, dueDate, false, this.activeProject, tags);
             this.addTask(newTask);
             this.closeAddTaskForm();
         });
