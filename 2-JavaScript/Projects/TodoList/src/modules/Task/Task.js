@@ -58,6 +58,10 @@ export default class Task {
         return this.tags;
     }
 
+    setTags (tags) {
+        this.tags = tags;
+    }
+
     toString () {
         return `Title: ${this.title}\nDescription: ${this.description}\nDue Date: ${this.dueDate}\nCompleted: ${this.completed}`;
     }

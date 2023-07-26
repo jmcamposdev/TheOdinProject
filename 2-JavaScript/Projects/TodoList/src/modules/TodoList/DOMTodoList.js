@@ -1,4 +1,4 @@
-import { parseISO } from 'date-fns'
+import { parseISO, format, formatISO } from 'date-fns'
 import Task from '../Task/Task.js';
 import DOMTask from '../Task/DOMTask';
 import TodoList from './TodoList.js';
@@ -48,6 +48,7 @@ export default class DOMTodoList {
         const task = this.todolist.getTask(id);
         const taskElement = document.querySelector(`[data-id="${id}"]`);
         taskElement.innerHTML = this.createTaskForm(task);
+        this.createEditTaskEvents(id);
     }
 
 
@@ -85,6 +86,42 @@ export default class DOMTodoList {
      */
 
     createEditTaskEvents (taskID) {
+        this.createEditTaskCloseEvent(taskID);
+        this.createEditTaskSubmitEvent(taskID);
+        this.createAddTaskOptionalDataEvent();
+    }
+
+    createEditTaskCloseEvent (taskID) {
+        const closeEditTaskForm = document.querySelector('.edit-task .close-new-task-form');
+        closeEditTaskForm.addEventListener('click', () => {
+            const task = this.getTask(taskID);
+            this.updateTaskElement(task);
+        });
+    }
+
+    createEditTaskSubmitEvent (taskID) {
+        const editTaskForm = document.querySelector('.edit-task .new-task-form'); // Get the edit task form
+        editTaskForm.addEventListener('submit', (e) => { // Add the event listener to the edit task form
+            e.preventDefault(); // Prevent the default submit event
+            // Get the values from the edit task form
+            const title = document.querySelector('.new-task-title').value;
+            const description = document.querySelector('.new-task-notes').value;
+            let dueDate = parseISO(document.querySelector('.new-task-due-date').value);
+            if (dueDate == 'Invalid Date') {
+                dueDate = null;
+            }
+            const tags = document.querySelector('.new-task-tags').value.split(',');
+            const task = this.getTask(taskID);
+
+            // Update the task with the new values
+            task.setTitle(title);
+            task.setDescription(description);
+            task.setDueDate(dueDate);
+            task.setTags(tags);
+
+            // Update the task element in the task list
+            this.updateTaskElement(task);
+        });
     }
 
 
@@ -114,12 +151,14 @@ export default class DOMTodoList {
         if (task) {
             taskTitle = task.getTitle();
             taskNotes = task.getDescription();
-            taskDueDate = task.getDueDate();
+            if (task.getDueDate()){
+                taskDueDate = formatISO(task.getDueDate(), {representation: 'date'});
+            }
             taskTags = task.getTags();
         }
 
         const newTaskForm = `
-            <div class="task ${task ? "edit-task" : "new-task"}">
+            <div class="${task ? "edit-task" : "task new-task"}">
                 <form class="new-task-form">
                     <div class="form-inputs">
                         <input type="text" class="new-task-title" placeholder="${task ? "Title" : "New Task"}" value="${taskTitle}"  required>
@@ -131,13 +170,13 @@ export default class DOMTodoList {
                             </div>
                             <div class="tags-container">
                             <span class="tag-icon material-symbols-outlined">sell</span>
-                                <input type="text" class="new-task-tags" placeholder="Ex: Github,RP..." value="${taskTags[0]}">
+                                <input type="text" class="new-task-tags" placeholder="Ex: Github,RP..." value="${task ? taskTags[0] : taskTags}">
                             </div>
                         </div>
                     </div>
                     <div class="form-actions">
                         <span class="close-new-task-form material-symbols-outlined">close</span>
-                        <button type="submit" class="new-task-submit"><span class="material-symbols-outlined">add</span></button>
+                        <button type="submit" class="new-task-submit"><span class="material-symbols-outlined">${task ? "check" : "add"}</span></button>
                     </div>
                 </form>
             </div>`;
@@ -229,7 +268,7 @@ export default class DOMTodoList {
      * Add the event listener to the Add task form close button
      */
     createAddTaskFormCloseEvent () {
-        const closeNewTaskForm = document.querySelector('.close-new-task-form');
+        const closeNewTaskForm = document.querySelector('.new-task .close-new-task-form');
         closeNewTaskForm.addEventListener('click', () => {
             this.closeAddTaskForm();
         });
@@ -243,18 +282,21 @@ export default class DOMTodoList {
      *  If the user clicks on another optional data icon, hide the current optional data form and show the new optional data form
      */
     createAddTaskOptionalDataEvent () {
-        const optionalData = document.querySelector('.optional-data');
-        const optionalDataChildren = Array.from(optionalData.children);
-        optionalDataChildren.forEach(currentChild => {
-            const icon = currentChild.querySelector('span');
-            icon.addEventListener('click', () => {
-                currentChild.classList.toggle('active-form');
-                optionalDataChildren.forEach(child => {
-                    if (child !== currentChild) {
-                        child.classList.remove('active-form');
-                    }
+        const optionalData = document.querySelectorAll('.optional-data');
+        for (let i = 0; i < optionalData.length; i++) {
+            const optionalDataChildren = Array.from(optionalData[i].children);
+            optionalDataChildren.forEach(currentChild => {
+                const icon = currentChild.querySelector('span');
+                icon.addEventListener('click', () => {
+                    currentChild.classList.toggle('active-form');
+                    optionalDataChildren.forEach(child => {
+                        if (child !== currentChild) {
+                            child.classList.remove('active-form');
+                        }
+                    });
                 });
             });
-        });
+        }
+        
     }
 }

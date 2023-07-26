@@ -1,4 +1,7 @@
 .task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     overflow-y: scroll;
     height: calc(100vh - 72px - 80px - 46px);
 }
@@ -189,4 +192,23 @@
 .active-form input {
     visibility: visible;
     display: flex;
+}
+
+/**
+ *  ------------------------
+ *  Edit Task
+ *  ------------------------
+*/
+
+.edit-task {
+    width: 100%;
+    padding: 0;
+}
+
+.task:has(.edit-task)  {
+    background-color: var(--secondary);
+}
+
+.task:has(.edit-task) .new-task-submit span  {
+    animation: none;
 }
