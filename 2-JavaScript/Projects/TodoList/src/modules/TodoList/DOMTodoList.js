@@ -257,7 +257,6 @@ export default class DOMTodoList {
                 dueDate = null;
             }
             const tags = document.querySelector('.new-task-tags').value.split(',');
-            console.log(tags);
             const newTask = new Task(title, description, dueDate, false, null, tags);
             this.addTask(newTask);
             this.closeAddTaskForm();
