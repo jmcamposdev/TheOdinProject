@@ -36,7 +36,7 @@ export default class Task {
         this.dueDate = dueDate;
     }
 
-    getCompleted () {
+    isCompleted () {
         return this.completed;
     }
     setCompleted (completed) {

@@ -201,6 +201,8 @@
 */
 
 .edit-task {
+    display: flex;
+    gap: 10px;
     width: 100%;
     padding: 0;
 }
