@@ -52,7 +52,8 @@ export default class DOMTask {
 
     static createCheckBoxElement(isChecked) {
         const checkIcon = isChecked ? 'check_circle' : 'radio_button_unchecked';
-        return `<span class="check-box material-symbols-outlined">${checkIcon}</span>`
+        const checkElement = `<span data-is-completed="${isChecked}" class="check-box material-symbols-outlined">${checkIcon}</span>`;
+        return checkElement;
     }
 
     /**
@@ -67,7 +68,10 @@ export default class DOMTask {
         const children = Array.from(taskElement.children[0].children);
         const checkBox = children.find(child => child.classList.contains("check-box"));
         checkBox.addEventListener(("click"), () => {
-            DOMTodoList.toggleCompleted(id);
+            const task = DOMTodoList.getTask(id);
+            const checkBoxElement = taskElement.querySelector(".check-box");
+            task.toggleCompleted();
+            DOMTask.updateCheckBoxElement(checkBoxElement, task.isCompleted())
         })
     }
 
@@ -86,6 +90,11 @@ export default class DOMTask {
         taskElement.addEventListener("dblclick", () => {
             DOMTodoList.editTask(taskElement.dataset.id);
         });
+    }
+
+    static updateCheckBoxElement (checkBoxElement, isChecked) {
+        checkBoxElement.dataset.isCompleted = isChecked;
+        checkBoxElement.textContent = isChecked ? "check_circle" : "radio_button_unchecked"
     }
 
     

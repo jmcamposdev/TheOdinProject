@@ -167,10 +167,12 @@ export default class DOMTodoList {
         let taskNotes = "";
         let taskDueDate = "";
         let taskTags = "";
+        let taskComplete = null;
 
         if (task) {
             taskTitle = task.getTitle();
             taskNotes = task.getDescription();
+            taskComplete = task.isCompleted();
             if (task.getDueDate()){
                 taskDueDate = formatISO(task.getDueDate(), {representation: 'date'});
             }
@@ -180,6 +182,9 @@ export default class DOMTodoList {
         const newTaskForm = `
             <div class="${task ? "edit-task" : "task new-task"}">
                 <form class="new-task-form">
+                    ${taskComplete != null 
+                    ? DOMTask.createCheckBoxElement(taskComplete)
+                    : ""}
                     <div class="form-inputs">
                         <input type="text" class="new-task-title" placeholder="${task ? "Title" : "New Task"}" value="${taskTitle}"  required>
                         <input type="text" class="new-task-notes" placeholder="Notes" value="${taskNotes}">
