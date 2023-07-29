@@ -205,7 +205,25 @@ export default class DOMTodoList {
                     </div>
                 </form>
             </div>`;
+        if (task) {
+            //this.addCheckBoxEventListener(task.getId(), newTaskForm);
+        }
         return newTaskForm;
+    }
+
+    addCheckBoxEventListener (id, taskForm) {
+        // Get .task-info and .task-delete-container elements
+        // Then get the first child of .task-info element and get all the children of the first child
+        // Then find the child with the class .check-box
+        console.log(taskForm.children);
+        const children = Array.from(taskForm.children.children[0]);
+        const checkBox = children.find(child => child.classList.contains("check-box"));
+        checkBox.addEventListener(("click"), () => {
+            const task = DOMTodoList.getTask(id);
+            const checkBoxElement = taskElement.querySelector(".check-box");
+            task.toggleCompleted();
+            DOMTask.updateCheckBoxElement(checkBoxElement, task.isCompleted())
+        })
     }
 
     /**
