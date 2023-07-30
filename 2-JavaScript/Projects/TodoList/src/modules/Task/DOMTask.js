@@ -59,7 +59,6 @@ export default class DOMTask {
         
         const removeButton = taskElement.querySelector(".delete-icon");
         RemoveButton.addRemoveTaskEventListener(removeButton, task.getId());
-        // DOMTask.addRemoveTaskEventListener(taskElement); // Add the event listener to the delete icon to remove the task from the task list
         // DOMTask.addEditTaskEventListener(taskElement); // Add the event listener to the task element to edit the task
         return taskElement;
     }
