@@ -70,7 +70,6 @@ export default class DOMTask {
 
     static addEditTaskEventListener (taskElement) {
         taskElement.addEventListener("dblclick", () => {
-            console.log(taskElement.parentElement.parentElement.dataset.id);
             DOMTodoList.editTask(taskElement.parentElement.parentElement.dataset.id);
         });
     }
