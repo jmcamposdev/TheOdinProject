@@ -22,7 +22,6 @@ export default class CheckBox {
     static addCheckBoxCompleteEventListener (checkBoxElement, task) {
         checkBoxElement.addEventListener(("click"), () => {
             task.toggleCompleted();
-            console.log(task);
         });
     }
 }
