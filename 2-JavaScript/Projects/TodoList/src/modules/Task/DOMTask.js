@@ -1,7 +1,7 @@
 import { format } from 'date-fns';
 import DOMTodoList from '../../index.js';
 import Task from './Task.js';
-import { ta } from 'date-fns/locale';
+import CheckBox from '../../assets/Task/CheckBox/checkBox.js';
 export default class DOMTask {
 
     /**
@@ -29,7 +29,7 @@ export default class DOMTask {
         const taskInfoElement = document.createElement("div");
         taskInfoElement.classList.add("task-info");
 
-        const checkBoxElement = DOMTask.createCheckBoxElement(task.isCompleted());
+        const checkBoxElement = CheckBox.createCheckBoxElement(task.isCompleted());
         taskInfoElement.appendChild(checkBoxElement);
 
         taskInfoElement.innerHTML += `
@@ -48,7 +48,7 @@ export default class DOMTask {
         taskElement.appendChild(taskInfoElement);
         taskElement.appendChild(taskDeleteContainer);
 
-
+        CheckBox.addToggleEventListener(taskElement.querySelector(".check-box"));
         //DOMTask.addCheckBoxEventListener(task.getId(), taskElement); // Add the event listener to the checkbox to toggle the completed state of the task
         // DOMTask.addRemoveTaskEventListener(taskElement); // Add the event listener to the delete icon to remove the task from the task list
         // DOMTask.addEditTaskEventListener(taskElement); // Add the event listener to the task element to edit the task
@@ -58,15 +58,6 @@ export default class DOMTask {
     static createDueDateElement (dueDate) {
         const formatDueDate = format(dueDate, "dd E");
         return `<p class="task-due-date">${formatDueDate}</p>`;
-    }
-
-    static createCheckBoxElement(isChecked) {
-        const checkBoxElement = document.createElement("span");
-        checkBoxElement.setAttribute("data-is-completed", `${isChecked}`)
-        checkBoxElement.classList.add("check-box", "material-symbols-outlined");
-        checkBoxElement.textContent = isChecked ? 'check_circle' : 'radio_button_unchecked';
-        checkBoxElement.addEventListener("click", DOMTask.updateCheckBoxElement(checkBoxElement, !isChecked));
-        return checkBoxElement;
     }
 
     /**
