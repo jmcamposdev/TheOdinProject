@@ -51,7 +51,7 @@ export default class DOMTodoList {
         const task = this.todolist.getTask(id);
         const taskElement = document.querySelector(`[data-id="${id}"]`);
         taskElement.innerHTML = this.createTaskForm(task);
-        this.createEditTaskEvents(id);
+        this.createEditTaskEvents(id, taskElement);
     }
 
 
@@ -88,10 +88,11 @@ export default class DOMTodoList {
      *  ----------------------
      */
 
-    createEditTaskEvents (taskID) {
+    createEditTaskEvents (taskID, taskElement) {
         this.createEditTaskCloseEvent(taskID);
-        this.createEditTaskSubmitEvent(taskID);
         this.createAddTaskOptionalDataEvent();
+        CheckBox.addToggleEventListener(taskElement.querySelector('.check-box'));
+        this.createEditTaskSubmitEvent(taskID);
     }
 
     createEditTaskCloseEvent (taskID) {
@@ -109,6 +110,7 @@ export default class DOMTodoList {
             // Get the values from the edit task form
             const title = document.querySelector('.new-task-title').value;
             const description = document.querySelector('.new-task-notes').value;
+            const completed = document.querySelector('.check-box').dataset.isCompleted == 'true' ? true : false;
             let dueDate = parseISO(document.querySelector('.new-task-due-date').value);
             if (dueDate == 'Invalid Date') {
                 dueDate = null;
@@ -121,6 +123,7 @@ export default class DOMTodoList {
             task.setDescription(description);
             task.setDueDate(dueDate);
             task.setTags(tags);
+            task.setCompleted(completed);
 
             // Update the task element in the task list
             this.updateTaskElement(task);
@@ -206,7 +209,7 @@ export default class DOMTodoList {
                     </div>
                 </form>
             </div>`;
-            
+
         if (task) {
             //this.addCheckBoxEventListener(task.getId(), newTaskForm);
         }
@@ -217,7 +220,6 @@ export default class DOMTodoList {
         // Get .task-info and .task-delete-container elements
         // Then get the first child of .task-info element and get all the children of the first child
         // Then find the child with the class .check-box
-        console.log(taskForm.children);
         const children = Array.from(taskForm.children.children[0]);
         const checkBox = children.find(child => child.classList.contains("check-box"));
         checkBox.addEventListener(("click"), () => {

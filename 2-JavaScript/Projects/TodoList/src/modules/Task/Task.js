@@ -43,7 +43,7 @@ export default class Task {
         this.completed = completed;
     }
     toggleCompleted () {
-        this.completed = !this.completed;;
+        this.completed = !this.completed;
     }
 
     toggleCompleted () {
