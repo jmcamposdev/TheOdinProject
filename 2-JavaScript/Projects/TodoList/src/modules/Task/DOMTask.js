@@ -74,9 +74,4 @@ export default class DOMTask {
             DOMTodoList.editTask(taskElement.dataset.id);
         });
     }
-
-    static updateCheckBoxElement (checkBoxElement, isChecked) {
-        checkBoxElement.dataset.isCompleted = isChecked;
-        checkBoxElement.textContent = isChecked ? "check_circle" : "radio_button_unchecked"
-    } 
 }
