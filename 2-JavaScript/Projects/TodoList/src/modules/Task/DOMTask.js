@@ -48,8 +48,9 @@ export default class DOMTask {
         taskElement.appendChild(taskInfoElement);
         taskElement.appendChild(taskDeleteContainer);
 
-        CheckBox.addToggleEventListener(taskElement.querySelector(".check-box"));
-        //DOMTask.addCheckBoxEventListener(task.getId(), taskElement); // Add the event listener to the checkbox to toggle the completed state of the task
+        const checkBox = taskElement.querySelector(".check-box");
+        CheckBox.addToggleEventListener(checkBox);
+        CheckBox.addCheckBoxCompleteEventListener(checkBox, task);
         // DOMTask.addRemoveTaskEventListener(taskElement); // Add the event listener to the delete icon to remove the task from the task list
         // DOMTask.addEditTaskEventListener(taskElement); // Add the event listener to the task element to edit the task
         return taskElement;
@@ -58,25 +59,6 @@ export default class DOMTask {
     static createDueDateElement (dueDate) {
         const formatDueDate = format(dueDate, "dd E");
         return `<p class="task-due-date">${formatDueDate}</p>`;
-    }
-
-    /**
-     *  Add the event listener to the checkbox to toggle the completed state of the task
-     * @param {Task} task 
-     * @param {HTMLElement} taskElement 
-     */
-    static addCheckBoxEventListener (id, taskElement) {
-        // Get .task-info and .task-delete-container elements
-        // Then get the first child of .task-info element and get all the children of the first child
-        // Then find the child with the class .check-box
-        const children = Array.from(taskElement.children[0].children);
-        const checkBox = children.find(child => child.classList.contains("check-box"));
-        checkBox.addEventListener(("click"), () => {
-            const task = DOMTodoList.getTask(id);
-            const checkBoxElement = taskElement.querySelector(".check-box");
-            task.toggleCompleted();
-            DOMTask.updateCheckBoxElement(checkBoxElement, task.isCompleted())
-        })
     }
 
     static addRemoveTaskEventListener (taskElement) {

@@ -1,3 +1,5 @@
+import { ta } from "date-fns/locale";
+
 export default class CheckBox {
     static createCheckBoxElement (isChecked) {
         const checkBoxElement = document.createElement("span");
@@ -9,11 +11,19 @@ export default class CheckBox {
         return checkBoxElement;
     }
     
-    static addToggleEventListener (checkBox) {
-        checkBox.addEventListener(("click"), () => {
-            const currentValue = checkBox.dataset.isCompleted;
-            log(currentValue);
+    static addToggleEventListener (checkBoxElement) {
+        checkBoxElement.addEventListener(("click"), () => {
+            const newValue = checkBoxElement.dataset.isCompleted === "true" ? false : true;
+            checkBoxElement.dataset.isCompleted = newValue;
+            checkBoxElement.textContent = newValue ? "check_circle" : "radio_button_unchecked"
         })
+    }
+
+    static addCheckBoxCompleteEventListener (checkBoxElement, task) {
+        checkBoxElement.addEventListener(("click"), () => {
+            task.toggleCompleted();
+            console.log(task);
+        });
     }
 }
 
