@@ -59,7 +59,7 @@ export default class DOMTask {
         
         const removeButton = taskElement.querySelector(".delete-icon");
         RemoveButton.addRemoveTaskEventListener(removeButton, task.getId());
-        // DOMTask.addEditTaskEventListener(taskElement); // Add the event listener to the task element to edit the task
+        DOMTask.addEditTaskEventListener(taskElement.querySelector(".task-title")); // Add the event listener to the task element to edit the task
         return taskElement;
     }
 
@@ -70,7 +70,8 @@ export default class DOMTask {
 
     static addEditTaskEventListener (taskElement) {
         taskElement.addEventListener("dblclick", () => {
-            DOMTodoList.editTask(taskElement.dataset.id);
+            console.log(taskElement.parentElement.parentElement.dataset.id);
+            DOMTodoList.editTask(taskElement.parentElement.parentElement.dataset.id);
         });
     }
 }

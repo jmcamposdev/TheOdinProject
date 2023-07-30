@@ -2,6 +2,7 @@ import { parseISO, format, formatISO } from 'date-fns'
 import Task from '../Task/Task.js';
 import DOMTask from '../Task/DOMTask';
 import TodoList from './TodoList.js';
+import CheckBox from '../../assets/Task/CheckBox/checkBox.js';
 
 export default class DOMTodoList {
 
@@ -183,7 +184,7 @@ export default class DOMTodoList {
             <div class="${task ? "edit-task" : "task new-task"}">
                 <form class="new-task-form">
                     ${taskComplete != null 
-                    ? DOMTask.createCheckBoxElement(taskComplete)
+                    ? CheckBox.createCheckBoxElement(taskComplete).outerHTML
                     : ""}
                     <div class="form-inputs">
                         <input type="text" class="new-task-title" placeholder="${task ? "Title" : "New Task"}" value="${taskTitle}"  required>
@@ -205,6 +206,7 @@ export default class DOMTodoList {
                     </div>
                 </form>
             </div>`;
+            
         if (task) {
             //this.addCheckBoxEventListener(task.getId(), newTaskForm);
         }

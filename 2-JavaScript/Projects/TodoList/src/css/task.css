@@ -23,9 +23,14 @@
 
 .task-info {
     display: flex;
+    flex: auto;
     flex-direction: row;
     align-items: center;
     gap: 10px;
+}
+
+.task-title {
+    width: 70%;
 }
 
 .extra-data > p {
