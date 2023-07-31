@@ -3,6 +3,8 @@ import Task from '../Task/Task.js';
 import DOMTask from '../Task/DOMTask';
 import TodoList from './TodoList.js';
 import CheckBox from '../../assets/Task/CheckBox/checkBox.js';
+import {equalsDates } from '../../assets/GlobalFunctions/globalFunctions.js';
+import { ta } from 'date-fns/locale';
 
 export default class DOMTodoList {
 
@@ -19,12 +21,10 @@ export default class DOMTodoList {
     printAllTasks () {
         const taskList = document.querySelector('.task-list');
         taskList.innerHTML = ''; // Clear the task list
-        this.todolist.getTaskList().forEach(task => {
-            if (task.getProject() == this.activeProject) {
-                DOMTask.printTaskElement(task);
-            }
-            
-        });
+        // Filter the task list by the active project
+        const filterTask = this.todolist.getTaskList().filter(task => task.getProject() == this.activeProject)
+        // Print the task list
+        filterTask.forEach(task => DOMTask.printTaskElement(task));
         this.printAddTaskElement(); // Create the add task element
     }
 
@@ -111,11 +111,13 @@ export default class DOMTodoList {
             const title = document.querySelector('.new-task-title').value;
             const description = document.querySelector('.new-task-notes').value;
             const completed = document.querySelector('.check-box').dataset.isCompleted == 'true' ? true : false;
+            const tags = document.querySelector('.new-task-tags').value.split(',');
+
             let dueDate = parseISO(document.querySelector('.new-task-due-date').value);
             if (dueDate == 'Invalid Date') {
                 dueDate = null;
             }
-            const tags = document.querySelector('.new-task-tags').value.split(',');
+            
             const task = this.getTask(taskID);
 
             // Update the task with the new values
@@ -304,8 +306,21 @@ export default class DOMTodoList {
                 dueDate = null;
             }
             const tags = document.querySelector('.new-task-tags').value.split(',');
-            const newTask = new Task(title, description, dueDate, false, this.activeProject, tags);
-            this.addTask(newTask);
+            let taskProject = this.activeProject;
+
+            // If the task is due today and the active project is inbox, set the task project to today
+            const currentDate = new Date();
+            if (this.activeProject == "inbox" && equalsDates(dueDate, currentDate)) {
+                taskProject = "today";
+            } 
+            // Create the task
+            const newTask = new Task(title, description, dueDate, false, taskProject, tags);
+
+            if (taskProject == this.activeProject) { // If the task project is the active project, add the task to the active project
+                this.addTask(newTask);
+            } else { // If the task project is not the active project add the task to the array but don't add it to the DOM
+                this.todolist.insertTask(newTask);
+            }
             this.closeAddTaskForm();
         });
     }
