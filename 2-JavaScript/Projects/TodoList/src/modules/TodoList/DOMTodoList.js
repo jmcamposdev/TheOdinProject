@@ -3,7 +3,7 @@ import Task from '../Task/Task.js';
 import DOMTask from '../Task/DOMTask';
 import TodoList from './TodoList.js';
 import CheckBox from '../../assets/Task/CheckBox/checkBox.js';
-import {equalsDates, inSameWeek } from '../../assets/GlobalFunctions/globalFunctions.js';
+import {isToday, inSameWeek } from '../../assets/GlobalFunctions/globalFunctions.js';
 import createHiddenPopup from '../../assets/Popups/hiddenPopup.js';
 
 export default class DOMTodoList {
@@ -309,12 +309,16 @@ export default class DOMTodoList {
             let taskProject = this.activeProject;
 
             // If the task is due today and the active project is inbox, set the task project to today
-            const currentDate = new Date();
-            if (this.activeProject == "inbox" && equalsDates(dueDate, currentDate)) {
-                taskProject = "today";
-            } else if (inSameWeek(dueDate, currentDate)) { // If the task is due this week and the active project is inbox, set the task project to this wee
-                taskProject = "week";
+            if (dueDate) {
+                if (isToday(dueDate) && (this.activeProject == 'inbox' || this.activeProject == 'week')) {
+                    taskProject = 'today';
+                } else if (inSameWeek(dueDate) && (this.activeProject == 'inbox' || this.activeProject == "today") && !isToday(dueDate)) { // If the task is due this week and the active project is inbox, set the task project to week
+                    taskProject = 'week';    
+                }
+            } else {
+                taskProject = 'inbox';
             }
+            
 
             // Create the task
             const newTask = new Task(title, description, dueDate, false, taskProject, tags);
