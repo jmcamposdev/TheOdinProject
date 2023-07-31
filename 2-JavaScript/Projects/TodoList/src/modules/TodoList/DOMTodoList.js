@@ -3,8 +3,7 @@ import Task from '../Task/Task.js';
 import DOMTask from '../Task/DOMTask';
 import TodoList from './TodoList.js';
 import CheckBox from '../../assets/Task/CheckBox/checkBox.js';
-import {equalsDates } from '../../assets/GlobalFunctions/globalFunctions.js';
-import { ta } from 'date-fns/locale';
+import {equalsDates, inSameWeek } from '../../assets/GlobalFunctions/globalFunctions.js';
 
 export default class DOMTodoList {
 
@@ -312,7 +311,10 @@ export default class DOMTodoList {
             const currentDate = new Date();
             if (this.activeProject == "inbox" && equalsDates(dueDate, currentDate)) {
                 taskProject = "today";
-            } 
+            } else if (inSameWeek(dueDate, currentDate)) { // If the task is due this week and the active project is inbox, set the task project to this wee
+                taskProject = "week";
+            }
+            
             // Create the task
             const newTask = new Task(title, description, dueDate, false, taskProject, tags);
 
