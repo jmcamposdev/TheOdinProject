@@ -1,0 +1,81 @@
+.popup {
+    border-radius: 10px;
+    padding: 10px 0;
+    background-color: var(--secondary);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-task-project {
+    margin: 0 5px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-align: center;
+    background-color: var(--primary);
+    background-image: linear-gradient( 147deg, var(--primary) 0%, var(--accent) 40%, var(--primary) 100% );
+    background-size: 200% auto;
+    animation: shine 3s linear infinite;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.face-in {
+    animation: face-in .3s ease-in-out;
+}
+
+@keyframes face-in {
+    from {
+        transform: translateX(200px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.face-out {
+    animation: face-out .3s ease-in-out;
+}
+
+@keyframes face-out {
+    form {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(200px);
+        opacity: 0;
+    }
+}
+
+.grow-up {
+    animation: grow-up .2s ease-in-out;
+    height: 60px;
+}
+
+@keyframes grow-up {
+    from {
+        height: 0;
+    }
+    to {
+        height: 60px;
+    }
+}
+
+.grow-down {
+    animation: grow-down .3s ease-in-out;
+}
+
+@keyframes grow-down {
+    from {
+        height: 60px;
+    }
+    to {
+        height: 0px;
+    }
+}
