@@ -144,10 +144,13 @@ export default class DOMTodoList {
         const projectsButtonsArray = Array.from(projectsButtonsElements)
         projectsButtonsArray.forEach(button => {
             button.addEventListener("click", () => {
-                projectTitleElement.innerHTML = button.dataset.projectType;
-                const projectType = button.dataset.projectType;
-                this.activeProject = projectType;
-                this.printAllTasks();
+                projectsButtonsArray.forEach(button => button.classList.remove("active")); // Remove the active class from all the buttons
+                button.classList.add("active"); // Add the active class to the clicked button
+
+                projectTitleElement.innerHTML = button.dataset.projectType; // Change the project title
+                const projectType = button.dataset.projectType; // Get the project type
+                this.activeProject = projectType; // Set the active project
+                this.printAllTasks(); // Print all the tasks in the task list
             })
         });
     }

@@ -1,5 +1,6 @@
 #main {
     display: flex;
+    margin: 0 25px;
 }
 
 #nav {
@@ -10,6 +11,7 @@
 #nav .actions-list {
     display: flex;
     flex-direction: column;
+    gap: 10px;
 }
 
 #nav .actions-list button {
@@ -19,11 +21,17 @@
     gap: 10px;
     background-color: transparent;
     border: none;
+    border-radius: 10px;
     padding: 15px 0;
     font-size: 20px;
     font-weight: 600;
     transition: background-color 0.2s ease-in-out;
     cursor: pointer;
+}
+
+#nav .actions-list button.active {
+    background-color: var(--secondary);
+    color: var(--accent);
 }
 
 #nav .actions-list button:hover {
@@ -33,6 +41,8 @@
 #nav .actions-list button:active,  #nav .actions-list button:focus {
     color: var(--accent);
 }
+
+
 
 #nav .actions-list button span {
     color: var(--accent);
