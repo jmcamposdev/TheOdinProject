@@ -1,4 +1,4 @@
-import { parseISO, format, formatISO } from 'date-fns'
+import { parseISO, formatISO, endOfWeek, startOfWeek } from 'date-fns'
 import Task from '../Task/Task.js';
 import DOMTask from '../Task/DOMTask';
 import TodoList from './TodoList.js';
@@ -177,8 +177,18 @@ export default class DOMTodoList {
         let taskTitle = "";
         let taskNotes = "";
         let taskDueDate = "";
+        let firstDateOfWeek = "";
+        let lastDateOfWeek = "";
         let taskTags = "";
         let taskComplete = null;
+
+        // If the active project is today, set the due date to today
+        if (this.activeProject == 'today') {
+            taskDueDate = formatISO(new Date(), {representation: 'date'});
+        } else if (this.activeProject == 'week') { // If the active project is week, set the max due date to the end of the week
+            firstDateOfWeek = formatISO(startOfWeek(new Date(), {weekStartsOn: 1}), {representation: 'date'});
+            lastDateOfWeek =  formatISO(endOfWeek(new Date(), {weekStartsOn: 1}), {representation: 'date'});;
+        }
 
         if (task) {
             taskTitle = task.getTitle();
@@ -202,7 +212,7 @@ export default class DOMTodoList {
                         <div class="optional-data">
                             <div class="due-date-container">
                                 <span class="due-date-icon material-symbols-outlined">flag</span>
-                                <input type="date" class="new-task-due-date" value="${taskDueDate}">
+                                <input type="date" class="new-task-due-date" value="${taskDueDate}" min=${firstDateOfWeek} max="${lastDateOfWeek}">
                             </div>
                             <div class="tags-container">
                             <span class="tag-icon material-symbols-outlined">sell</span>
