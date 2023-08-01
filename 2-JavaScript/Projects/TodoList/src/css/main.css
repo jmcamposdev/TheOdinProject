@@ -49,3 +49,7 @@
     font-weight: 600;
     margin-bottom: 20px;
 }
+
+.project-preview .project-title::first-letter {
+    text-transform: uppercase;
+}

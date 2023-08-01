@@ -139,10 +139,12 @@ export default class DOMTodoList {
      */
 
     createProjectsEvents () {
+        const projectTitleElement = document.querySelector('.project-title');
         const projectsButtonsElements = document.querySelectorAll(".actions-list button");
         const projectsButtonsArray = Array.from(projectsButtonsElements)
         projectsButtonsArray.forEach(button => {
             button.addEventListener("click", () => {
+                projectTitleElement.innerHTML = button.dataset.projectType;
                 const projectType = button.dataset.projectType;
                 this.activeProject = projectType;
                 this.printAllTasks();
