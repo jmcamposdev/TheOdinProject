@@ -3,8 +3,10 @@ import "./css/header.css"
 import "./css/main.css"
 import "./css/task.css"
 import "./css/popup.css"
+import "./css/projects.css"
 import Task from "./modules/Task/Task";
 import DOMTodoListClass from "./modules/TodoList/DOMTodoList"
+import { printAddProjectsElement } from "./modules/Project/DOMProjects";
 
 const DOMTodoList = new DOMTodoListClass();
 function init()  {
@@ -12,6 +14,7 @@ function init()  {
     DOMTodoList.addTask(new Task('Task 4', 'This is the fourth task', new Date(2021, 0, 3, 0, 0, 0, 0), false, 'inbox', "Outdoors"));
     DOMTodoList.printAllTasks();
     DOMTodoList.createProjectsEvents();
+    printAddProjectsElement();
 }
 
 init();

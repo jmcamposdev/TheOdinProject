@@ -1,0 +1,26 @@
+.create-new-project-container {
+    background-color: var(--secondary);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.projects-list-title {
+    margin-bottom: 20px;
+}
+
+.new-project-form {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+.create-project-button {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    background-color: transparent;
+    border: none;
+    text-align: left    ;
+}
