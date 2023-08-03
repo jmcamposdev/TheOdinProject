@@ -25,6 +25,10 @@ export default class TodoList {
         }
     }
 
+    removeAllTasksByProject (project) {
+        this.taskList = this.taskList.filter(task => task.project != project);
+    }
+
     updateTask (task) {
         const index = this.taskList.findIndex(task => task.id == task.id);
         if (index > -1) {

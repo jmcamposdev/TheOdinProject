@@ -14,7 +14,7 @@
     gap: 10px;
 }
 
-#nav .actions-list button {
+.actions-list button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -43,8 +43,7 @@
 }
 
 
-
-#nav .actions-list button span {
+.actions-list button span {
     color: var(--accent);
 }
 

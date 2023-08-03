@@ -5,7 +5,6 @@ import TodoList from './TodoList.js';
 import CheckBox from '../../assets/Task/CheckBox/checkBox.js';
 import {isToday, inSameWeek } from '../../assets/GlobalFunctions/globalFunctions.js';
 import createHiddenPopup from '../../assets/Popups/hiddenPopup.js';
-import { el, ta, th } from 'date-fns/locale';
 
 export default class DOMTodoList {
 
@@ -46,6 +45,10 @@ export default class DOMTodoList {
         this.todolist.removeTask(id);
         const taskElement = document.querySelector(`[data-id="${id}"]`);
         taskElement.remove();
+    }
+
+    removeAllTasksByProject (project) {
+        this.todolist.removeAllTasksByProject(project);
     }
 
     editTask (id) {
@@ -140,20 +143,27 @@ export default class DOMTodoList {
      */
 
     createProjectsEvents () {
-        const projectTitleElement = document.querySelector('.project-title');
         const projectsButtonsElements = document.querySelectorAll(".actions-list button");
         const projectsButtonsArray = Array.from(projectsButtonsElements)
+        console.log(projectsButtonsArray);
         projectsButtonsArray.forEach(button => {
-            button.addEventListener("click", () => {
-                projectsButtonsArray.forEach(button => button.classList.remove("active")); // Remove the active class from all the buttons
-                button.classList.add("active"); // Add the active class to the clicked button
-
-                projectTitleElement.innerHTML = button.dataset.projectType; // Change the project title
-                const projectType = button.dataset.projectType; // Get the project type
-                this.activeProject = projectType; // Set the active project
-                this.printAllTasks(); // Print all the tasks in the task list
-            })
+            button.addEventListener("click", () => this.selectProjectButtonActive(button.dataset.projectType))
         });
+    }
+
+    selectProjectButtonActive (projectName)  {
+        const projectsButtonsElements = document.querySelectorAll(".actions-list button");
+        const projectsButtonsArray = Array.from(projectsButtonsElements)
+
+        const currentProjectButton = projectsButtonsArray.find(button => button.dataset.projectType == projectName);
+        const projectTitleElement = document.querySelector('.project-title');
+        projectsButtonsArray.forEach(button => button.classList.remove("active")); // Remove the active class from all the buttons
+        currentProjectButton.classList.add("active"); // Add the active class to the clicked button
+
+        projectTitleElement.innerHTML = projectName; // Change the project title
+        const projectType = projectName; // Get the project type
+        this.activeProject = projectType; // Set the active project
+        this.printAllTasks(); // Print all the tasks in the task list
     }
 
 
@@ -324,7 +334,6 @@ export default class DOMTodoList {
             const tags = document.querySelector('.new-task-tags').value.split(',');
             let taskProject = this.activeProject;
 
-            console.log(this.activeProject);
             // If the task is due today and the active project is inbox, set the task project to today
             if (this.activeProject == 'inbox' || this.activeProject == 'week' || this.activeProject == 'today') {
                 if (dueDate == null) {
@@ -384,4 +393,14 @@ export default class DOMTodoList {
         }
         
     }
+
+    removeProject (project) {
+        const projectButton = document.querySelector(`button[data-project-type="${project}"]`);
+        projectButton.removeEventListener("click", () => this.selectProjectButtonActive(button.dataset.projectType))
+        console.log(projectButton);
+        projectButton.remove();
+        this.removeAllTasksByProject(project);
+        this.createProjectsEvents()
+    }
 }
+

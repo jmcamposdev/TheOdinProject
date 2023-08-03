@@ -8,10 +8,40 @@
     margin-bottom: 20px;
 }
 
+.actions-list .project-button {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 15px
+}
+
+.actions-list .project-button:hover .project-delete-icon {
+    opacity: 1;
+}
+
+
 .projects-actions-list {
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+.project-information {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.actions-list  .project-delete-icon {
+    color: black;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
+}
+
+.actions-list  .project-delete-icon:hover {
+    transform: scale(1.2);
 }
 
 .new-project-form {
