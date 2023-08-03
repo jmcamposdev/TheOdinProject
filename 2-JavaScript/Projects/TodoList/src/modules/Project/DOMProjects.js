@@ -1,5 +1,16 @@
 const projectFormContainer = document.querySelector('.create-new-project-container');
 
+function printNewProject (projectTitle) {
+    const projectButtonContainer = document.querySelector('.projects-actions-list .actions-list');
+    const projectButton = document.createElement('button');
+    projectButton.setAttribute('data-project-type', projectTitle.toLowerCase());
+    projectButton.classList.add('project-button');
+    const icon = `<span class="material-symbols-outlined">
+                    workspaces
+                </span>`
+    projectButton.innerHTML = icon + projectTitle;
+    projectButtonContainer.appendChild(projectButton);
+}
 
 function printAddProjectsElement () {
     const createProjectButton = document.createElement('button');
@@ -16,6 +27,7 @@ function createProjectsEvent(createProjectButton) {
     createProjectButton.addEventListener('click', () => {
         projectFormContainer.innerHTML = '';
         projectFormContainer.appendChild(createNewProjectForm());
+        createNewProjectSubmitEvent(projectFormContainer.querySelector('.new-project-form'));
         createNewProjectCloseEvent(projectFormContainer);
     });
 }
@@ -39,6 +51,17 @@ function createNewProjectCloseEvent (projectForm) {
     closeEditTaskForm.addEventListener('click', () => {
         projectFormContainer.innerHTML = '';
         printAddProjectsElement();
+    });
+}
+
+function createNewProjectSubmitEvent (projectForm) {
+    projectForm.addEventListener('submit', (e) => {
+        e.preventDefault(); // Prevents the page from reloading
+        const newProjectTitle = projectForm.querySelector('.new-task-title').value;
+        if (newProjectTitle){
+            printNewProject(newProjectTitle); 
+        } 
+        
     });
 }
 
