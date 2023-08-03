@@ -1,3 +1,4 @@
+import DOMTodoList from "../../index.js"
 const projectFormContainer = document.querySelector('.create-new-project-container');
 
 function printNewProject (projectTitle) {
@@ -10,6 +11,8 @@ function printNewProject (projectTitle) {
                 </span>`
     projectButton.innerHTML = icon + projectTitle;
     projectButtonContainer.appendChild(projectButton);
+
+    DOMTodoList.createProjectsEvents();
 }
 
 function printAddProjectsElement () {

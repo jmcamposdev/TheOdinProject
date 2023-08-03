@@ -8,6 +8,12 @@
     margin-bottom: 20px;
 }
 
+.projects-actions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .new-project-form {
     display: flex;
     width: 100%;
