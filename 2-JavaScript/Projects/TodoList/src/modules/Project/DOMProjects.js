@@ -1,3 +1,4 @@
+import createHiddenPopup from "../../assets/Popups/hiddenPopup.js";
 import DOMTodoList from "../../index.js"
 const projectFormContainer = document.querySelector('.create-new-project-container');
 
@@ -88,15 +89,40 @@ function createNewProjectCloseEvent (projectForm) {
     });
 }
 
+
 function createNewProjectSubmitEvent (projectForm) {
     projectForm.addEventListener('submit', (e) => {
         e.preventDefault(); // Prevents the page from reloading
-        const newProjectTitle = projectForm.querySelector('.new-task-title').value;
-        if (newProjectTitle){
+        const newProjectTitle = projectForm.querySelector('.new-task-title').value.trim();
+        let errorMessage = '';
+        let isCorrect = true;
+        if (!newProjectTitle){
+            errorMessage = 'Project name is required';
+            isCorrect = false;
+        } else if (existProject(newProjectTitle)) {
+            errorMessage = `ERROR: Project <span class="popup-task-project">${newProjectTitle}</span> already exist`;
+            isCorrect = false;
+        }
+
+        if (isCorrect) {
             printNewProject(newProjectTitle); 
-        } 
+            createHiddenPopup(`Project <span class="popup-task-project">${newProjectTitle}</span> created successfully`);
+        } else {
+            createHiddenPopup(errorMessage);
+        }
         
     });
+}
+
+function existProject (projectName) {
+    const projectButtons = document.querySelectorAll('.project-button');
+    let exist = false;
+    projectButtons.forEach(projectButton => {
+        if (projectButton.getAttribute('data-project-type') === projectName.toLowerCase()) {
+            exist = true;
+        }
+    });
+    return exist;
 }
 
 export { printAddProjectsElement };
