@@ -1,4 +1,6 @@
 function createHiddenPopup (message, time = 4000) {
+    if (existsHiddenPopup()) return
+
     const popupContainer = document.querySelector(".popup-container")
     const popup = document.createElement('div')
     popup.classList.add('popup', "face-in")
@@ -18,9 +20,17 @@ function createHiddenPopup (message, time = 4000) {
         popupContainer.addEventListener('animationend', () => {
             popupContainer.classList.remove("grow-down")
         });
-
-
     }, time)
+}
+
+function existsHiddenPopup () {
+    const popupContainer = document.querySelector(".popup-container")
+    return popupContainer.children.length > 0
+}
+
+function removeHiddenPopup () {
+    const popupContainer = document.querySelector(".popup-container")
+    popupContainer.innerHTML = ''
 }
 
 export default createHiddenPopup
