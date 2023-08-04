@@ -43,7 +43,7 @@ function printNewProject (projectTitle) {
 
 function createDeleteProjectEvent (projectName, projectDeleteButton) {
     projectDeleteButton.addEventListener('click', () => {
-        DOMTodoList.removeProject(projectName);
+        DOMTodoList.removeProject(projectName.toLowerCase());
     });
 }
 
