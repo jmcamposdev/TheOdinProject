@@ -60,6 +60,7 @@ function printAddProjectsElement () {
 
 function createProjectsEvent(createProjectButton) {
     createProjectButton.addEventListener('click', () => {
+        DOMTodoList.closeAllForms();
         projectFormContainer.innerHTML = '';
         projectFormContainer.appendChild(createNewProjectForm());
         createNewProjectSubmitEvent(projectFormContainer.querySelector('.new-project-form'));
@@ -92,6 +93,7 @@ function closeNewProjectForm () {
     projectFormContainer.innerHTML = ''; // Clear the form
     printAddProjectsElement(); // Print the add project button
 }
+
 
 
 function createNewProjectSubmitEvent (projectForm) {
@@ -130,4 +132,4 @@ function existProject (projectName) {
     return exist;
 }
 
-export { printAddProjectsElement };
+export { printAddProjectsElement, closeNewProjectForm };

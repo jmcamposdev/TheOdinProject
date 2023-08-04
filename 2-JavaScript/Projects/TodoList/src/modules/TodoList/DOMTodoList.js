@@ -5,6 +5,9 @@ import TodoList from './TodoList.js';
 import CheckBox from '../../assets/Task/CheckBox/checkBox.js';
 import {isToday, inSameWeek } from '../../assets/GlobalFunctions/globalFunctions.js';
 import createHiddenPopup from '../../assets/Popups/hiddenPopup.js';
+import { closeNewProjectForm } from '../Project/DOMProjects.js';
+import { ta } from 'date-fns/locale';
+
 
 export default class DOMTodoList {
 
@@ -52,8 +55,10 @@ export default class DOMTodoList {
     }
 
     editTask (id) {
-        const task = this.todolist.getTask(id);
-        const taskElement = document.querySelector(`[data-id="${id}"]`);
+        const task = this.todolist.getTask(id); // Get the task
+        const taskElement = document.querySelector(`[data-id="${id}"]`); // Get the task element
+        this.closeAllForms(); // Close all forms
+        
         taskElement.innerHTML = this.createTaskForm(task);
         this.createEditTaskEvents(id, taskElement);
     }
@@ -105,6 +110,16 @@ export default class DOMTodoList {
             const task = this.getTask(taskID);
             this.updateTaskElement(task);
         });
+    }
+
+    closeEditTaskForm () {
+        const editTaskForm = document.querySelector('.edit-task ');
+        if (editTaskForm) {
+            const taskID = editTaskForm.parentElement.dataset.id;
+            const task = this.getTask(taskID);
+            this.updateTaskElement(task);
+        }
+        
     }
 
     createEditTaskSubmitEvent (taskID) {
@@ -237,9 +252,6 @@ export default class DOMTodoList {
                 </form>
             </div>`;
 
-        if (task) {
-            //this.addCheckBoxEventListener(task.getId(), newTaskForm);
-        }
         return newTaskForm;
     }
 
@@ -283,6 +295,7 @@ export default class DOMTodoList {
         // Add the event listener to the new task element
         const addTaskElement = document.querySelector('.new-task');
         addTaskElement.addEventListener('click', () => {
+            this.closeAllForms() // Close all the forms
             this.printAddTaskForm(); // Show the add task form
             this.createAddTaskFormCloseEvent(); // Add the event listener to the close button
             this.createAddTaskSubmitEvent(); // Add the event listener to the submit button
@@ -293,7 +306,7 @@ export default class DOMTodoList {
     /**
      * Show the add task form
      * This form is used to create new tasks
-     */
+     */ 
     printAddTaskForm () {
         const newTask = document.querySelector('.new-task');
         newTask.classList.add('new-task-form');
@@ -401,6 +414,12 @@ export default class DOMTodoList {
         this.createProjectsEvents()
         this.selectProjectButtonActive('inbox');
         createHiddenPopup(`Project <span class="popup-task-project">${project}</span> deleted successfully`);
+    }
+
+    closeAllForms ()  {
+        closeNewProjectForm();
+        this.closeAddTaskForm()
+        this.closeEditTaskForm()
     }
 }
 
