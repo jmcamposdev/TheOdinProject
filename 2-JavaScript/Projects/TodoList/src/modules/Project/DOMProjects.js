@@ -84,9 +84,13 @@ function createNewProjectForm()  {
 function createNewProjectCloseEvent (projectForm) {
     const closeEditTaskForm = projectForm.querySelector('.close-new-task-form');
     closeEditTaskForm.addEventListener('click', () => {
-        projectFormContainer.innerHTML = '';
-        printAddProjectsElement();
+        closeNewProjectForm();
     });
+}
+
+function closeNewProjectForm () { 
+    projectFormContainer.innerHTML = ''; // Clear the form
+    printAddProjectsElement(); // Print the add project button
 }
 
 
@@ -107,6 +111,7 @@ function createNewProjectSubmitEvent (projectForm) {
         if (isCorrect) {
             printNewProject(newProjectTitle); 
             createHiddenPopup(`Project <span class="popup-task-project">${newProjectTitle}</span> created successfully`);
+            closeNewProjectForm();
         } else {
             createHiddenPopup(errorMessage);
         }
