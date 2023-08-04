@@ -4,26 +4,37 @@ const projectFormContainer = document.querySelector('.create-new-project-contain
 function printNewProject (projectTitle) {
     const projectButtonContainer = document.querySelector('.projects-actions-list .actions-list');
 
+    const projectContainer = document.createElement('div');
+    projectContainer.classList.add('project-container');
+
     const projectButton = document.createElement('button');
     projectButton.setAttribute('data-project-type', projectTitle.toLowerCase());
     projectButton.classList.add('project-button');
 
     const projectInformation = document.createElement('div');
     projectInformation.classList.add('project-information');
+
     const icon = `<span class="material-symbols-outlined">
                     workspaces
                 </span>`
     projectInformation.innerHTML = icon + projectTitle;
 
+
+    const deleteIconContainer = document.createElement('div');
+    deleteIconContainer.classList.add('delete-icon-container');
+
     const deleteIcon = document.createElement('span'); 
     deleteIcon.classList.add('project-delete-icon', "material-symbols-outlined");
     deleteIcon.textContent = 'delete';
 
+    deleteIconContainer.appendChild(deleteIcon);
+
     projectButton.appendChild(projectInformation);
-    projectButton.appendChild(deleteIcon);
 
+    projectContainer.appendChild(projectButton);
+    projectContainer.appendChild(deleteIconContainer);
 
-    projectButtonContainer.appendChild(projectButton);
+    projectButtonContainer.appendChild(projectContainer);
 
     createDeleteProjectEvent(projectTitle, deleteIcon);
     DOMTodoList.createProjectsEvents();

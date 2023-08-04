@@ -26,6 +26,12 @@
     gap: 10px;
 }
 
+
+.project-container {
+    display: flex;
+    gap: 10px;
+}
+
 .project-information {
     display: flex;
     gap: 10px;
@@ -36,8 +42,13 @@
 .actions-list  .project-delete-icon {
     color: black;
     cursor: pointer;
-    opacity: 0;
     transition: all 0.2s ease-in-out;
+}
+
+.delete-icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .actions-list  .project-delete-icon:hover {

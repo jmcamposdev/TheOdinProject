@@ -145,7 +145,6 @@ export default class DOMTodoList {
     createProjectsEvents () {
         const projectsButtonsElements = document.querySelectorAll(".actions-list button");
         const projectsButtonsArray = Array.from(projectsButtonsElements)
-        console.log(projectsButtonsArray);
         projectsButtonsArray.forEach(button => {
             button.addEventListener("click", () => this.selectProjectButtonActive(button.dataset.projectType))
         });
@@ -395,12 +394,12 @@ export default class DOMTodoList {
     }
 
     removeProject (project) {
-        const projectButton = document.querySelector(`button[data-project-type="${project}"]`);
+        const projectButton = document.querySelector(`button[data-project-type="${project}"]`).parentElement;
         projectButton.removeEventListener("click", () => this.selectProjectButtonActive(button.dataset.projectType))
-        console.log(projectButton);
         projectButton.remove();
         this.removeAllTasksByProject(project);
         this.createProjectsEvents()
+        this.selectProjectButtonActive('inbox');
     }
 }
 
