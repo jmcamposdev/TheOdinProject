@@ -400,6 +400,7 @@ export default class DOMTodoList {
         this.removeAllTasksByProject(project);
         this.createProjectsEvents()
         this.selectProjectButtonActive('inbox');
+        createHiddenPopup(`Project <span class="popup-task-project">${project}</span> deleted successfully`);
     }
 }
 
