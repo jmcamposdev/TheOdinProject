@@ -172,6 +172,7 @@
 .new-task-due-date, .new-task-tags {
     display: none;
     position: relative; 
+    width: 100px;
 }
 
 .new-task-due-date::-webkit-calendar-picker-indicator{
@@ -192,7 +193,6 @@
 }
 .active-form input {
     display: flex;
-    width: 100%;
 }
 
 /**
