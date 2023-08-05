@@ -170,10 +170,8 @@
 
 /* Date Input Style */
 .new-task-due-date, .new-task-tags {
-    /*display: none;
-    position: relative;*/
-    width: 50px;
-    height: 50px;
+    display: none;
+    position: relative; 
 }
 
 .new-task-due-date::-webkit-calendar-picker-indicator{
@@ -194,7 +192,7 @@
 }
 .active-form input {
     display: flex;
-    width: 100px;
+    width: 100%;
 }
 
 /**
