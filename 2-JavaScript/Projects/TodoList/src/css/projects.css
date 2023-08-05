@@ -71,3 +71,7 @@
     border: none;
     text-align: left    ;
 }
+
+.create-project-button .material-symbols-outlined, .create-project-button .task-title {
+    color: black;
+}
