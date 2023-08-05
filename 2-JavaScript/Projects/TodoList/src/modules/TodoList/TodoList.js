@@ -18,11 +18,8 @@ export default class TodoList {
         return this.taskList.find(task => task.id == id);
     }
 
-    removeTask (task) {
-        const index = this.taskList.indexOf(task);
-        if (index > -1) {
-            this.taskList.splice(index, 1);
-        }
+    removeTask (id) {
+        this.taskList = this.taskList.filter(t => t.id != id);
     }
 
     removeAllTasksByProject (project) {
