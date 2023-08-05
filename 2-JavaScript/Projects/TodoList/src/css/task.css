@@ -112,6 +112,7 @@
 }
 
 .new-task-submit > span {
+    color: black;
     background-color: var(--primary);
     border-radius: 15px;
 }
@@ -223,6 +224,7 @@
 
 .task:has(.edit-task) .new-task-submit span  {
     animation: none;
+    color: black;
 }
 
 @media screen and (max-width: 768px) {
