@@ -4,9 +4,11 @@ import "./css/main.css"
 import "./css/task.css"
 import "./css/popup.css"
 import "./css/projects.css"
+import "./css/hamburger.css"
 import Task from "./modules/Task/Task";
 import DOMTodoListClass from "./modules/TodoList/DOMTodoList"
 import { printAddProjectsElement } from "./modules/Project/DOMProjects";
+import { createHamburgerNavEvent } from "./assets/Hamburger/hamburgerNav"
 
 const DOMTodoList = new DOMTodoListClass();
 function init()  {
@@ -15,6 +17,7 @@ function init()  {
     DOMTodoList.printAllTasks();
     DOMTodoList.createProjectsEvents();
     printAddProjectsElement();
+    createHamburgerNavEvent();
 }
 
 init();

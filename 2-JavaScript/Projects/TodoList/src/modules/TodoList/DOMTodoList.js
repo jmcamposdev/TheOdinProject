@@ -7,6 +7,7 @@ import {isToday, inSameWeek } from '../../assets/GlobalFunctions/globalFunctions
 import createHiddenPopup from '../../assets/Popups/hiddenPopup.js';
 import { closeNewProjectForm } from '../Project/DOMProjects.js';
 import { ta } from 'date-fns/locale';
+import { closeHamburgerNav } from '../../assets/Hamburger/hamburgerNav.js';
 
 
 export default class DOMTodoList {
@@ -166,6 +167,8 @@ export default class DOMTodoList {
     }
 
     selectProjectButtonActive (projectName)  {
+        closeHamburgerNav();
+        
         const projectsButtonsElements = document.querySelectorAll(".actions-list button");
         const projectsButtonsArray = Array.from(projectsButtonsElements)
 

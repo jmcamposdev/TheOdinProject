@@ -9,31 +9,38 @@
 <body>
     <header class="header">
         <h1 class="title">Don't Remember</h1>
+        <button class="hamburger hamburger--spin" type="button">
+            <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+            </span>
+        </button> 
     </header>
     <main id="main">
         <nav id="nav">
-            <div class="actions-list">
-                <button data-project-type="inbox" id="inbox-button" class="active">
-                    <span class="material-symbols-outlined">Inbox</span>
-                    Inbox
-                </button>
-                <button data-project-type="today" id="today-button">
-                    <span class="material-symbols-outlined">today</span>
-                    Today
-                </button>
-                <button data-project-type="week" id="week-button">
-                    <span class="material-symbols-outlined">date_range</span>
-                    Week
-                </button>
-            </div>
-
-            <h2 class="projects-list-title">Projects</h2>
-            <div class="projects-actions-list">
+            <div class="nav-links-wrapper">
                 <div class="actions-list">
-
+                    <button data-project-type="inbox" id="inbox-button" class="active">
+                        <span class="material-symbols-outlined">Inbox</span>
+                        Inbox
+                    </button>
+                    <button data-project-type="today" id="today-button">
+                        <span class="material-symbols-outlined">today</span>
+                        Today
+                    </button>
+                    <button data-project-type="week" id="week-button">
+                        <span class="material-symbols-outlined">date_range</span>
+                        Week
+                    </button>
                 </div>
-                <div class="create-new-project-container">
-
+    
+                <h2 class="projects-list-title">Projects</h2>
+                <div class="projects-actions-list">
+                    <div class="actions-list">
+    
+                    </div>
+                    <div class="create-new-project-container">
+    
+                    </div>
                 </div>
             </div>
         </nav>

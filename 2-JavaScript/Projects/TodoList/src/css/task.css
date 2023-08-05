@@ -219,3 +219,9 @@
 .task:has(.edit-task) .new-task-submit span  {
     animation: none;
 }
+
+@media screen and (max-width: 768px) {
+    .task-list {
+        height: auto;
+    }
+}

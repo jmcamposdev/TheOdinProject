@@ -70,11 +70,35 @@
     }
 
     #nav {
-        min-width: 100%;
+        display: grid;
+        grid-template-rows: 0fr;
+        padding: 0;
+        transition: grid-template-rows 500ms;
+        background-color: #ebf4d8;
+        transition: all 0.5s ease-in-out;
+    }
+
+    .nav-links-wrapper {
+        overflow: hidden;
+    }
+
+    #nav.active {
+        grid-template-rows: 1fr;
         padding: 25px 0;
     }
 
+    @keyframes navAnimation {
+        from {
+            max-height: 0;
+        }
+
+        to {
+            max-height: 200px;
+        }
+    }
+
     .project-preview {
-        padding: 40px 25px;
+        padding: 40px 15px 80px 15px;
+        height: auto;
     }
 }

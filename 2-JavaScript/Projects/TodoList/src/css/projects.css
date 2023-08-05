@@ -29,6 +29,7 @@
 
 .project-container {
     display: flex;
+    padding: 0 15px;
     gap: 10px;
 }
 
