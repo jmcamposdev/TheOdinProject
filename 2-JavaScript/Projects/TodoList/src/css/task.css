@@ -174,7 +174,6 @@
     position: relative;
 }
 
-/*
 .new-task-due-date::-webkit-calendar-picker-indicator{
     background: transparent;
     bottom: 0;
@@ -187,13 +186,13 @@
     top: 0;
     width: auto;
 }
-*/
 
 .active-form {
     background-color: #0000001f;
 }
 .active-form input {
     display: flex;
+    width: 100%;
 }
 
 /**
