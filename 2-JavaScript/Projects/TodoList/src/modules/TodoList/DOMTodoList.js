@@ -240,7 +240,7 @@ export default class DOMTodoList {
                         <div class="optional-data">
                             <div class="due-date-container">
                                 <span class="due-date-icon material-symbols-outlined">flag</span>
-                                <input type="date" class="" value="${taskDueDate}" min="${firstDateOfWeek}" max="${lastDateOfWeek}">
+                                <input type="date" class="new-task-due-date" value="${taskDueDate}" min="${firstDateOfWeek}" max="${lastDateOfWeek}">
                             </div>
                             <div class="tags-container">
                             <span class="tag-icon material-symbols-outlined">sell</span>
