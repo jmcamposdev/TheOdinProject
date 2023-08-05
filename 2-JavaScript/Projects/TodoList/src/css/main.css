@@ -50,7 +50,7 @@
 .project-preview {
     width: 100%;
     height: calc(100vh - 72px);
-    padding: 40px 70px;
+    padding: 40px 0px 40px 70px;
 }
 
 .project-preview .project-title {
@@ -61,4 +61,20 @@
 
 .project-preview .project-title::first-letter {
     text-transform: uppercase;
+}
+
+@media screen and (max-width: 768px) {
+    #main {
+        flex-direction: column;
+        margin: 0;
+    }
+
+    #nav {
+        min-width: 100%;
+        padding: 25px 0;
+    }
+
+    .project-preview {
+        padding: 40px 25px;
+    }
 }
