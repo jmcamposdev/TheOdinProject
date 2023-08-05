@@ -29,6 +29,10 @@
     gap: 10px;
 }
 
+.extra-data {
+    min-width: 50px;
+}
+
 .task-title {
     width: 70%;
 }
