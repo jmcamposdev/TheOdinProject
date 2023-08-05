@@ -195,7 +195,7 @@
     display: flex;
 }
 
-input[type="date"]
+.active-form input[type="date"]
 {
     display:block;
     appearance: textfield;
