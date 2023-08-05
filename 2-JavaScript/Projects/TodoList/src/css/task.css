@@ -194,6 +194,7 @@
 .active-form input {
     visibility: visible;
     display: flex;
+    min-width: 100px;
 }
 
 /**
