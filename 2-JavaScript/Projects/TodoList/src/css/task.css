@@ -170,7 +170,6 @@
 
 /* Date Input Style */
 .new-task-due-date, .new-task-tags {
-    visibility: hidden;
     display: none;
     position: relative;
 }
@@ -192,9 +191,7 @@
     background-color: #0000001f;
 }
 .active-form input {
-    visibility: visible;
     display: flex;
-    min-width: 100px;
 }
 
 /**
