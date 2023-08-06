@@ -30,11 +30,12 @@
 }
 
 .extra-data {
-    min-width: 50px;
+    display: flex;
+    gap: 10px;
 }
 
 .task-title {
-    width: 70%;
+    flex: 1;
 }
 
 .extra-data > p {
