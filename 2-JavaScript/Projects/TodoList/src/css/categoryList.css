@@ -19,10 +19,6 @@
     transition: background-color 0.2s ease-in-out;
 }
 
-.category:hover {
-    background-color: var(--secondary);
-}
-
-.category.active {
+.category.selected {
     background-color: var(--secondary);
 }
