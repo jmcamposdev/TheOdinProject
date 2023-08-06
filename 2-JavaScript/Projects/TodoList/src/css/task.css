@@ -162,9 +162,6 @@
     padding: 5px 10px;
 }
 
-.due-date-container:hover, .tags-container:hover {
-    background-color: #0000001f;
-}
 
 .optional-data span {
     font-size: 20px;
@@ -177,7 +174,6 @@
 .new-task-due-date, .new-task-tags {
     display: none;
     position: relative; 
-    width: 100px;
 }
 
 .new-task-due-date::-webkit-calendar-picker-indicator{
@@ -200,6 +196,7 @@
     display: flex;
 }
 
+/* Date Input Style when is active */
 .active-form input[type="date"]
 {
     display:block;
@@ -207,6 +204,7 @@
     -webkit-appearance: textfield;
     -moz-appearance: textfield;
     min-height: 1.2em;
+    width: 100px;
 }
 
 /**
