@@ -1,0 +1,28 @@
+.category-container {
+    margin-bottom: 25px;
+    width: calc(100vw - 50px - 300px - 70px);
+    overflow-x: auto;
+}
+.categories-list {
+    display: flex;
+    gap: 10px;
+}
+
+.category {
+    cursor: pointer;
+    list-style-type: none;
+    font-weight: bold;
+    font-size: 15px;
+    background-color: #0000001f;
+    padding: 5px 15px;
+    border-radius: 25px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.category:hover {
+    background-color: var(--secondary);
+}
+
+.category.active {
+    background-color: var(--secondary);
+}

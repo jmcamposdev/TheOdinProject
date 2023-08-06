@@ -1,4 +1,4 @@
-function printCategoriesList(tasks) {
+function printCategoryList(tasks) {
     const categoriesContainer = document.querySelector('.category-container');
     categoriesContainer.innerHTML = '';
     const categoriesList = document.createElement('ul');
@@ -32,4 +32,4 @@ function getCategories(tasks) {
     return categories;
 }
 
-export default printCategoriesList;
+export default printCategoryList;
