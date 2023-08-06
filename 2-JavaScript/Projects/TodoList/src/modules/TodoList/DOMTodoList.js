@@ -131,7 +131,9 @@ export default class DOMTodoList {
             const title = document.querySelector('.new-task-title').value;
             const description = document.querySelector('.new-task-notes').value;
             const completed = document.querySelector('.check-box').dataset.isCompleted == 'true' ? true : false;
-            const tags = document.querySelector('.new-task-tags').value.split(',');
+            const tags = document.querySelector('.new-task-tags').value
+            .split(',')
+            .map(tag => tag.trim());
 
             let dueDate = parseISO(document.querySelector('.new-task-due-date').value);
             if (dueDate == 'Invalid Date') {
@@ -144,7 +146,7 @@ export default class DOMTodoList {
             task.setTitle(title);
             task.setDescription(description);
             task.setDueDate(dueDate);
-            task.setTags(tags);
+            task.setCategories(tags);
             task.setCompleted(completed);
 
             // Update the task element in the task list
@@ -244,7 +246,7 @@ export default class DOMTodoList {
                             </div>
                             <div class="tags-container">
                             <span class="tag-icon material-symbols-outlined">sell</span>
-                                <input type="text" class="new-task-tags" placeholder="Ex: Github,RP..." value="${task ? taskTags[0] : taskTags}">
+                                <input type="text" class="new-task-tags" placeholder="Ex: Github,RP..." value="${task ? taskTags.toString() : ""}">
                             </div>
                         </div>
                     </div>
