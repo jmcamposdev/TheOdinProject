@@ -341,12 +341,23 @@ export default class DOMTodoList {
         newTaskForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const title = document.querySelector('.new-task-title').value;
+
+            // If the title is empty, don't create the task
+            if (title.trim() == '') {
+                document.querySelector('.new-task-title').value = '';
+                createHiddenPopup('Task title cannot be empty', 1500);
+                return;
+            } 
+
+
             const description = document.querySelector('.new-task-notes').value;
             let dueDate = parseISO(document.querySelector('.new-task-due-date').value);
             if (dueDate == 'Invalid Date') {
                 dueDate = null;
             }
-            const tags = document.querySelector('.new-task-tags').value.split(',');
+            const tags = document.querySelector('.new-task-tags').value
+            .split(',') // Split the tags by comma
+            .map(tag => tag.trim()); // Remove the white spaces from the tags
             let taskProject = this.activeProject;
 
             // If the task is due today and the active project is inbox, set the task project to today
