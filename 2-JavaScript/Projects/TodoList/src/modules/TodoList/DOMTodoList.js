@@ -342,7 +342,6 @@ export default class DOMTodoList {
             e.preventDefault();
             const title = document.querySelector('.new-task-title').value;
             const description = document.querySelector('.new-task-notes').value;
-            createHiddenPopup(document.querySelector('.new-task-due-date').value)
             let dueDate = parseISO(document.querySelector('.new-task-due-date').value);
             if (dueDate == 'Invalid Date') {
                 dueDate = null;
