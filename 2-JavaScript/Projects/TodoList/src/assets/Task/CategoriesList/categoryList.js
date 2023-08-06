@@ -1,3 +1,5 @@
+import DOMTodoList from "../../..";
+
 function printCategoryList(tasks) {
     const categoriesContainer = document.querySelector('.category-container');
     categoriesContainer.innerHTML = '';
@@ -8,7 +10,9 @@ function printCategoryList(tasks) {
         const categoryElement = document.createElement('li');
         categoryElement.textContent = category;
         categoryElement.classList.add('category');
+        categoryElement.setAttribute("data-category", category)
         categoriesList.appendChild(categoryElement);
+        createCategoryEvent(categoryElement);
     });
 
     categoriesContainer.appendChild(categoriesList);
@@ -30,6 +34,26 @@ function getCategories(tasks) {
         });
     });
     return categories;
+}
+
+function createCategoryEvent (categoryElement) {
+    categoryElement.addEventListener('click', () => {
+        categoryElement.classList.toggle('selected');
+        const selectedCategories = getSelectedCategories();
+        console.log(selectedCategories);
+        DOMTodoList.printByCategories(selectedCategories)
+    });
+}
+
+function getSelectedCategories () {
+    const selectedCategoriesElement = Array.from(document.querySelectorAll('.category.selected'));
+    const selectedCategories = [];
+    selectedCategoriesElement.forEach(categoryElement => {
+        const category = categoryElement.dataset.category;
+        selectedCategories.push(category);
+    })
+
+    return selectedCategories;
 }
 
 export default printCategoryList;

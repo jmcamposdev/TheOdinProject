@@ -7,6 +7,10 @@ export default class TodoList {
         return this.taskList;
     }
 
+    getTaskListByProject (project) {
+        return this.taskList.filter(task => task.project == project);
+    }
+
     setTaskList (taskList) {
         this.taskList = taskList;
     }

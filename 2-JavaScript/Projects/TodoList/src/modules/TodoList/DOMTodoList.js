@@ -27,11 +27,41 @@ export default class DOMTodoList {
         const taskList = document.querySelector('.task-list');
         taskList.innerHTML = ''; // Clear the task list
         // Filter the task list by the active project
-        const filterTask = this.todolist.getTaskList().filter(task => task.getProject() == this.activeProject)
+        const filterTask = this.getActiveTasks();
         // Print the task list
         printCategoryList(filterTask);
         filterTask.forEach(task => DOMTask.printTaskElement(task));
         this.printAddTaskElement(); // Create the add task element
+    }
+
+    printByCategories (categoriesList) {
+        const taskList = document.querySelector('.task-list');
+        taskList.innerHTML = ''; // Clear the task list
+        // Filter the task list by the active project
+        const filterTask = this.tasksFilterByCategories(categoriesList, this.getActiveTasks());
+
+        // Print the task list
+        // printCategoryList(filterTask);
+        filterTask.forEach(task => DOMTask.printTaskElement(task));
+        this.printAddTaskElement(); // Create the add task element
+    }
+
+    tasksFilterByCategories (categoriesList, taskList) {
+        let checker = (arr, target) => target.every(v => arr.includes(v));
+        const filterTaskList = [];
+
+        taskList.forEach(task => {
+            if (checker(task.getCategories(), categoriesList)) {
+                filterTaskList.push(task);
+            }
+        })
+        
+        return filterTaskList;
+    }
+
+
+    getActiveTasks ()  {
+        return this.todolist.getTaskListByProject(this.activeProject);
     }
 
     /**
