@@ -1,4 +1,4 @@
-function createHiddenPopup (message, time = 4000) {
+function createHiddenPopup (message, time = 2000) {
     if (existsHiddenPopup()) return
 
     const popupContainer = document.querySelector(".popup-container")
