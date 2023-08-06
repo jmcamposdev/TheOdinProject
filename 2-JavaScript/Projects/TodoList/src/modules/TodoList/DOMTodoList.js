@@ -8,6 +8,7 @@ import createHiddenPopup from '../../assets/Popups/hiddenPopup.js';
 import { closeNewProjectForm } from '../Project/DOMProjects.js';
 import { ta } from 'date-fns/locale';
 import { closeHamburgerNav } from '../../assets/Hamburger/hamburgerNav.js';
+import printCategoriesList from '../../assets/Task/CategoriesList/categoriesList.js';
 
 
 export default class DOMTodoList {
@@ -28,6 +29,7 @@ export default class DOMTodoList {
         // Filter the task list by the active project
         const filterTask = this.todolist.getTaskList().filter(task => task.getProject() == this.activeProject)
         // Print the task list
+        printCategoriesList(filterTask);
         filterTask.forEach(task => DOMTask.printTaskElement(task));
         this.printAddTaskElement(); // Create the add task element
     }
