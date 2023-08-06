@@ -22,3 +22,9 @@
 .category.selected {
     background-color: var(--secondary);
 }
+
+@media screen and (max-width: 768px) {
+    .category-container {
+        width: calc(100vw - 30px);
+    }
+}
