@@ -12,8 +12,8 @@ import { createHamburgerNavEvent } from "./assets/Hamburger/hamburgerNav"
 
 const DOMTodoList = new DOMTodoListClass();
 function init()  {
-    DOMTodoList.addTask(new Task('Task 3', 'This is the third task', new Date(2021, 0, 3, 0, 0, 0, 0), true, 'inbox', "Home"));
-    DOMTodoList.addTask(new Task('Task 4', 'This is the fourth task', new Date(2021, 0, 3, 0, 0, 0, 0), false, 'inbox', "Outdoors"));
+    DOMTodoList.addTask(new Task('Task 3', 'This is the third task', new Date(2021, 0, 3, 0, 0, 0, 0), true, 'inbox', ["Home"]));
+    DOMTodoList.addTask(new Task('Task 4', 'This is the fourth task', new Date(2021, 0, 3, 0, 0, 0, 0), false, 'inbox', ["Outdoors"]));
     DOMTodoList.printAllTasks();
     DOMTodoList.createProjectsEvents();
     printAddProjectsElement();
