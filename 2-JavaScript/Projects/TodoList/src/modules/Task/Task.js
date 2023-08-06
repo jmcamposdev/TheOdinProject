@@ -57,11 +57,11 @@ export default class Task {
         this.project = project;
     }
 
-    getTags () {
+    getCategories () {
         return this.tags;
     }
 
-    setTags (tags) {
+    setCategories (tags) {
         this.tags = tags;
     }
 

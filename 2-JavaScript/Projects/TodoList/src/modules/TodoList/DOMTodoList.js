@@ -225,7 +225,7 @@ export default class DOMTodoList {
             if (task.getDueDate()){
                 taskDueDate = formatISO(task.getDueDate(), {representation: 'date'});
             }
-            taskTags = task.getTags();
+            taskTags = task.getCategories();
         }
 
         const newTaskForm = `

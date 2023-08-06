@@ -42,6 +42,9 @@ export default class DOMTask {
                 ${task.getDueDate()
                 ? DOMTask.createDueDateElement(task.getDueDate())
                 : ""}
+                ${task.getCategories()[0] 
+                ? DOMTask.createCategoryElement(task.getCategories()[0])
+                : ""}
             </div> 
             <p class="task-title">${task.getTitle()}</p>`;
         
@@ -66,6 +69,10 @@ export default class DOMTask {
     static createDueDateElement (dueDate) {
         const formatDueDate = format(dueDate, "dd E");
         return `<p class="task-due-date">${formatDueDate}</p>`;
+    }
+
+    static createCategoryElement (category) {
+        return `<p class="task-category">${category}</p>`;
     }
 
     static addEditTaskEventListener (taskElement) {
