@@ -6,9 +6,9 @@ import CheckBox from '../../assets/Task/CheckBox/checkBox.js';
 import {isToday, inSameWeek } from '../../assets/GlobalFunctions/globalFunctions.js';
 import createHiddenPopup from '../../assets/Popups/hiddenPopup.js';
 import { closeNewProjectForm } from '../Project/DOMProjects.js';
-import { ta } from 'date-fns/locale';
 import { closeHamburgerNav } from '../../assets/Hamburger/hamburgerNav.js';
 import printCategoryList from '../../assets/Task/CategoriesList/categoryList.js';
+import { ta } from 'date-fns/locale';
 
 
 export default class DOMTodoList {
@@ -57,6 +57,10 @@ export default class DOMTodoList {
         })
         
         return filterTaskList;
+    }
+
+    updateCategoryList() {
+        printCategoryList(this.getActiveTasks())
     }
 
 
@@ -389,9 +393,13 @@ export default class DOMTodoList {
             if (dueDate == 'Invalid Date') {
                 dueDate = null;
             }
-            const tags = document.querySelector('.new-task-tags').value
-            .split(',') // Split the tags by comma
-            .map(tag => tag.trim()); // Remove the white spaces from the tags
+            let tags = document.querySelector('.new-task-tags').value
+            if (tags) {
+                tags = tags.split(',').map(tag => tag.trim()); // Remove the white spaces from the tags
+            } else {
+                tags = []
+            }
+            
             let taskProject = this.activeProject;
 
             // If the task is due today and the active project is inbox, set the task project to today
@@ -410,6 +418,7 @@ export default class DOMTodoList {
 
             if (taskProject == this.activeProject) { // If the task project is the active project, add the task to the active project
                 this.addTask(newTask);
+                this.updateCategoryList()
             } else { // If the task project is not the active project add the task to the array but don't add it to the DOM
                 this.todolist.insertTask(newTask);
                 createHiddenPopup(`Task created - Moved to <span class="popup-task-project">${taskProject.toUpperCase()}</span>`);

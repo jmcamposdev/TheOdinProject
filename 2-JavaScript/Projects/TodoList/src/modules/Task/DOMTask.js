@@ -13,6 +13,7 @@ export default class DOMTask {
         const taskList = document.querySelector('.task-list');
         const taskElement = DOMTask.createTaskElement(task);
         taskList.appendChild(taskElement)
+        //DOMTodoList.updateCategoryList();
     }
 
     /**
@@ -36,15 +37,17 @@ export default class DOMTask {
         const checkBoxElement = CheckBox.createCheckBoxElement(task.isCompleted());
         taskInfoElement.appendChild(checkBoxElement);
 
+        const dueDateElement = task.getDueDate()
+        ? DOMTask.createDueDateElement(task.getDueDate())
+        : "";
+        const categoryElement = task.getCategories().length >= 1
+        ? DOMTask.createCategoryElement(task.getCategories()[0])
+        : "";
         // Create the task title element and append it to the task info element
         taskInfoElement.innerHTML += `
             <div class="extra-data">
-                ${task.getDueDate()
-                ? DOMTask.createDueDateElement(task.getDueDate())
-                : ""}
-                ${task.getCategories()[0] 
-                ? DOMTask.createCategoryElement(task.getCategories()[0])
-                : ""}
+                ${dueDateElement}
+                ${categoryElement}
             </div> 
             <p class="task-title">${task.getTitle()}</p>`;
         

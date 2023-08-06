@@ -27,12 +27,15 @@ function getCategories(tasks) {
     const categories = [];
     tasks.forEach(task => {
         const taskCategories = task.getCategories();
-        taskCategories.forEach(category => {
-            if (!categories.includes(category)) {
-                categories.push(category);
-            }
-        });
+        if (taskCategories) {
+            taskCategories.forEach(category => {
+                if (!categories.includes(category)) {
+                    categories.push(category);
+                }
+            });
+        }
     });
+
     return categories;
 }
 
@@ -40,7 +43,6 @@ function createCategoryEvent (categoryElement) {
     categoryElement.addEventListener('click', () => {
         categoryElement.classList.toggle('selected');
         const selectedCategories = getSelectedCategories();
-        console.log(selectedCategories);
         DOMTodoList.printByCategories(selectedCategories)
     });
 }
