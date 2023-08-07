@@ -1,4 +1,4 @@
-import { parseISO, formatISO, endOfWeek, startOfWeek } from 'date-fns'
+import { parseISO, formatISO, endOfWeek, startOfWeek, isSameWeek, isThisWeek } from 'date-fns'
 import Task from '../Task/Task.js';
 import DOMTask from '../Task/DOMTask';
 import TodoList from './TodoList.js';
@@ -106,7 +106,7 @@ export default class DOMTodoList {
      */
     addTask (task) {
         this.todolist.insertTask(task);
-        DOMTask.printTaskElement(task);
+        DOMTask.printTaskElement(task, this.showProjectInTask);
         saveInLocalStorage(this.getAllTasks());
     }
 
@@ -425,29 +425,25 @@ export default class DOMTodoList {
             }
             
             let taskProject = this.activeProject;
-
-            // // If the task is due today and the active project is inbox, set the task project to today
-            // if (this.activeProject == 'inbox' || this.activeProject == 'week' || this.activeProject == 'today') {
-            //     if (dueDate == null) {
-            //         taskProject = 'inbox';
-            //     } else if (isToday(dueDate) && (this.activeProject == 'inbox' || this.activeProject == 'week')) {
-            //         taskProject = 'today';
-            //     } else if (inSameWeek(dueDate) && (this.activeProject == 'inbox' || this.activeProject == "today") && !isToday(dueDate)) { // If the task is due this week and the active project is inbox, set the task project to week
-            //         taskProject = 'week';
-            //     }
-            // }
+            if (taskProject == 'today' || taskProject == 'week') {
+                taskProject = 'inbox';
+            }
 
             // Create the task
             const newTask = new Task(title, description, dueDate, false, taskProject, tags);
 
-            if (taskProject == this.activeProject) { // If the task project is the active project, add the task to the active project
-                this.addTask(newTask);
-                this.updateCategoryList()
-            } else { // If the task project is not the active project add the task to the array but don't add it to the DOM
+            if (this.activeProject == 'today' && !isToday(newTask.dueDate)) {
                 this.todolist.insertTask(newTask);
-                saveInLocalStorage(this.getAllTasks())
-                createHiddenPopup(`Task created - Moved to <span class="popup-task-project">${taskProject.toUpperCase()}</span>`);
+                createHiddenPopup('Task added to inbox', 1500);
+            } else if (this.activeProject == 'week' && !isThisWeek(newTask.dueDate, {weekStartsOn: 1})) {
+                this.todolist.insertTask(newTask);
+                createHiddenPopup('Task added to inbox', 1500);
+            } else {
+                this.addTask(newTask);
             }
+
+            
+            this.updateCategoryList()
             this.closeAddTaskForm();
         });
     }
