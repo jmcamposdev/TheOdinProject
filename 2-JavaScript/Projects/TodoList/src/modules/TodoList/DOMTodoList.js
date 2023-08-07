@@ -17,10 +17,16 @@ export default class DOMTodoList {
     constructor () {
     this.todolist = new TodoList();
     this.activeProject = "inbox"
+    this.showProjectInTask = false;
     }
 
     setActiveProject(activeProject) {
         this.activeProject = activeProject;
+        if (activeProject === "today" || activeProject === "week") {
+            this.showProjectInTask = true;
+        } else {
+            this.showProjectInTask = false;
+        }
     }
 
     /**
@@ -35,7 +41,7 @@ export default class DOMTodoList {
         const filterTask = this.getActiveTasks();
         // Print the task list
         printCategoryList(filterTask);
-        filterTask.forEach(task => DOMTask.printTaskElement(task));
+        filterTask.forEach(task => DOMTask.printTaskElement(task, this.showProjectInTask));
         this.printAddTaskElement(); // Create the add task element
     }
 
@@ -78,7 +84,7 @@ export default class DOMTodoList {
         } else {
             currentTaskList = this.todolist.getTaskListByProject(this.activeProject);
         }
-        
+
         return currentTaskList;
     }
 
@@ -420,16 +426,16 @@ export default class DOMTodoList {
             
             let taskProject = this.activeProject;
 
-            // If the task is due today and the active project is inbox, set the task project to today
-            if (this.activeProject == 'inbox' || this.activeProject == 'week' || this.activeProject == 'today') {
-                if (dueDate == null) {
-                    taskProject = 'inbox';
-                } else if (isToday(dueDate) && (this.activeProject == 'inbox' || this.activeProject == 'week')) {
-                    taskProject = 'today';
-                } else if (inSameWeek(dueDate) && (this.activeProject == 'inbox' || this.activeProject == "today") && !isToday(dueDate)) { // If the task is due this week and the active project is inbox, set the task project to week
-                    taskProject = 'week';
-                }
-            }
+            // // If the task is due today and the active project is inbox, set the task project to today
+            // if (this.activeProject == 'inbox' || this.activeProject == 'week' || this.activeProject == 'today') {
+            //     if (dueDate == null) {
+            //         taskProject = 'inbox';
+            //     } else if (isToday(dueDate) && (this.activeProject == 'inbox' || this.activeProject == 'week')) {
+            //         taskProject = 'today';
+            //     } else if (inSameWeek(dueDate) && (this.activeProject == 'inbox' || this.activeProject == "today") && !isToday(dueDate)) { // If the task is due this week and the active project is inbox, set the task project to week
+            //         taskProject = 'week';
+            //     }
+            // }
 
             // Create the task
             const newTask = new Task(title, description, dueDate, false, taskProject, tags);

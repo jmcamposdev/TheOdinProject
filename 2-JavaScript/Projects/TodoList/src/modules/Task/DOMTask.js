@@ -9,9 +9,9 @@ export default class DOMTask {
      * Create a new task element and add it to the task list
      * @param {Task} task 
      */
-    static printTaskElement (task) {
+    static printTaskElement (task, showProject = false) {
         const taskList = document.querySelector('.task-list');
-        const taskElement = DOMTask.createTaskElement(task);
+        const taskElement = DOMTask.createTaskElement(task, showProject);
         taskList.appendChild(taskElement)
         //DOMTodoList.updateCategoryList();
     }
@@ -23,7 +23,7 @@ export default class DOMTask {
      * @param {Task} task 
      * @returns {HTMLElement} taskElement 
      */
-    static createTaskElement (task) {
+    static createTaskElement (task, showProject = false) {
         // Create the task element
         const taskElement = document.createElement("div");
         taskElement.classList.add("task");
@@ -43,11 +43,15 @@ export default class DOMTask {
         const categoryElement = task.getCategories().length >= 1
         ? DOMTask.createCategoryElement(task.getCategories()[0])
         : "";
+        const projectElement = showProject 
+        ? DOMTask.createProjectElement(task.getProject())
+        : "";
         // Create the task title element and append it to the task info element
         taskInfoElement.innerHTML += `
             <div class="extra-data">
                 ${dueDateElement}
                 ${categoryElement}
+                ${projectElement}
             </div> 
             <p class="task-title">${task.getTitle()}</p>`;
         
@@ -78,6 +82,10 @@ export default class DOMTask {
         return `<p class="task-category">${category}</p>`;
     }
 
+    static createProjectElement (project) {
+        console.log(project);
+        return `<p class="task-project">${project}</p>`;
+    }
     static addEditTaskEventListener (taskElement) {
         taskElement.addEventListener("dblclick", () => {
             DOMTodoList.editTask(taskElement.parentElement.parentElement.dataset.id);
