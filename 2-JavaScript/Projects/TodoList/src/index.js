@@ -6,9 +6,8 @@ import "./css/popup.css"
 import "./css/projects.css"
 import "./css/hamburger.css"
 import "./css/categoryList.css"
-import Task from "./modules/Task/Task";
 import DOMTodoListClass from "./modules/TodoList/DOMTodoList"
-import { createProjectsEvent, createProjectsEvents, loadProjects, printAddProjectsElement, printNewProject } from "./modules/Project/DOMProjects";
+import { createProjectsEvents, loadProjects, printAddProjectsElement} from "./modules/Project/DOMProjects";
 import { createHamburgerNavEvent } from "./assets/Hamburger/hamburgerNav"
 import { loadLocalStorage, loadLocalStorageProjects } from "./assets/LocalStorage/localStorage"
 
