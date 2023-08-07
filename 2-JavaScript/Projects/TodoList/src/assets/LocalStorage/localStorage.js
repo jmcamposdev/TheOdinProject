@@ -18,8 +18,13 @@ function saveInLocalStorageProject(projectTitle) {
 
 function removeInLocalStorageProject(projectTitle) {
     let localProjectList = JSON.parse(localStorage.getItem("projectList"));
+    console.log(localProjectList);
     localProjectList = localProjectList.filter(project => project != projectTitle);
     localStorage.setItem("projectList", JSON.stringify(localProjectList));
+
+    let localTaskList = JSON.parse(localStorage.getItem("taskList"));
+    localTaskList = localTaskList.filter(task => task.project != projectTitle);
+    localStorage.setItem("taskList", JSON.stringify(localTaskList));
 }
 
 function loadLocalStorage(DOMTodoList) {
