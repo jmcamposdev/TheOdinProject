@@ -4,45 +4,76 @@ import createHiddenPopup from "../../assets/Popups/hiddenPopup.js";
 import DOMTodoList from "../../index.js"
 const projectFormContainer = document.querySelector('.create-new-project-container');
 
+/**
+ *  Insert the project buttons in the DOM
+ *  
+ * @param {String} projectTitle 
+ */
 function printNewProject (projectTitle) {
+    // Get the project buttons container
     const projectButtonContainer = document.querySelector('.projects-actions-list .actions-list');
 
+    // Create the project button Container
     const projectContainer = document.createElement('div');
-    projectContainer.classList.add('project-container');
+    projectContainer.classList.add('project-container'); // Add the class to the project container
 
-    const projectButton = document.createElement('button');
-    projectButton.setAttribute('data-project-type', projectTitle.toLowerCase());
-    projectButton.classList.add('project-button');
+    const projectButton = document.createElement('button'); // Create the project button
+    projectButton.classList.add('project-button'); // Add the class to the project button
+    projectButton.setAttribute('data-project-type', projectTitle.toLowerCase()); // Add the project title as data attribute
 
-    const projectInformation = document.createElement('div');
-    projectInformation.classList.add('project-information');
+    const projectInformation = document.createElement('div'); // Create the project information container
+    projectInformation.classList.add('project-information'); // Add the class to the project information container
 
+    // Create the project icon
     const icon = `<span class="material-symbols-outlined">
                     workspaces
                 </span>`
+
+    // Insert the project title and icon in the project information container
     projectInformation.innerHTML = icon + projectTitle;
 
 
-    const deleteIconContainer = document.createElement('div');
-    deleteIconContainer.classList.add('delete-icon-container');
+    const deleteIconContainer = document.createElement('div'); // Create the delete icon container
+    deleteIconContainer.classList.add('delete-icon-container'); // Add the class to the delete icon container
 
-    const deleteIcon = document.createElement('span'); 
-    deleteIcon.classList.add('project-delete-icon', "material-symbols-outlined");
-    deleteIcon.textContent = 'delete';
+    const deleteIcon = document.createElement('span');  // Create the delete icon
+    deleteIcon.classList.add('project-delete-icon', "material-symbols-outlined"); // Add the class to the delete icon
+    deleteIcon.textContent = 'delete'; // Add the text to the delete icon
 
-    deleteIconContainer.appendChild(deleteIcon);
+    deleteIconContainer.appendChild(deleteIcon); // Insert the delete icon in the delete icon container
 
-    projectButton.appendChild(projectInformation);
+    projectButton.appendChild(projectInformation); // Insert the project information container in the project button
 
-    projectContainer.appendChild(projectButton);
-    projectContainer.appendChild(deleteIconContainer);
+    projectContainer.appendChild(projectButton); // Insert the project button in the project container
+    projectContainer.appendChild(deleteIconContainer); // Insert the delete icon container in the project container
 
-    projectButtonContainer.appendChild(projectContainer);
+    projectButtonContainer.appendChild(projectContainer); // Insert to the DOM the project container
 
-    createDeleteProjectEvent(projectTitle, deleteIcon);
-    createProjectsEvents();
+    createDeleteProjectEvent(projectTitle, deleteIcon); // Create the delete project event
+    createProjectsEvents(); // Create the project events
 }
 
+/**
+ *  Add the active class to the selected project button
+ *  Remove the active class from the other project buttons
+ *  Print the tasks of the selected project
+ */
+function createProjectsEvents () {
+    const projectsButtonsElements = document.querySelectorAll(".actions-list button"); // Get all the project buttons has NodeList
+    const projectsButtonsArray = Array.from(projectsButtonsElements) // Convert the NodeList to Array
+    // Add the click event to all the project buttons
+    projectsButtonsArray.forEach(button => {
+        button.addEventListener("click", () => selectProjectButtonActive(button.dataset.projectType))
+    });
+}
+
+/**
+ *  Create the delete project event
+ *  Remove the project from the DOM and from the local storage
+ *  Remove all the related tasks from the DOM and from the local storage
+ * @param {String} projectName 
+ * @param {HTMLSpanElement} projectDeleteButton 
+ */
 function createDeleteProjectEvent (projectName, projectDeleteButton) {
     projectDeleteButton.addEventListener('click', () => {
         DOMTodoList.removeProject(projectName.toLowerCase());
@@ -135,14 +166,6 @@ function existProject (projectName) {
         }
     });
     return exist;
-}
-
-function createProjectsEvents () {
-    const projectsButtonsElements = document.querySelectorAll(".actions-list button");
-    const projectsButtonsArray = Array.from(projectsButtonsElements)
-    projectsButtonsArray.forEach(button => {
-        button.addEventListener("click", () => selectProjectButtonActive(button.dataset.projectType))
-    });
 }
 
 function selectProjectButtonActive (projectName)  {
