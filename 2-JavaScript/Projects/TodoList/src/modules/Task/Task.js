@@ -70,7 +70,8 @@ export default class Task {
     }
 
     static fromJSON (json) {
-        return new Task(json.title, json.description, json.dueDate, json.completed);
+        const dueDate = json.dueDate ? new Date(json.dueDate) : null;
+        return new Task(json.title, json.description, dueDate, json.completed, json.project, json.tags);
     }
 
     static fromJSONList (jsonList) {

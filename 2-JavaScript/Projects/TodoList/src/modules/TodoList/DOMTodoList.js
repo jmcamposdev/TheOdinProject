@@ -5,10 +5,11 @@ import TodoList from './TodoList.js';
 import CheckBox from '../../assets/Task/CheckBox/checkBox.js';
 import {isToday, inSameWeek } from '../../assets/GlobalFunctions/globalFunctions.js';
 import createHiddenPopup from '../../assets/Popups/hiddenPopup.js';
-import { closeNewProjectForm } from '../Project/DOMProjects.js';
+import { closeNewProjectForm, createProjectsEvents, selectProjectButtonActive} from '../Project/DOMProjects.js';
 import { closeHamburgerNav } from '../../assets/Hamburger/hamburgerNav.js';
 import printCategoryList from '../../assets/Task/CategoriesList/categoryList.js';
 import { ta } from 'date-fns/locale';
+import { saveInLocalStorage } from '../../assets/LocalStorage/localStorage.js';
 
 
 export default class DOMTodoList {
@@ -16,6 +17,10 @@ export default class DOMTodoList {
     constructor () {
     this.todolist = new TodoList();
     this.activeProject = "inbox"
+    }
+
+    setActiveProject(activeProject) {
+        this.activeProject = activeProject;
     }
 
     /**
@@ -68,6 +73,18 @@ export default class DOMTodoList {
         return this.todolist.getTaskListByProject(this.activeProject);
     }
 
+    getAllTasks () {
+        return this.todolist.getTaskList();
+    }
+
+    addProject(projectTitle) {
+        this.todolist.addProject(projectTitle);
+    }
+
+    addProjects(projectTitleList) {
+        printCategoryList.forEach(projectTitle => this.addProject(projectTitle));
+    }
+
     /**
      *  Add a task to 
      * @param {Task} task 
@@ -75,7 +92,18 @@ export default class DOMTodoList {
     addTask (task) {
         this.todolist.insertTask(task);
         DOMTask.printTaskElement(task);
+        saveInLocalStorage(this.getAllTasks());
     }
+
+    addTasks (taskList) {
+        const projectsAdded = [];
+        taskList.forEach(task => {
+            this.todolist.insertTask(task);
+            const taskProject = task.project;
+        })
+    }
+
+
 
     /**
      *  Remove the task with the given id from the task list and the DOM
@@ -85,6 +113,7 @@ export default class DOMTodoList {
         this.todolist.removeTask(id);
         const taskElement = document.querySelector(`[data-id="${id}"]`);
         taskElement.remove();
+        saveInLocalStorage(this.getAllTasks());
     }
 
     removeAllTasksByProject (project) {
@@ -167,9 +196,13 @@ export default class DOMTodoList {
             const title = document.querySelector('.new-task-title').value;
             const description = document.querySelector('.new-task-notes').value;
             const completed = document.querySelector('.check-box').dataset.isCompleted == 'true' ? true : false;
-            const tags = document.querySelector('.new-task-tags').value
-            .split(',')
-            .map(tag => tag.trim());
+
+            let tags = document.querySelector('.new-task-tags').value
+            if (tags) {
+                tags = tags.split(',').map(tag => tag.trim()); // Remove the white spaces from the tags
+            } else {
+                tags = []
+            }
 
             let dueDate = parseISO(document.querySelector('.new-task-due-date').value);
             if (dueDate == 'Invalid Date') {
@@ -187,6 +220,7 @@ export default class DOMTodoList {
 
             // Update the task element in the task list
             this.updateTaskElement(task);
+            saveInLocalStorage(this.getAllTasks());
         });
     }
 
@@ -195,31 +229,6 @@ export default class DOMTodoList {
      *  Projects
      *  ----------------------
      */
-
-    createProjectsEvents () {
-        const projectsButtonsElements = document.querySelectorAll(".actions-list button");
-        const projectsButtonsArray = Array.from(projectsButtonsElements)
-        projectsButtonsArray.forEach(button => {
-            button.addEventListener("click", () => this.selectProjectButtonActive(button.dataset.projectType))
-        });
-    }
-
-    selectProjectButtonActive (projectName)  {
-        closeHamburgerNav();
-        
-        const projectsButtonsElements = document.querySelectorAll(".actions-list button");
-        const projectsButtonsArray = Array.from(projectsButtonsElements)
-
-        const currentProjectButton = projectsButtonsArray.find(button => button.dataset.projectType == projectName);
-        const projectTitleElement = document.querySelector('.project-title');
-        projectsButtonsArray.forEach(button => button.classList.remove("active")); // Remove the active class from all the buttons
-        currentProjectButton.classList.add("active"); // Add the active class to the clicked button
-
-        projectTitleElement.innerHTML = projectName; // Change the project title
-        const projectType = projectName; // Get the project type
-        this.activeProject = projectType; // Set the active project
-        this.printAllTasks(); // Print all the tasks in the task list
-    }
 
 
 
@@ -421,6 +430,7 @@ export default class DOMTodoList {
                 this.updateCategoryList()
             } else { // If the task project is not the active project add the task to the array but don't add it to the DOM
                 this.todolist.insertTask(newTask);
+                saveInLocalStorage(this.getAllTasks())
                 createHiddenPopup(`Task created - Moved to <span class="popup-task-project">${taskProject.toUpperCase()}</span>`);
             }
             this.closeAddTaskForm();
@@ -468,8 +478,8 @@ export default class DOMTodoList {
         projectButton.removeEventListener("click", () => this.selectProjectButtonActive(button.dataset.projectType))
         projectButton.remove();
         this.removeAllTasksByProject(project);
-        this.createProjectsEvents()
-        this.selectProjectButtonActive('inbox');
+        createProjectsEvents()
+        selectProjectButtonActive('inbox');
         createHiddenPopup(`Project <span class="popup-task-project">${project}</span> deleted successfully`);
     }
 

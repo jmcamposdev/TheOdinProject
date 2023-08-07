@@ -1,6 +1,17 @@
 export default class TodoList {
     constructor () {
         this.taskList = [];
+        this.projectList = [];
+    }
+
+    addProject(projectTitle) {
+        if (!this.projectList.includes(projectTitle)) {
+            this.projectList.push(projectTitle);
+        }
+    }
+
+    getProjectList() {
+        return this.projectList;
     }
 
     getTaskList () {

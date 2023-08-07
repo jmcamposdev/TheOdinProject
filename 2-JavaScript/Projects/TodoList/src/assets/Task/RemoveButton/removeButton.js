@@ -1,4 +1,4 @@
-import DOMTodoList from "../../..";
+import DOMTodoList from "../../../index.js";
 
 export default class RemoveButton {
     static createRemoveButtonElement () {

@@ -1,3 +1,5 @@
+import { closeHamburgerNav } from "../../assets/Hamburger/hamburgerNav.js";
+import { removeInLocalStorageProject, saveInLocalStorageProject } from "../../assets/LocalStorage/localStorage.js";
 import createHiddenPopup from "../../assets/Popups/hiddenPopup.js";
 import DOMTodoList from "../../index.js"
 const projectFormContainer = document.querySelector('.create-new-project-container');
@@ -38,12 +40,13 @@ function printNewProject (projectTitle) {
     projectButtonContainer.appendChild(projectContainer);
 
     createDeleteProjectEvent(projectTitle, deleteIcon);
-    DOMTodoList.createProjectsEvents();
+    createProjectsEvents();
 }
 
 function createDeleteProjectEvent (projectName, projectDeleteButton) {
     projectDeleteButton.addEventListener('click', () => {
         DOMTodoList.removeProject(projectName.toLowerCase());
+        removeInLocalStorageProject(projectName);
     });
 }
 
@@ -111,9 +114,11 @@ function createNewProjectSubmitEvent (projectForm) {
         }
 
         if (isCorrect) {
+            DOMTodoList.addProject(newProjectTitle);
             printNewProject(newProjectTitle); 
             createHiddenPopup(`Project <span class="popup-task-project">${newProjectTitle}</span> created successfully`);
             closeNewProjectForm();
+            saveInLocalStorageProject(newProjectTitle);
         } else {
             createHiddenPopup(errorMessage);
         }
@@ -132,4 +137,32 @@ function existProject (projectName) {
     return exist;
 }
 
-export { printAddProjectsElement, closeNewProjectForm };
+function createProjectsEvents () {
+    const projectsButtonsElements = document.querySelectorAll(".actions-list button");
+    const projectsButtonsArray = Array.from(projectsButtonsElements)
+    projectsButtonsArray.forEach(button => {
+        button.addEventListener("click", () => selectProjectButtonActive(button.dataset.projectType))
+    });
+}
+
+function selectProjectButtonActive (projectName)  {
+    closeHamburgerNav();
+    
+    const projectsButtonsElements = document.querySelectorAll(".actions-list button");
+    const projectsButtonsArray = Array.from(projectsButtonsElements)
+
+    const currentProjectButton = projectsButtonsArray.find(button => button.dataset.projectType == projectName);
+    const projectTitleElement = document.querySelector('.project-title');
+    projectsButtonsArray.forEach(button => button.classList.remove("active")); // Remove the active class from all the buttons
+    currentProjectButton.classList.add("active"); // Add the active class to the clicked button
+
+    projectTitleElement.innerHTML = projectName; // Change the project title
+    DOMTodoList.setActiveProject(projectName); // Set the active project
+    DOMTodoList.printAllTasks(); // Print all the tasks in the task list
+}
+
+function loadProjects(projectList) {
+    projectList.forEach(projectTitle => printNewProject(projectTitle));
+}
+
+export { printNewProject, printAddProjectsElement, closeNewProjectForm, loadProjects, createProjectsEvents, selectProjectButtonActive };

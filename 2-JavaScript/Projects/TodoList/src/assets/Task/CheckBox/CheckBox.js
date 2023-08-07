@@ -1,4 +1,5 @@
-import { is } from "date-fns/locale";
+import DOMTodoList from "../../..";
+import { saveInLocalStorage } from "../../LocalStorage/localStorage";
 
 export default class CheckBox {
     static createCheckBoxElement (isChecked) {
@@ -26,6 +27,7 @@ export default class CheckBox {
     static addCheckBoxCompleteEventListener (checkBoxElement, task) {
         checkBoxElement.addEventListener(("click"), () => {
             task.toggleCompleted();
+            saveInLocalStorage(DOMTodoList.getAllTasks());
         });
     }
 }
