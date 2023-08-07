@@ -70,7 +70,16 @@ export default class DOMTodoList {
 
 
     getActiveTasks ()  {
-        return this.todolist.getTaskListByProject(this.activeProject);
+        let currentTaskList = [];
+        if (this.activeProject == "today") {
+            currentTaskList = this.todolist.getTodayTaskList();
+        } else if (this.activeProject == "week") {
+            currentTaskList = this.todolist.getWeekTaskList();
+        } else {
+            currentTaskList = this.todolist.getTaskListByProject(this.activeProject);
+        }
+        
+        return currentTaskList;
     }
 
     getAllTasks () {

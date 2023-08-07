@@ -1,3 +1,5 @@
+import { isThisWeek, isToday } from "date-fns";
+
 export default class TodoList {
     constructor () {
         this.taskList = [];
@@ -20,6 +22,24 @@ export default class TodoList {
 
     getTaskListByProject (project) {
         return this.taskList.filter(task => task.project == project);
+    }
+
+    getTodayTaskList () {
+        return this.taskList.filter(task => {
+            const taskDate = task.dueDate;
+            if (taskDate) {
+                return isToday(taskDate);
+            }
+        });
+    }
+
+    getWeekTaskList () {
+        return this.taskList.filter(task => {
+            const taskDate = task.dueDate;
+            if (taskDate) {
+                return isThisWeek(taskDate);
+            }
+        });
     }
 
     setTaskList (taskList) {
