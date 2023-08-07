@@ -235,6 +235,7 @@ export default class DOMTodoList {
 
             // Update the task element in the task list
             this.updateTaskElement(task);
+            this.updateCategoryList();
             saveInLocalStorage(this.getAllTasks());
         });
     }
