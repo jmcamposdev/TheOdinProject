@@ -129,6 +129,7 @@ export default class DOMTodoList {
         const taskElement = document.querySelector(`[data-id="${id}"]`);
         taskElement.remove();
         saveInLocalStorage(this.getAllTasks());
+        this.updateCategoryList();
     }
 
     removeAllTasksByProject (project) {
