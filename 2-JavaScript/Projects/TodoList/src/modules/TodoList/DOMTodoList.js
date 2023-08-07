@@ -435,7 +435,7 @@ export default class DOMTodoList {
             if (this.activeProject == 'today' && !isToday(newTask.dueDate)) {
                 this.todolist.insertTask(newTask);
                 createHiddenPopup('Task added to inbox', 1500);
-            } else if (this.activeProject == 'week' && !isThisWeek(newTask.dueDate, {weekStartsOn: 1})) {
+            } else if (this.activeProject == 'week' && !isSameWeek(newTask.dueDate, new Date())) {
                 this.todolist.insertTask(newTask);
                 createHiddenPopup('Task added to inbox', 1500);
             } else {
