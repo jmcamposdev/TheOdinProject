@@ -53,7 +53,7 @@ export default class DOMTodoList {
 
         // Print the task list
         // printCategoryList(filterTask);
-        filterTask.forEach(task => DOMTask.printTaskElement(task));
+        filterTask.forEach(task => DOMTask.printTaskElement(task, this.showProjectInTask));
         this.printAddTaskElement(); // Create the add task element
     }
 

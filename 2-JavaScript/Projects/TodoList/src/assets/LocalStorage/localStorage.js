@@ -4,10 +4,6 @@ function saveInLocalStorage(taskList) {
     localStorage.setItem("taskList", JSON.stringify(taskList));
 }
 function saveInLocalStorageProject(projectTitle) {
-    // if (localStorage.getItem("projectList")) {
-    //     console.log("created");
-    //     localStorage.setItem("projectList", [""]);
-    // }
     let localProjectList = JSON.parse(localStorage.getItem("projectList"));
     
     if (localProjectList) {
@@ -21,10 +17,8 @@ function saveInLocalStorageProject(projectTitle) {
 }
 
 function removeInLocalStorageProject(projectTitle) {
-    console.log(projectTitle);
     let localProjectList = JSON.parse(localStorage.getItem("projectList"));
     localProjectList = localProjectList.filter(project => project != projectTitle);
-    console.log(localProjectList);
     localStorage.setItem("projectList", JSON.stringify(localProjectList));
 }
 
@@ -40,7 +34,6 @@ function loadLocalStorage(DOMTodoList) {
 
 function loadLocalStorageProjects(loadProjects){
     let localStorageProjectList = JSON.parse(localStorage.getItem("projectList"));
-    console.log(localStorageProjectList);
 
     if (localStorageProjectList) {
         loadProjects(localStorageProjectList)

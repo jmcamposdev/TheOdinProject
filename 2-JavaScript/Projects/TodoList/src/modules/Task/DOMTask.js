@@ -83,7 +83,6 @@ export default class DOMTask {
     }
 
     static createProjectElement (project) {
-        console.log(project);
         return `<p class="task-project">${project}</p>`;
     }
     static addEditTaskEventListener (taskElement) {
