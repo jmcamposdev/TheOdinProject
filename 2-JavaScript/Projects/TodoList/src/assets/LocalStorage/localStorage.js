@@ -18,7 +18,6 @@ function saveInLocalStorageProject(projectTitle) {
 
 function removeInLocalStorageProject(projectTitle) {
     let localProjectList = JSON.parse(localStorage.getItem("projectList"));
-    console.log(localProjectList);
     localProjectList = localProjectList.filter(project => project != projectTitle);
     localStorage.setItem("projectList", JSON.stringify(localProjectList));
 
