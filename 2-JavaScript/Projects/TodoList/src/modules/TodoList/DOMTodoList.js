@@ -132,10 +132,19 @@ export default class DOMTodoList {
         this.updateCategoryList();
     }
 
+    /**
+     * Remove all the tasks with the given project from the task list and the DOM
+     * @param {String} project
+     */
     removeAllTasksByProject (project) {
         this.todolist.removeAllTasksByProject(project);
     }
 
+    /**
+     *  Show the edit task form
+     *  Form the task element with the given id
+     * @param {uuid} id 
+     */
     editTask (id) {
         const task = this.todolist.getTask(id); // Get the task
         const taskElement = document.querySelector(`[data-id="${id}"]`); // Get the task element
