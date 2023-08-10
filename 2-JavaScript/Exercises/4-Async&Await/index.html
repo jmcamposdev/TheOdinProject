@@ -33,6 +33,12 @@
                 });
             },
         };
+
+        async function getPersonsInfo(name) {
+            const people = await server.getPeople();
+            const person = people.find(person => { return person.name === name });
+            return person;
+        }  
     </script>
 </body>
 
