@@ -6,7 +6,7 @@ const Dotenv = require('dotenv-webpack');
 module.exports = {
   mode: 'development',
   entry: {
-    index: './src/index.js'
+    index: './src/index.js',
   },
   devtool: 'inline-source-map',
   devServer: {
@@ -14,9 +14,11 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Development',
+      title: 'Webpack Base Project - Vanilla JS',
+      template: './src/index.html',
+      inject: 'body',
     }),
-    new Dotenv()
+    new Dotenv(),
   ],
   output: {
     filename: '[name].bundle.js',
