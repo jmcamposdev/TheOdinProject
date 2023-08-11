@@ -8,6 +8,9 @@
 #Node
 node_modules/
 
+# ENV Files
+.env
+
 .idea/
 *.iml
 
