@@ -1,5 +1,8 @@
 /**
  * Return the weather for the given location
+ * Use the weatherapi.com API
+ * @see https://www.weatherapi.com/docs/
+ * @see https://www.weatherapi.com/api-explorer.aspx
  * @param {string} location
  * return {object} weather
  */
