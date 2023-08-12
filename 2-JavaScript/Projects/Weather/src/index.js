@@ -1,5 +1,4 @@
 import getWeatherData from './assets/apiCalls/apiCalls';
-import './style.css'; // Importing CSS Styles
 
 /**
  * @description This is the main function of the application
