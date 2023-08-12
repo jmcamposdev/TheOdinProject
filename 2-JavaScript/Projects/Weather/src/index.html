@@ -4,8 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Webpack Base Project - Vanilla JS</title>
+    <link rel="stylesheet" href="css/global.css">
 </head>
 <body>
-    <div id="root"></div>
+    <div id="root">
+        <header class="header">
+            <div class="header__city__container">
+                <h2 class="header__city__name">
+                    <span class="header__city__name__date">
+                        <span class="header__city__name__date__textDay">Lunes</span>
+                        <span class="header__city__name__date__numberDay">12</span>
+                        <span class="header__city__name__date__textMonth">Octubre</span>
+                    </span>
+                    <span class="header__city__name__city">Málaga</span>
+                </h2>
+            </div>
+            <div class="header__city__tmpToggle">
+                <span class="header__city__tmpToggle__text">ºF</span>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        </header>
+    </div>
 </body>
 </html>
