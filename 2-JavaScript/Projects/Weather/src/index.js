@@ -1,4 +1,6 @@
+import './css/global.css';
 import getWeatherData from './assets/apiCalls/apiCalls';
+
 
 /**
  * @description This is the main function of the application
