@@ -1,6 +1,8 @@
 import './css/global.css';
 import './css/header.css';
-import getWeatherData from './assets/apiCalls/apiCalls';
+import './css/loading.css';
+import printWeatherApp from './assets/weatherApp/weatherApp';
+import loadingSvg from './img/loading.svg';
 
 
 /**
@@ -8,9 +10,19 @@ import getWeatherData from './assets/apiCalls/apiCalls';
  * @return {void}
  */
 async function init() {
-  // Getting the default weather data
-  const defaultWeatherData = await getWeatherData('Malaga');
-  console.log(defaultWeatherData);
+  setLoadingImg();
+  printWeatherApp();
+}
+
+/**
+ * Add the loading image to the DOM
+ */
+function setLoadingImg() {
+  const loadingContainer = document.querySelector('.loading');
+  const loadingImg = document.createElement('img');
+  loadingImg.src = loadingSvg;
+  loadingImg.alt = 'Loading...';
+  loadingContainer.appendChild(loadingImg);
 }
 
 init(); // Calling the main function

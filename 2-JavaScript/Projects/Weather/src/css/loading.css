@@ -15,4 +15,12 @@
   letter-spacing: 4px;
   background: rgb(236,242,255);
   background: linear-gradient(160deg, rgba(236,242,255,1) 0%, rgba(255,255,255,1) 100%);
+  visibility: hidden;
+  opacity: 0;
+}
+
+.loading.loading--active {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity .5s ease-in-out;
 }
