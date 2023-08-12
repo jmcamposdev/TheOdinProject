@@ -1,4 +1,5 @@
 import './css/global.css';
+import './css/header.css';
 import getWeatherData from './assets/apiCalls/apiCalls';
 
 
