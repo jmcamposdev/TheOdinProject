@@ -1,6 +1,7 @@
 import './css/global.css';
 import './css/header.css';
 import './css/loading.css';
+import './css/slider.css';
 import printWeatherApp from './assets/weatherApp/weatherApp';
 import loadingSvg from './img/loading.svg';
 
