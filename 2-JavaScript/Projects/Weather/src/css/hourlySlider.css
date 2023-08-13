@@ -34,4 +34,5 @@
 
 .weather__data__hourly__slider__element > p {
   color: white;
+  text-align: center;
 }
