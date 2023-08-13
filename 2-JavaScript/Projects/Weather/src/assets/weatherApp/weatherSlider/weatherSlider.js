@@ -1,4 +1,4 @@
-import { usingFahrenheit } from "../weatherApp";
+import {usingFahrenheit} from '../weatherApp';
 
 const weatherIcon = [
   {
@@ -309,9 +309,6 @@ function printWeatherSlider(day) {
   windValueDay.textContent = day.avgvis_km;
   tempValueDay.textContent = usingFahrenheit ? Math.round(day.avgtemp_f) : Math.round(day.avgtemp_c);
   humidityValueDay.textContent = day.avghumidity;
-
-  // Units
-  const tempUnit = document.querySelector('.temp__data__unit');
 }
 
 export default printWeatherSlider;
