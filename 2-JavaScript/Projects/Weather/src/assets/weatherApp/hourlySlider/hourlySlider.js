@@ -1,3 +1,5 @@
+import {getDay} from '../../utils/utilities';
+
 /**
  * Print the hourly slider from the hourly list
  * passed as parameter
@@ -6,6 +8,7 @@
 function printHourlySlider(day) {
   // Main container of the slider
   const hourlySliderElement = document.querySelector('.weather__data__hourly__slider');
+  const dayTextElement = document.querySelector('.current__day');
   const currentDate = new Date().setHours(0, 0, 0, 0);
   const dayDate = new Date(day.date).setHours(0, 0, 0, 0);
   let currentHourIndex; // Index of the current hour in the hourly list
@@ -17,6 +20,7 @@ function printHourlySlider(day) {
     currentHourIndex = 0;
   }
 
+  dayTextElement.textContent = getDay(new Date(day.date));
   const filteredHourlyList = day.hour.slice(currentHourIndex);
   filteredHourlyList.forEach((hourly) => {
     hourlySliderElement.appendChild(createHourlyElement(hourly));
