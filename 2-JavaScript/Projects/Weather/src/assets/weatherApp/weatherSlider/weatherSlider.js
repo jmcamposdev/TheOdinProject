@@ -307,7 +307,6 @@ function printWeatherSlider(listDays) {
   windValueDay.textContent = listDays[0].day.avgvis_km;
   tempValueDay.textContent = Math.round(listDays[0].day.avgtemp_c);
   humidityValueDay.textContent = listDays[0].day.avghumidity;
-  console.log(listDays[0]);
 }
 
 export default printWeatherSlider;
