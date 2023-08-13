@@ -1,7 +1,7 @@
 /**
  * Print the hourly slider from the hourly list
  * passed as parameter
- * @param {Array} hourlyList
+ * @param {Array} day
  */
 function printHourlySlider(day) {
   // Main container of the slider
