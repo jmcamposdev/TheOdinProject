@@ -1,0 +1,33 @@
+.weather__data__hourly {
+  flex: 1;
+  background-color: #5A1BEE;
+  padding: 25px 25px;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+}
+
+.current__day {
+  color: #E1EAFD;
+  font-size: 14px;
+}
+
+/* Hourly Slider */
+.weather__data__hourly__slider {
+  display: flex;
+  gap: 25px;
+  overflow-x: auto;
+  padding: 25px 0;
+  width: calc(100vw - 50px);
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.weather__data__hourly__slider__element {
+  background-color: #642FF3;
+  padding: 20px 15px;
+  border-radius: 25px;
+}
+
+.weather__data__hourly__slider__element__image {
+  width: 100%;
+}

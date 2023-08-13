@@ -1,5 +1,6 @@
 import getWeatherData from '../apiCalls/apiCalls';
 import printHeaderData from './headerData';
+import printHourlySlider from './hourlySlider/hourlySlider';
 import printWeatherSlider from './weatherSlider/weatherSlider';
 
 const location = 'Málaga';
@@ -18,6 +19,7 @@ async function printWeatherApp() {
   // If there is no error, print the weather app
   printHeaderData(weatherData.location); // Print header data
   printWeatherSlider(currentDayData.day); // Print weather slider
+  printHourlySlider(currentDayData); // Print hourly slider
 }
 
 export default printWeatherApp;
