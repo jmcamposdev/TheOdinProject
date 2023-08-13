@@ -31,3 +31,7 @@
 .weather__data__hourly__slider__element__image {
   width: 100%;
 }
+
+.weather__data__hourly__slider__element > p {
+  color: white;
+}
