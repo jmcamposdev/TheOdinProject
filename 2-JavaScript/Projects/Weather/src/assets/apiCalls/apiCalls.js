@@ -10,11 +10,13 @@ import setLoading from '../utils/setLoading';
 export default async function getWeatherData(location) {
   setLoading(true);
   /* eslint max-len: ["error", { "ignoreUrls": true }] */
-  const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=${process.env.WEATHER_API}&q=${location}&days=3&aqi=yes&alerts=no`);
-  const data = await response.json();
-  if (!data.error) {
-    setLoading(false);
-  }
+  const response = await
+  fetch(`http://api.weatherapi.com/v1/forecast.json?key=${process.env.WEATHER_API}&q=${location}&days=3&aqi=yes&alerts=no`)
+      .catch((error) => {
+        return error;
+      });
 
+  const data = await response.json();
+  setLoading(false);
   return data;
 }

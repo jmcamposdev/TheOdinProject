@@ -4,8 +4,9 @@ import './css/loading.css';
 import './css/slider.css';
 import './css/hourlySlider.css';
 import './css/search.css';
-import printWeatherApp from './assets/weatherApp/weatherApp';
+import {printWeatherApp} from './assets/weatherApp/weatherApp';
 import loadingSvg from './img/loading.svg';
+import createSearchEvent from './assets/weatherApp/searchBox/searchBox';
 
 
 /**
@@ -15,6 +16,7 @@ import loadingSvg from './img/loading.svg';
 async function init() {
   setLoadingImg();
   printWeatherApp();
+  createSearchEvent();
 }
 
 /**

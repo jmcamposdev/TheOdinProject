@@ -22,4 +22,16 @@ async function printWeatherApp() {
   printHourlySlider(currentDayData); // Print hourly slider
 }
 
-export default printWeatherApp;
+/**
+ * Update the all the weather app
+ * Header data, weather slider and hourly slider
+ * @param {Object} weatherData
+ */
+function updateWeatherApp(weatherData) {
+  const currentDayData = weatherData.forecast.forecastday[0]; // Get current day
+  printHeaderData(weatherData.location); // Print header data
+  printWeatherSlider(currentDayData.day); // Print weather slider
+  printHourlySlider(currentDayData); // Print hourly slider
+};
+
+export {printWeatherApp, updateWeatherApp};

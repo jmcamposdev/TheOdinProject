@@ -1,5 +1,6 @@
 .weather__search {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding-bottom: 25px;
@@ -22,4 +23,17 @@
 .search-icon {
   width: 20px;
   height: 20px;
+}
+
+
+.search__error {
+  color: #FF0000;
+  font-size: 14px;
+  margin-top: 10px;
+  opacity: 1;
+  transition: opacity 0.2s; 
+}
+
+.search__error--inactive {
+  opacity: 0;
 }

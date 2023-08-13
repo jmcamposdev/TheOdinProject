@@ -8,6 +8,7 @@ import {getDay} from '../../utils/utilities';
 function printHourlySlider(day) {
   // Main container of the slider
   const hourlySliderElement = document.querySelector('.weather__data__hourly__slider');
+  hourlySliderElement.innerHTML = ''; // Clear the slider
   const dayTextElement = document.querySelector('.current__day');
   const currentDate = new Date().setHours(0, 0, 0, 0);
   const dayDate = new Date(day.date).setHours(0, 0, 0, 0);
