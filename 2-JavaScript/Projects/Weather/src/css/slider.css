@@ -20,6 +20,7 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  padding: 0 15px;
 }
 .weather__data__information:first-child {
   border-right: 1px solid #A8B1DD !important;
@@ -33,10 +34,16 @@
   justify-content: center;
 }
 .weather__info h3 {
+  font-weight: 400;
   font-size: 12px;
   color: #A8B1DD;
 }
 .weather__info > p {
   font-size: 30px;
   color: #494173;
+}
+
+.weather__info__unit {
+  font-size: 12px;
+  font-weight: 700;
 }

@@ -297,15 +297,15 @@ const weatherIcon = [
 function printWeatherSlider(listDays) {
   const weatherIconDay = document.querySelector('.weather__slider__information__img');
   const weatherTitleDay = document.querySelector('.weather__slider__information__title');
-  const windValueDay = document.querySelector('.wind__value');
-  const tempValueDay = document.querySelector('.temp__value');
-  const humidityValueDay = document.querySelector('.humidity__value');
+  const windValueDay = document.querySelector('.wind__value__data');
+  const tempValueDay = document.querySelector('.temp__data__value');
+  const humidityValueDay = document.querySelector('.humidity__data__value');
 
   // weatherIconDay.src = require(`../assets/images/weather-icons/${weatherIcon[listDays[0].weather.code].icon}.png`);
   weatherIconDay.src = require(`./img/soleado.png`); // TODO: change the icon
   weatherTitleDay.innerHTML = listDays[0].day.condition.text;
   windValueDay.textContent = listDays[0].day.avgvis_km;
-  tempValueDay.textContent = listDays[0].day.avgtemp_c;
+  tempValueDay.textContent = Math.round(listDays[0].day.avgtemp_c);
   humidityValueDay.textContent = listDays[0].day.avghumidity;
   console.log(listDays[0]);
 }
