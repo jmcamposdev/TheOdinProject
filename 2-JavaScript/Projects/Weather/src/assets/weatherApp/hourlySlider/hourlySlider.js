@@ -1,4 +1,5 @@
 import {getDay} from '../../utils/utilities';
+import {usingFahrenheit} from '../weatherApp';
 
 /**
  * Print the hourly slider from the hourly list
@@ -49,10 +50,10 @@ function createHourlyElement(hourlyData) {
   hourlyTemperature.classList.add('weather__data__hourly__slider__element__temperature');
   const hourlyTemperatureValue = document.createElement('span');
   hourlyTemperatureValue.classList.add('weather__data__hourly__slider__element__temperature__value');
-  hourlyTemperatureValue.textContent = hourlyData.temp_c;
+  hourlyTemperatureValue.textContent = Math.round(usingFahrenheit ? hourlyData.temp_f : hourlyData.temp_c);
   const hourlyTemperatureUnit = document.createElement('span');
   hourlyTemperatureUnit.classList
-      .add('weather__data__hourly__slider__element__temperature__unit', 'weather__info__unit');
+      .add('weather__data__hourly__slider__element__temperature__unit', 'weather__info__unit', 'weather__temp__unit');
   hourlyTemperatureUnit.textContent = '°C';
 
   hourlyTemperature.appendChild(hourlyTemperatureValue);

@@ -1,3 +1,5 @@
+import { usingFahrenheit } from "../weatherApp";
+
 const weatherIcon = [
   {
     code: 1000,
@@ -305,8 +307,11 @@ function printWeatherSlider(day) {
   weatherIconDay.src = require(`./img/soleado.png`); // TODO: change the icon
   weatherTitleDay.innerHTML = day.condition.text;
   windValueDay.textContent = day.avgvis_km;
-  tempValueDay.textContent = Math.round(day.avgtemp_c);
+  tempValueDay.textContent = usingFahrenheit ? Math.round(day.avgtemp_f) : Math.round(day.avgtemp_c);
   humidityValueDay.textContent = day.avghumidity;
+
+  // Units
+  const tempUnit = document.querySelector('.temp__data__unit');
 }
 
 export default printWeatherSlider;

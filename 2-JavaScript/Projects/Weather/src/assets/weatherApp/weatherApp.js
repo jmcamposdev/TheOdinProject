@@ -4,6 +4,8 @@ import printHourlySlider from './hourlySlider/hourlySlider';
 import printWeatherSlider from './weatherSlider/weatherSlider';
 
 const location = 'Málaga';
+let lastWeatherData;
+let usingFahrenheit = false;
 /**
  * Print all the weather app
  * Slides the weather app in and out
@@ -14,7 +16,7 @@ async function printWeatherApp() {
     console.log(weatherData.error);
     return;
   }
-
+  lastWeatherData = weatherData; // Save the last weather data
   updateWeatherApp(weatherData); // Update the weather app
 }
 
@@ -24,10 +26,32 @@ async function printWeatherApp() {
  * @param {Object} weatherData
  */
 function updateWeatherApp(weatherData) {
+  lastWeatherData = weatherData; // Save the last weather data
   const currentDayData = weatherData.forecast.forecastday[0]; // Get current day
   printHeaderData(weatherData.location); // Print header data
   printWeatherSlider(currentDayData.day); // Print weather slider
   printHourlySlider(currentDayData); // Print hourly slider
+  updateUnits(usingFahrenheit ? 'F' : '°C'); // Update units
 };
 
-export {printWeatherApp, updateWeatherApp};
+/**
+ * Change the temperature units of the all the weather app
+ * @param {boolean} boolean
+ */
+function setFahrenheit(boolean) {
+  usingFahrenheit = boolean;
+  updateWeatherApp(lastWeatherData);
+}
+
+/**
+ * Update all the units of the weather app
+ * @param {String} units
+ */
+function updateUnits(units = '°C') {
+  const unitsElements = document.querySelectorAll('.weather__temp__unit');
+  unitsElements.forEach((element) => {
+    element.innerHTML = units;
+  });
+}
+
+export {printWeatherApp, updateWeatherApp, lastWeatherData, usingFahrenheit, setFahrenheit};

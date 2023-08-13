@@ -7,6 +7,7 @@ import './css/search.css';
 import {printWeatherApp} from './assets/weatherApp/weatherApp';
 import loadingSvg from './img/loading.svg';
 import createSearchEvent from './assets/weatherApp/searchBox/searchBox';
+import createFahrenheitEventListeners from './assets/weatherApp/fahrenheitCheck/fahrenheitCheck';
 
 
 /**
@@ -17,6 +18,7 @@ async function init() {
   setLoadingImg();
   printWeatherApp();
   createSearchEvent();
+  createFahrenheitEventListeners();
 }
 
 /**
