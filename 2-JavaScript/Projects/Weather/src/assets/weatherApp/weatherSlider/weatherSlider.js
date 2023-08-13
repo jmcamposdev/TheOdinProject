@@ -292,9 +292,9 @@ const weatherIcon = [
 /**
  * Print the weather slider
  * You can scroll through all the slides of the days
- * @param {Array} listDays
+ * @param {Object} day
  */
-function printWeatherSlider(listDays) {
+function printWeatherSlider(day) {
   const weatherIconDay = document.querySelector('.weather__slider__information__img');
   const weatherTitleDay = document.querySelector('.weather__slider__information__title');
   const windValueDay = document.querySelector('.wind__value__data');
@@ -303,10 +303,10 @@ function printWeatherSlider(listDays) {
 
   // weatherIconDay.src = require(`../assets/images/weather-icons/${weatherIcon[listDays[0].weather.code].icon}.png`);
   weatherIconDay.src = require(`./img/soleado.png`); // TODO: change the icon
-  weatherTitleDay.innerHTML = listDays[0].day.condition.text;
-  windValueDay.textContent = listDays[0].day.avgvis_km;
-  tempValueDay.textContent = Math.round(listDays[0].day.avgtemp_c);
-  humidityValueDay.textContent = listDays[0].day.avghumidity;
+  weatherTitleDay.innerHTML = day.condition.text;
+  windValueDay.textContent = day.avgvis_km;
+  tempValueDay.textContent = Math.round(day.avgtemp_c);
+  humidityValueDay.textContent = day.avghumidity;
 }
 
 export default printWeatherSlider;

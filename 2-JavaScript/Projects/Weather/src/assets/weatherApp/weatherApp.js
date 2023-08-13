@@ -14,9 +14,10 @@ async function printWeatherApp() {
     return;
   }
 
+  const currentDayData = weatherData.forecast.forecastday[0]; // Get current day
   // If there is no error, print the weather app
   printHeaderData(weatherData.location); // Print header data
-  printWeatherSlider(weatherData.forecast.forecastday); // Print weather slider
+  printWeatherSlider(currentDayData.day); // Print weather slider
 }
 
 export default printWeatherApp;
