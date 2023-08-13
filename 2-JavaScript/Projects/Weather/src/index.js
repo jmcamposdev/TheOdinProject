@@ -3,6 +3,7 @@ import './css/header.css';
 import './css/loading.css';
 import './css/slider.css';
 import './css/hourlySlider.css';
+import './css/search.css';
 import printWeatherApp from './assets/weatherApp/weatherApp';
 import loadingSvg from './img/loading.svg';
 

@@ -1,0 +1,25 @@
+.weather__search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 25px;
+  background-color: #5A1BEE;
+}
+.search__form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #F8F7FF;
+  padding: 15px 25px;
+  border-radius: 30px;
+}
+.search__form__input, .search__form__button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.search-icon {
+  width: 20px;
+  height: 20px;
+}
