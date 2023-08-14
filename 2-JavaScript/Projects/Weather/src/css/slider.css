@@ -7,6 +7,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0 15px;
 }
 
 .weather__slider__information {
@@ -17,6 +18,10 @@
 }
 .weather__slider__information__img {
   width: 100%;
+}
+
+.weather__selected__arrow {
+  fill: #a8b1dd;
 }
 
 
