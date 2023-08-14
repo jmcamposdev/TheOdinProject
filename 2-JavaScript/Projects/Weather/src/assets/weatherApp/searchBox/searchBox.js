@@ -1,6 +1,6 @@
 import getWeatherData from '../../apiCalls/apiCalls';
 
-import {updateWeatherApp} from '../weatherApp';
+import {setLastWeatherData, updateWeatherApp} from '../weatherApp';
 
 /**
  * Create the Search Box Submit Event
@@ -29,7 +29,8 @@ function createSearchEvent() {
     }
 
     // If there is no error, print the weather app
-    updateWeatherApp(weatherData);
+    setLastWeatherData(weatherData);
+    updateWeatherApp();
   });
 }
 

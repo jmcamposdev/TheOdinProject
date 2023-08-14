@@ -2,9 +2,10 @@ import {getDay} from '../utils/utilities';
 
 /**
  * Print in the Header the Date and the City
- * @param {Object} location
+ * @param {string} city - City Name
+ * @param {Date} date - Date
  */
-function printHeaderData(location) {
+function printHeaderData(city, date) {
   // Getting DOM Elements
   const nameCityElement = document.querySelector('.header__city__name__city');
   const textDayElement =
@@ -14,9 +15,7 @@ function printHeaderData(location) {
   const monthElement =
   document.querySelector('.header__city__name__date__textMonth');
   // Setting the content
-  const date = new Date(location.localtime);
-
-  nameCityElement.textContent = location.name; // City Name
+  nameCityElement.textContent = city; // City Name
   textDayElement.textContent = getDay(date); // Day of the Week
   numberDayElement.textContent = date.getDate(); // Day of the Month
   monthElement.textContent = date.toLocaleString('en-us', {month: 'long'}); // Month

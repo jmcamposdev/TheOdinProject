@@ -6,6 +6,7 @@ import printWeatherSlider from './weatherSlider/weatherSlider';
 const location = 'Málaga';
 let lastWeatherData;
 let usingFahrenheit = false;
+let currentDayIndex = 0;
 /**
  * Print all the weather app
  * Slides the weather app in and out
@@ -17,7 +18,7 @@ async function printWeatherApp() {
     return;
   }
   lastWeatherData = weatherData; // Save the last weather data
-  updateWeatherApp(weatherData); // Update the weather app
+  updateWeatherApp(); // Update the weather app
 }
 
 /**
@@ -25,14 +26,23 @@ async function printWeatherApp() {
  * Header data, weather slider and hourly slider
  * @param {Object} weatherData
  */
-function updateWeatherApp(weatherData) {
-  lastWeatherData = weatherData; // Save the last weather data
-  const currentDayData = weatherData.forecast.forecastday[0]; // Get current day
-  printHeaderData(weatherData.location); // Print header data
+function updateWeatherApp() {
+  const currentDayData = lastWeatherData.forecast.forecastday[currentDayIndex]; // Get current day
+  const currentCityName = lastWeatherData.location.name; // Get current city name
+  const currentDate = new Date(currentDayData.date); // Get current date
+  printHeaderData(currentCityName, currentDate); // Print header data
   printWeatherSlider(currentDayData.day); // Print weather slider
   printHourlySlider(currentDayData); // Print hourly slider
   updateUnits(usingFahrenheit ? 'F' : '°C'); // Update units
 };
+
+/**
+ * Update the last weather data with the new one
+ * @param {Object} weatherData
+ */
+function setLastWeatherData(weatherData) {
+  lastWeatherData = weatherData;
+}
 
 /**
  * Change the temperature units of the all the weather app
@@ -41,6 +51,14 @@ function updateWeatherApp(weatherData) {
 function setFahrenheit(boolean) {
   usingFahrenheit = boolean;
   updateWeatherApp(lastWeatherData);
+}
+
+/**
+ * Set the current day index
+ * @param {Number} index
+ */
+function setCurrentDayIndex(index) {
+  currentDayIndex = index;
 }
 
 /**
@@ -54,4 +72,12 @@ function updateUnits(units = '°C') {
   });
 }
 
-export {printWeatherApp, updateWeatherApp, lastWeatherData, usingFahrenheit, setFahrenheit};
+export {printWeatherApp,
+  updateWeatherApp,
+  setLastWeatherData,
+  lastWeatherData,
+  usingFahrenheit,
+  setFahrenheit,
+  currentDayIndex,
+  setCurrentDayIndex,
+};

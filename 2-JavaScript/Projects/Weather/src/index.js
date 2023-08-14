@@ -8,6 +8,7 @@ import {printWeatherApp} from './assets/weatherApp/weatherApp';
 import loadingSvg from './img/loading.svg';
 import createSearchEvent from './assets/weatherApp/searchBox/searchBox';
 import createFahrenheitEventListeners from './assets/weatherApp/fahrenheitCheck/fahrenheitCheck';
+import {createNextArrowEvent, createPrevArrowEvent} from './assets/weatherApp/weatherSlider/sliderArrows';
 
 
 /**
@@ -19,6 +20,8 @@ async function init() {
   printWeatherApp();
   createSearchEvent();
   createFahrenheitEventListeners();
+  createNextArrowEvent();
+  createPrevArrowEvent();
 }
 
 /**
