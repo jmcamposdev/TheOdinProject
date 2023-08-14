@@ -11,7 +11,7 @@ export default async function getWeatherData(location) {
   setLoading(true);
   /* eslint max-len: ["error", { "ignoreUrls": true }] */
   const response = await
-  fetch(`http://api.weatherapi.com/v1/forecast.json?key=${process.env.WEATHER_API}&q=${location}&days=3&aqi=yes&alerts=no`)
+  fetch(`http://api.weatherapi.com/v1/forecast.json?key=${process.env.WEATHER_API}&q=${location}&days=3&aqi=yes&alerts=no`, {mode: 'cors'})
       .catch((error) => {
         return error;
       });
