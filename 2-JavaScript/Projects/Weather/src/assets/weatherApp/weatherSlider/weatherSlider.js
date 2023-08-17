@@ -1,5 +1,4 @@
 import {usingFahrenheit} from '../weatherApp';
-
 // const weatherIcon = [
 //   {
 //     code: 1000,
@@ -304,11 +303,81 @@ function printWeatherSlider(day) {
   const humidityValueDay = document.querySelector('.humidity__data__value');
 
   // weatherIconDay.src = require(`../assets/images/weather-icons/${weatherIcon[listDays[0].weather.code].icon}.png`);
-  weatherIconDay.src = require(`./img/soleado.png`); // TODO: change the icon
+  weatherIconDay.src = require(`${getWeatherIcon(day.condition.code)}`); // TODO: change the icon
   weatherTitleDay.innerHTML = day.condition.text;
   windValueDay.textContent = day.avgvis_km;
   tempValueDay.textContent = usingFahrenheit ? Math.round(day.avgtemp_f) : Math.round(day.avgtemp_c);
   humidityValueDay.textContent = day.avghumidity;
+}
+
+/**
+ * Convert the code of the weather to the icon
+ * @param {Number} code
+ * @return {String} icon
+ */
+function getWeatherIcon(code) {
+  const mainPath = './img/';
+  let iconName = '';
+
+  if (code == 1000) {
+    iconName = 'sunny.png';
+  } else if (code == 1003) {
+    iconName = 'partly-cloudy-day.png';
+  } else if (code == 1006) {
+    iconName = 'cloudy.png';
+  } else if (code == 1009) {
+    iconName = 'overcast.png';
+  } else if (code == 1030 || code == 1135 || code == 1147) { // All the mist codes
+    iconName = 'mist.png';
+  } else if (code == 1063 ||
+    code == 1072 ||
+    code == 1150 ||
+    code == 1153 ||
+    code == 1180 ||
+    code == 1183 ||
+    code == 1186 ||
+    code == 1189 ||
+    code == 1192 ||
+    code == 1195 ||
+    code == 1240 ||
+    code == 1243 ||
+    code == 1246) { // All the rain codes
+    iconName = 'rain.png';
+  } else if (code == 1066 ||
+    code == 1210 ||
+    code == 1213 ||
+    code == 1216 ||
+    code == 1219 ||
+    code == 1222 ||
+    code == 1225 ||
+    code == 1237 ||
+    code == 1255 ||
+    code == 1258 ||
+    code == 1261 ||
+    code == 1264) { // All the snow codes
+    iconName = 'snow.png';
+  } else if (code == 1069 ||
+    code == 1114 ||
+    code == 1168 ||
+    code == 1171 ||
+    code == 1198 ||
+    code == 1201 ||
+    code == 1204 ||
+    code == 1207 ||
+    code == 1249 ||
+    code == 1252) { // All the sleet codes
+    iconName = 'sleet.png';
+  } else if (code == 1087 ||
+    code == 1273 ||
+    code == 1276 ||
+    code == 1279 ||
+    code == 1282) { // All the thunderstorm codes
+    iconName = 'thunderstorm.png';
+  } else if (code == 1117) { // All the wind codes
+    iconName = 'wind.png';
+  }
+
+  return mainPath + iconName;
 }
 
 export default printWeatherSlider;
