@@ -40,7 +40,7 @@ function createHourlyElement(hourlyData) {
 
   const hourlyImage = document.createElement('img');
   hourlyImage.classList.add('weather__data__hourly__slider__element__image');
-  hourlyImage.src = require(`../weatherSlider/img/soleado.png`);
+  hourlyImage.src = require(`../weatherSlider/img/sunny.png`);
 
   const hourlyHour = document.createElement('p');
   hourlyHour.classList.add('weather__data__hourly__slider__element__hour');
