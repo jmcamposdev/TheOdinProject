@@ -34,7 +34,6 @@ function printWeatherSlider(day) {
 /**
  * Convert the code of the weather to the icon
  * @param {Number} code
- * @param {String} path
  * @return {String} icon
  */
 function getWeatherIcon(code) {
