@@ -1,5 +1,6 @@
 import {getDay} from '../../utils/utilities';
 import {usingFahrenheit} from '../weatherApp';
+import {getWeatherIcon} from '../weatherSlider/weatherSlider';
 
 /**
  * Print the hourly slider from the hourly list
@@ -35,12 +36,12 @@ function printHourlySlider(day) {
  * @return {HTMLElement}
  */
 function createHourlyElement(hourlyData) {
-  const hourlyElement = document.createElement('div');
-  hourlyElement.classList.add('weather__data__hourly__slider__element');
+  const hourlyElement = document.createElement('div'); // Create the element
+  hourlyElement.classList.add('weather__data__hourly__slider__element'); // Add the class
 
-  const hourlyImage = document.createElement('img');
-  hourlyImage.classList.add('weather__data__hourly__slider__element__image');
-  hourlyImage.src = require(`../weatherSlider/img/sunny.png`);
+  const hourlyImage = document.createElement('img'); // Create the image
+  hourlyImage.classList.add('weather__data__hourly__slider__element__image'); // Add the class
+  hourlyImage.src = getWeatherIcon(hourlyData.condition.code); // Get the weather icon
 
   const hourlyHour = document.createElement('p');
   hourlyHour.classList.add('weather__data__hourly__slider__element__hour');

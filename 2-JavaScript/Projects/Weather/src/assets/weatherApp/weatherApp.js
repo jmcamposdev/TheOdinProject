@@ -1,7 +1,7 @@
 import getWeatherData from '../apiCalls/apiCalls';
 import printHeaderData from './headerData';
 import printHourlySlider from './hourlySlider/hourlySlider';
-import printWeatherSlider from './weatherSlider/weatherSlider';
+import {printWeatherSlider} from './weatherSlider/weatherSlider';
 
 const location = 'Málaga';
 let lastWeatherData;
