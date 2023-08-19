@@ -12,7 +12,6 @@ section.search__container {
   font-size: 20px;
   color: #fff;
   text-align: center;
-  text-transform: uppercase;
   letter-spacing: 4px;
   background: rgb(0 0 0 / 88%);
   backdrop-filter: blur(10px);
@@ -46,12 +45,12 @@ section.search__container {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #F8F7FF;
-  padding: 15px 25px;
-  border-radius: 30px;
+  padding: 5px 15px;
+  border-bottom: 1px solid white;
 }
 .search__form__input, .search__form__button {
   background-color: transparent;
+  color: white;
   border: none;
   outline: none;
 }
@@ -72,4 +71,21 @@ section.search__container {
 
 .search__error--inactive {
   opacity: 0;
+}
+
+/*Search Results */
+.search__results {
+  width: 100%;
+}
+
+.search__results__list {
+  list-style: none;
+}
+
+.search__results__list__element {
+  padding: 10px 0;
+  border-bottom: 1px solid #ffffff42;
+  cursor: pointer;
+  font-size: 13px;
+  text-align: left;
 }
