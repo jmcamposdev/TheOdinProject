@@ -32,8 +32,9 @@ function createSearchEvent() {
     }
 
     // If there is no error, print the weather app
-    setLastWeatherData(weatherData);
-    updateWeatherApp();
+    closeSearchBox(); // Hide the search box
+    setLastWeatherData(weatherData); // Set the last weather data
+    updateWeatherApp(); // Update the weather app
   });
 }
 
@@ -60,6 +61,14 @@ function createCloseSearchBoxEvent() {
   closeIcon.addEventListener('click', () => {
     searchContainer.classList.remove('search__container--active');
   });
+}
+
+/**
+ * Hide the search box
+ */
+function closeSearchBox() {
+  const searchContainer = document.querySelector('.search__container');
+  searchContainer.classList.remove('search__container--active');
 }
 
 
