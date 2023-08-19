@@ -18,6 +18,9 @@
                     <span class="header__city__name__city">Málaga</span>
                 </h2>
             </div>
+            <div class="header__search">
+                <svg class="svg-icon search-icon" aria-labelledby="title desc" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title id="title">Search Icon</title><desc id="desc">A magnifying glass icon.</desc><g class="search-path" fill="none" stroke="#848F91"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"/><circle cx="8" cy="8" r="7"/></g></svg>
+            </div>
             <div class="header__city__tmpToggle">
                 <span class="header__city__tmpToggle__text">ºF</span>
                 <label class="switch">
@@ -66,6 +69,11 @@
                 <h4 class="current__day">Today</h4>
                 <div class="weather__data__hourly__slider"></div>
             </div>
+        </section>
+        <section class="search__container">
+            <div class="search__close__container">
+                <svg class="close-icon" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0,0,256,256"style="fill:#000000;"><g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.12,5.12)"><path d="M7.71875,6.28125l-1.4375,1.4375l17.28125,17.28125l-17.28125,17.28125l1.4375,1.4375l17.28125,-17.28125l17.28125,17.28125l1.4375,-1.4375l-17.28125,-17.28125l17.28125,-17.28125l-1.4375,-1.4375l-17.28125,17.28125z"></path></g></g></svg>
+            </div>
             <div class="weather__search">
                 <form class="search__form">
                     <input class="search__form__input" type="text" placeholder="Search city">
@@ -74,8 +82,7 @@
                 <p class="search__error search__error--inactive"></p>
             </div>
         </section>
-        <div class="loading">
-        </div>
+        <section class="loading"></section>
     </div>
 </body>
 </html>
