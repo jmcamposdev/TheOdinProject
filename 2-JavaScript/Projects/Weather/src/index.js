@@ -16,12 +16,14 @@ import {createNextArrowEvent, createPrevArrowEvent} from './assets/weatherApp/we
  * @return {void}
  */
 async function init() {
-  setLoadingImg();
-  printWeatherApp();
-  createSearchEvent();
-  createFahrenheitEventListeners();
-  createNextArrowEvent();
-  createPrevArrowEvent();
+  setLoadingImg(); // Add the loading image to the DOM
+  printWeatherApp(); // Print all the weather app
+
+  // Event listeners
+  createSearchEvent(); // Create the search event
+  createFahrenheitEventListeners(); // Create the fahrenheit event listeners
+  createNextArrowEvent(); // Create the next arrow event
+  createPrevArrowEvent(); // Create the prev arrow event
 }
 
 /**

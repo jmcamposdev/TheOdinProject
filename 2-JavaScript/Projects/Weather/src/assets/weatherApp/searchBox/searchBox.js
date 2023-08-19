@@ -7,6 +7,8 @@ import {setLastWeatherData, updateWeatherApp} from '../weatherApp';
  * @return {void}
  */
 function createSearchEvent() {
+  createShowSearchBox();
+
   const searchForm = document.querySelector('.search__form');
   const searchInput = document.querySelector('.search__form__input');
 
@@ -31,6 +33,18 @@ function createSearchEvent() {
     // If there is no error, print the weather app
     setLastWeatherData(weatherData);
     updateWeatherApp();
+  });
+}
+
+/**
+ * Add the event to show the search box when the search icon is clicked
+ */
+function createShowSearchBox() {
+  const searchIcon = document.querySelector('.header__search .search-icon');
+  const searchContainer = document.querySelector('.search__container');
+
+  searchIcon.addEventListener('click', () => {
+    searchContainer.classList.add('search__container--active');
   });
 }
 
