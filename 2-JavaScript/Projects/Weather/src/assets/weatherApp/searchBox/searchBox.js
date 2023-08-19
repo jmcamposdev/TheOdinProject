@@ -7,7 +7,8 @@ import {setLastWeatherData, updateWeatherApp} from '../weatherApp';
  * @return {void}
  */
 function createSearchEvent() {
-  createShowSearchBox();
+  createShowSearchBoxEvent(); // Create the event to show the search box
+  createCloseSearchBoxEvent(); // Create the event to close the search box
 
   const searchForm = document.querySelector('.search__form');
   const searchInput = document.querySelector('.search__form__input');
@@ -39,7 +40,7 @@ function createSearchEvent() {
 /**
  * Add the event to show the search box when the search icon is clicked
  */
-function createShowSearchBox() {
+function createShowSearchBoxEvent() {
   const searchIcon = document.querySelector('.header__search .search-icon');
   const searchContainer = document.querySelector('.search__container');
 
@@ -47,5 +48,19 @@ function createShowSearchBox() {
     searchContainer.classList.add('search__container--active');
   });
 }
+
+/**
+ * Add the event to close icon in the top right corner of the search box
+ * Hide the search box when the close icon is clicked
+ */
+function createCloseSearchBoxEvent() {
+  const closeIcon = document.querySelector('.search__close__container .close-icon');
+  const searchContainer = document.querySelector('.search__container');
+
+  closeIcon.addEventListener('click', () => {
+    searchContainer.classList.remove('search__container--active');
+  });
+}
+
 
 export default createSearchEvent;
