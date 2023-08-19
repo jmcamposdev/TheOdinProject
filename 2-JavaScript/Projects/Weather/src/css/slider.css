@@ -27,6 +27,7 @@
 
 
 .weather__data__information {
+  flex: 1;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
