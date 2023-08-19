@@ -1,4 +1,4 @@
-import getWeatherData from '../apiCalls/apiCalls';
+import {getWeatherData} from '../apiCalls/apiCalls';
 import printHeaderData from './headerData';
 import printHourlySlider from './hourlySlider/hourlySlider';
 import {printWeatherSlider} from './weatherSlider/weatherSlider';

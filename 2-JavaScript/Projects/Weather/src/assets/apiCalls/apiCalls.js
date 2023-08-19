@@ -7,7 +7,7 @@ import setLoading from '../utils/setLoading';
  * @param {string} location
  * return {object} weather
  */
-export default async function getWeatherData(location) {
+async function getWeatherData(location) {
   setLoading(true);
   /* eslint max-len: ["error", { "ignoreUrls": true }] */
   const response = await
@@ -20,3 +20,21 @@ export default async function getWeatherData(location) {
   setLoading(false);
   return data;
 }
+
+/**
+ * Return the possible locations for the given location or word
+ * @param {String} location
+ * @return {Object} data
+ */
+async function getWeatherAutocomplete(location) {
+  const response = await
+  fetch(`https://api.weatherapi.com/v1/search.json?key=${process.env.WEATHER_API}&q=${location}`, {mode: 'cors'})
+      .catch((error) => {
+        return error;
+      });
+
+  const data = await response.json();
+  return data;
+}
+
+export {getWeatherData, getWeatherAutocomplete};
