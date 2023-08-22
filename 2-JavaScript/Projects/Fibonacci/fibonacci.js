@@ -26,3 +26,24 @@ console.log(fibs(2)); // Expected Result --> [0, 1]
 console.log(fibs(3)); // Expected Result --> [0, 1, 1]
 console.log(fibs(4)); // Expected Result --> [0, 1, 1, 2]
 console.log(fibs(8));; // Expected Result --> [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+
+/**
+ * Calculate the Fibonacci sequence recursively
+ * @param {Number} numIteration 
+ * @returns {Array} Returns an array with the length of numIteration and the Fibonacci sequence
+ */
+function fibsRec (numIteration, sequence = [0,1]) {
+  if (numIteration <= sequence.length) {
+    return sequence.splice(0, numIteration);
+  }
+  
+  // Calculate the next number of the Fibonacci sequence
+  const nextNumber = sequence.at(-2) + sequence.at(-1);
+  sequence.push(nextNumber); // Add the next number to the array
+  return fibsRec(numIteration, sequence) // Recursive call
+}
+
+console.log(fibsRec(0)); // Expected Result --> []
+console.log(fibsRec(1)); // Expected Result --> [0]
+console.log(fibsRec(5)); // Expected Result --> [0]
+console.log(fibsRec(10)); // Expected Result --> [0]
