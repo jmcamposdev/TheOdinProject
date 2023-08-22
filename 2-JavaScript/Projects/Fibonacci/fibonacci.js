@@ -18,7 +18,7 @@ function fibs (numIteration) {
     // Add the sum of the last two numbers of the Fibonacci sequence to the array
     fibSequence.push(fibSequence[index] + fibSequence[index++ + 1]);
   }
-  
+
   return fibSequence;
 }
 
