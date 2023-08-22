@@ -22,9 +22,9 @@ function fibs (numIteration) {
   return fibSequence;
 }
 
-fibs(0); // Expected Result --> []
-fibs(1); // Expected Result --> [0]
-fibs(2); // Expected Result --> [0, 1]
-fibs(3); // Expected Result --> [0, 1, 1]
-fibs(4); // Expected Result --> [0, 1, 1, 2]
-fibs(8); // Expected Result --> [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+console.log(fibs(0)); // Expected Result --> []
+console.log(fibs(1)); // Expected Result --> [0]
+console.log(fibs(2)); // Expected Result --> [0, 1]
+console.log(fibs(3)); // Expected Result --> [0, 1, 1]
+console.log(fibs(4)); // Expected Result --> [0, 1, 1, 2]
+console.log(fibs(8));; // Expected Result --> [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
