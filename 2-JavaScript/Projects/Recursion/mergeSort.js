@@ -25,5 +25,5 @@ function mergeSort(array) {
   return sortedArray;
 }
 
-const array = [2,1,4,3,6,5,8,7,10,9,9,1,90];
+const array = [2,1,4,3,6,5,8,7,10,9,9,1,90]; // Example array
 console.log(mergeSort(array));
