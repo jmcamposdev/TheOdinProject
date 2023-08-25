@@ -1,3 +1,8 @@
+/**
+ * Calculates the sum of all the multiples of 3 or 5 below the provided parameter value number.
+ * @param {number} number 
+ * @return {number} sum of all the multiples of 3 or 5 below the provided parameter value number.
+ */
 function multiplesOf3and5(number) {
   number--;
   if (number == 0) return 0;
