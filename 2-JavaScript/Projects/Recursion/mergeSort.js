@@ -1,3 +1,9 @@
+/**
+ * Merge sort is a divide and conquer algorithm that works by splitting an array into two halves,
+ *  sorting the two halves, and then merging them back together.
+ * @param {Array} array 
+ * @returns The sorted array
+ */
 function mergeSort(array) {
   if (array.length < 2) {
     return array;
