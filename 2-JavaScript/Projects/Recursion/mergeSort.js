@@ -5,10 +5,12 @@
  * @returns The sorted array
  */
 function mergeSort(array) {
+  // Base case: If the array has 1 or 0 elements, it is already sorted
   if (array.length < 2) {
     return array;
   }
   
+  // Recursive case: Split the array into two halves and sort them
   const sortedLeftHalf = mergeSort(array.slice(0,array.length/2)); // Order the left half of the array
   const sortedRightHalf = mergeSort(array.slice(array.length/2, array.length)); // Order the right half of the array
   
