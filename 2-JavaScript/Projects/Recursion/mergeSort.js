@@ -35,3 +35,10 @@ function mergeSort(array) {
 
 const array = [2,1,4,3,6,5,8,7,10,9,9,1,90]; // Example array
 console.log(mergeSort(array));
+
+// Time complexity: O(n log n)
+
+// Example:
+// console.log(mergeSort([2,1,4,3,6,5,8,7,10,9,9,1,90])); // [1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 10, 90]
+// console.log(mergeSort([2,1,4,3,6,5,8,7,10,9,9,1,90, 100])); // [1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 10, 90, 100]
+// console.log(mergeSort([2,1,4,3,6,5,8,7,10,9,9,1,90, 100, 0])); // [0, 1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 10, 90, 100]
