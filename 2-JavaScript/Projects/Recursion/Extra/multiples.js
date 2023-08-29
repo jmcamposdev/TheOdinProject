@@ -12,6 +12,7 @@ function multiplesOf3and5(number) {
   return multiplesOf3and5(number);
 }
 
+// Test cases
 console.log(multiplesOf3and5(10)); // Should return 23
 console.log(multiplesOf3and5(1000)); // Should return 233168
 console.log(multiplesOf3and5(8456)); // Should return 16687353
