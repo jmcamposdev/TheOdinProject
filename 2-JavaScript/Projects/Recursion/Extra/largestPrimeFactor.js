@@ -7,12 +7,14 @@ function largestPrimeFactor(number) {
   if (number <= 0) {
     return "Please enter a positive number.";
   }
+  const primesNumbers = getPrimesNumbers(number);
+  return primesNumbers;
 }
 
-// Test cases
-console.log(largestPrimeFactor(2)); // Should return 2
-console.log(largestPrimeFactor(3)); // Should return 3
-console.log(largestPrimeFactor(13195)) // Should return 29.
+// Test cases 
+// console.log(largestPrimeFactor(2)); // Should return 2
+// console.log(largestPrimeFactor(3)); // Should return 3
+// console.log(largestPrimeFactor(123)) // Should return 29.
 
 
 function getPrimesNumbers(number) {
@@ -28,7 +30,7 @@ function getPrimesNumbers(number) {
 function isPrime(number) {
   let isPrime = true;
 
-  for (let i = 2; i < number && isPrime; i++) {
+  for (let i = 2; i < number/2 && isPrime; i++) {
     if (number % i == 0) {
       isPrime = false;
     }
@@ -36,7 +38,37 @@ function isPrime(number) {
   return isPrime;
 } 
 
-console.log(isPrime(2)); // Should return true
-console.log(isPrime(3)); // Should return true
-console.log(isPrime(4)); // Should return false
-console.log(isPrime(5)); // Should return true
+// console.log(isPrime(2)); // Should return true
+// console.log(isPrime(3)); // Should return true
+// console.log(isPrime(4)); // Should return false
+// console.log(isPrime(5)); // Should return true
+
+function eratosthenesSieve (number) {
+  const sieve = new Array(number)
+  .fill(1)
+  .map((e,i) => i+1)
+  .slice(1);
+
+  for (let i = 0; i < sieve.length; i++) {
+    const base = sieve[i];
+    let multiple = 2;
+    console.log(base);
+    let numberToRemove = 0;
+    for (let j = 0; j < sieve.length && numberToRemove < number; j++) {
+      numberToRemove = base * multiple;
+      multiple++;
+      const index = sieve.indexOf(numberToRemove);
+      if (index > 0) {
+        sieve.splice(index, 1);
+        console.log(sieve);
+      }
+    }
+
+    multiple = 2;
+    numberToRemove = 0;
+  }
+
+  return sieve;
+}
+
+console.log(eratosthenesSieve(100));
