@@ -14,6 +14,17 @@ console.log(largestPrimeFactor(2)); // Should return 2
 console.log(largestPrimeFactor(3)); // Should return 3
 console.log(largestPrimeFactor(13195)) // Should return 29.
 
+
+function getPrimesNumbers(number) {
+  let primes = [];
+  for (let i = 2; i <= number; i++) {
+    if (isPrime(i)) {
+      primes.push(i);
+    }
+  }
+  return primes;
+}
+
 function isPrime(number) {
   let isPrime = true;
 
