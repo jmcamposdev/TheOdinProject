@@ -47,16 +47,6 @@ function getPrimesNumbers(number) {
   return primes;
 }
 
-function isPrime(number) {
-  let isPrime = true;
-
-  for (let i = 2; i < number/2 && isPrime; i++) {
-    if (number % i == 0) {
-      isPrime = false;
-    }
-  }
-  return isPrime;
-} 
 
 // console.log(isPrime(2)); // Should return true
 // console.log(isPrime(3)); // Should return true
@@ -91,4 +81,4 @@ function eratosthenesSieve (number) {
   return sieve;
 }
 
-console.log(eratosthenesSieve(13195));
+console.log(eratosthenesSieve(13195)); // Should return 2, 3, 5, 7, 11, 13, 17, 19, 23, 29
