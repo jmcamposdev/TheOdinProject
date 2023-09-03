@@ -10,6 +10,14 @@ The Odin project is divided into two parts:
 - `The Foundation`: Which is mandatory and teaches basic concepts about HTML, CSS, JavaScript and setting up your development environment.
 - `Path`: The path to follow once you have finished `The Foundation` you can choose between `Full Stack Ruby on Rails` or `Full Stack JavaScript` in my case I chose the JavaScript path.
 
+# Foundations Course
+In this course I learned the bases of HTML, CSS and some basic JavaScript working with the DOM, I used in Exercises and Projects the projects are:
+- **Recipes →** [Demo](https://jmcamposdev.github.io/TheOdinProject/0-Foundations/Projects/1-Recipes/) | [Code](/0-Foundations/Projects/1-Recipes)
+- **Landing Page →** [Demo](https://jmcamposdev.github.io/TheOdinProject/0-Foundations/Projects/2-Portfolio/#sobremi) | [Code](/0-Foundations/Projects/2-Portfolio)
+- **Rock Paper Scissors →** [Demo](https://jmcamposdev.github.io/TheOdinProject/0-Foundations/Projects/3-Rock-Paper-Scissors/) | [Code](/0-Foundations/Projects/3-Rock-Paper-Scissors)
+- **Etch-a-Sketch →** [Demo](https://jmcamposdev.github.io/TheOdinProject/0-Foundations/Projects/4-Etch-A-Sketch/) | [Code](/0-Foundations/Projects/4-Etch-A-Sketch)
+- **Calculator →** [Demo](https://jmcamposdev.github.io/TheOdinProject/0-Foundations/Projects/5-Calculator/) | [Code](/0-Foundations/Projects/5-Calculator)
+
 I will continue to upload exercises and projects.
 
 🚧 This repository is under construction 🚧
