@@ -1,3 +1,9 @@
+/**
+ * Eratosthenes Sieve algorithm to find prime numbers up to a given number 
+ * works by removing all multiples of a number from a list of numbers starting from 2
+ * @param {Number} number 
+ * @return {Array} Array of prime numbers
+ */
 function eratosthenesSieve (number) {
   const sieve = new Array(number)
   .fill(1)
