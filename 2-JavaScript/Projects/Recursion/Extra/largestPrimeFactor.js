@@ -37,17 +37,6 @@ console.log(maxPrimeFactor(13195));
 // console.log(largestPrimeFactor(123)) // Should return 29.
 
 
-function getPrimesNumbers(number) {
-  let primes = [];
-  for (let i = 2; i <= number; i++) {
-    if (isPrime(i)) {
-      primes.push(i);
-    }
-  }
-  return primes;
-}
-
-
 // console.log(isPrime(2)); // Should return true
 // console.log(isPrime(3)); // Should return true
 // console.log(isPrime(4)); // Should return false
