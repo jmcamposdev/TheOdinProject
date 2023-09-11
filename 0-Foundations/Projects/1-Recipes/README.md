@@ -17,6 +17,7 @@ The objective of this project was to create a simple recipe website. It consists
 
 ### Iteration 1: Initial Structure
 
+-   Created a new directory for the project.
 -   Created an `index.html` file with the standard HTML boilerplate.
 -   Added an `<h1>` heading with the title "Odin Recipes" to the index page.
 
