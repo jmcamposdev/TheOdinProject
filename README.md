@@ -20,7 +20,7 @@ In this course I learned the bases of HTML, CSS and some basic JavaScript workin
 
 # Intermediate HTML and CSS
 In this course I learned more about what you can do with HTML and CSS.
-- **Sign-up Form →** [Demo](https://jmcamposdev.github.io/TheOdinProject/1-IntermediateHTML&CSS-Course/Projects/1-Sign-up%20Form/) | [Code](/1-IntermediateHTML%26CSS-Course/Projects/1-Sign-up%20Form)
+- **Sign-up Form → ** [Demo](https://jmcamposdev.github.io/TheOdinProject/1-IntermediateHTML&CSS-Course/Projects/1-Sign-up%20Form/) | [Code](/1-IntermediateHTML%26CSS-Course/Projects/1-Sign-up%20Form)
 
 I will continue to upload exercises and projects.
 
