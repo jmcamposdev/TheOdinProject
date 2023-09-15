@@ -23,6 +23,24 @@ In this course I learned more about what you can do with HTML and CSS.
 - **Sign-up Form → ** [Demo](https://jmcamposdev.github.io/TheOdinProject/1-IntermediateHTML&CSS-Course/Projects/1-Sign-up%20Form/) | [Code](/1-IntermediateHTML%26CSS-Course/Projects/1-Sign-up%20Form)
 -  **Admin Dashboard → ** [Demo](https://jmcamposdev.github.io/TheOdinProject/1-IntermediateHTML&CSS-Course/Projects/2-Admin-Dashboard/) | [Code](/1-IntermediateHTML%26CSS-Course/Projects/2-Admin-Dashboard)
 
+# JavaScript Course
+In this course, I have gained fundamental knowledge to make my websites dynamic and interactive using JavaScript. Some of the key aspects I have learned include:
+
+1. **DOM Manipulation:** I have learned how JavaScript can be used to dynamically modify and update the content of a web page in real-time. I can create interactions such as showing or hiding elements, changing text and styles, and responding to user events.
+2. **Object-Oriented Programming (OOP) Principles:** I have acquired a solid understanding of OOP concepts in JavaScript. This enables me to organize my code more efficiently, create reusable objects, and maintain a clearer structure in my applications.
+3. **Working with APIs (Application Programming Interfaces):** I have learned how to connect to external web services and fetch real-world data to enrich my applications. This includes the ability to send HTTP requests, receive JSON responses, and dynamically display data on my websites.
+4. **Creating Interactive Features:** Through practical projects, I have developed skills to create interactive features and standalone applications using JavaScript. This allows me to build more engaging and functional user experiences.
+In summary, this course has provided me with a solid foundation in JavaScript and has empowered me to create dynamic and enriching web applications. I can now manipulate the DOM, apply object-oriented programming principles, and leverage APIs to build interactive and functional websites.
+
+## Projects
+- **Library →** [Demo](https://jmcamposdev.github.io/TheOdinProject/2-JavaScript-Course/Projects/1-Library/) | [Code](/2-JavaScript-Course/Projects/1-Library)
+- **Tic Tac Toe →** [Demo](https://jmcamposdev.github.io/TheOdinProject/2-JavaScript-Course/Projects/2-Tic-Tac-Toe/) | [Code](/2-JavaScript-Course/Projects/2-Tic-Tac-Toe)
+- **Restaurant Page →** [Demo](https://jmcamposdev.github.io/TheOdinProject/2-JavaScript-Course/Projects/3-Restaurant-Page/dist) | [Code](/2-JavaScript-Course/Projects/3-Restaurant-Page)
+- **Todo List →** [Demo](https://jmcamposdev.github.io/TheOdinProject/2-JavaScript-Course/Projects/5-Todo-List/) | [Code](/2-JavaScript-Course/Projects/5-Todo-List)
+- **Weather App →** [Demo](https://jmcamposdev.github.io/TheOdinProject/2-JavaScript-Course/Projects/4-Weather-App/) | [Code](/2-JavaScript-Course/Projects/4-Weather-App)
+- **Recursion →** [Demo](https://jmcamposdev.github.io/TheOdinProject/2-JavaScript-Course/Projects/6-Recursion/) | [Code](/2-JavaScript-Course/Projects/6-Recursion)
+
+
 I will continue to upload exercises and projects.
 
 🚧 This repository is under construction 🚧
