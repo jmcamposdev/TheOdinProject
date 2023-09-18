@@ -4,7 +4,9 @@ allowing users to draw and interact with a 16x16 grid of square divs.
 This project serves as a practical exercise in DOM (Document Object Model) manipulation, JavaScript event handling, and CSS styling.
 You can see page [here](https://jmcamposdev.github.io/TheOdinProject/0-Foundations/Projects/4-Etch-A-Sketch/)
 
-![ezgif com-video-to-gif](https://github.com/jmcamposdev/TheOdinProject/assets/108521775/2e70d544-f4c1-4858-be6c-639d72899c43)
+![ezgif com-video-to-gif-2](https://github.com/jmcamposdev/TheOdinProject/assets/108521775/9f9ad6f7-a1e5-41cc-86ae-3dc32ed2220d)
+
+
 
 
 
