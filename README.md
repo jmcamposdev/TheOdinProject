@@ -41,7 +41,7 @@ In summary, this course has provided me with a solid foundation in JavaScript an
 - **Recursion →** [Demo](https://jmcamposdev.github.io/TheOdinProject/2-JavaScript-Course/Projects/7-Recursion/) | [Code](/2-JavaScript-Course/Projects/7-Recursion)
 
 
-I will continue to upload exercises and projects.
+I will continue to upload exercises and projects. Be patient.
 
 🚧 This repository is under construction 🚧
 
