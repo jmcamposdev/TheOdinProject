@@ -36,9 +36,9 @@ In summary, this course has provided me with a solid foundation in JavaScript an
 - **Library →** [Demo](https://jmcamposdev.github.io/TheOdinProject/2-JavaScript-Course/Projects/1-Library/) | [Code](/2-JavaScript-Course/Projects/1-Library)
 - **Tic Tac Toe →** [Demo](https://jmcamposdev.github.io/TheOdinProject/2-JavaScript-Course/Projects/2-Tic-Tac-Toe/) | [Code](/2-JavaScript-Course/Projects/2-Tic-Tac-Toe)
 - **Restaurant Page →** [Demo](https://jmcamposdev.github.io/TheOdinProject/2-JavaScript-Course/Projects/3-Restaurant-Page/dist) | [Code](/2-JavaScript-Course/Projects/3-Restaurant-Page)
-- **Todo List →** [Demo](https://jmcamposdev.github.io/TheOdinProject/2-JavaScript-Course/Projects/5-Todo-List/) | [Code](/2-JavaScript-Course/Projects/5-Todo-List)
-- **Weather App →** [Demo](https://jmcamposdev.github.io/TheOdinProject/2-JavaScript-Course/Projects/4-Weather-App/) | [Code](/2-JavaScript-Course/Projects/4-Weather-App)
-- **Recursion →** [Demo](https://jmcamposdev.github.io/TheOdinProject/2-JavaScript-Course/Projects/6-Recursion/) | [Code](/2-JavaScript-Course/Projects/6-Recursion)
+- **Todo List →** [Demo](https://jmcamposdev.github.io/TheOdinProject/2-JavaScript-Course/Projects/5-Todo-List/dist/) | [Code](/2-JavaScript-Course/Projects/5-Todo-List)
+- **Weather App →** [Demo](https://jmcamposdev.github.io/TheOdinProject/2-JavaScript-Course/Projects/6-Weather-App/dist/) | [Code](/2-JavaScript-Course/Projects/4-Weather-App)
+- **Recursion →** [Code](/2-JavaScript-Course/Projects/6-Recursion)
 
 
 I will continue to upload exercises and projects. Be patient.
