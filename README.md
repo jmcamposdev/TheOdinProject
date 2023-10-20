@@ -38,7 +38,7 @@ In summary, this course has provided me with a solid foundation in JavaScript an
 - **Restaurant Page →** [Demo](https://jmcamposdev.github.io/TheOdinProject/2-JavaScript-Course/Projects/3-Restaurant-Page/dist) | [Code](/2-JavaScript-Course/Projects/3-Restaurant-Page)
 - **Todo List →** [Demo](https://jmcamposdev.github.io/TheOdinProject/2-JavaScript-Course/Projects/5-Todo-List/dist) | [Code](/2-JavaScript-Course/Projects/5-Todo-List)
 - **Weather App →** [Demo](https://jmcamposdev.github.io/TheOdinProject/2-JavaScript-Course/Projects/6-Weather-App/dist) | [Code](/2-JavaScript-Course/Projects/6-Weather-App)
-- **Recursion →** [Demo](https://jmcamposdev.github.io/TheOdinProject/2-JavaScript-Course/Projects/7-Recursion/) | [Code](/2-JavaScript-Course/Projects/7-Recursion)
+- **Recursion →**  [Code](/2-JavaScript-Course/Projects/7-Recursion)
 
 
 I will continue to upload exercises and projects. Be patient.
